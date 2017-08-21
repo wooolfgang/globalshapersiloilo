@@ -8,7 +8,7 @@ import App from './components/App';
 mobx.useStrict(true);
 
 injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Roboto|Raleway');
+  @import url('https://fonts.googleapis.com/css?family=Roboto|Raleway|Playfair+Display');
 
   body {
     margin: 0px;
