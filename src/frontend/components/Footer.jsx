@@ -5,7 +5,7 @@ import instagram from '../assets/instagram.png';
 import twitter from '../assets/twitter.png';
 
 const StyledDiv = styled.div`
-  height: 125px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: space-around;
