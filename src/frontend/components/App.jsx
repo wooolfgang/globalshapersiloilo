@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Header from './Header';
 import HeroContainer from './HeroContainer';
 import MainContainer from './MainContainer';
-import LocalListingsContainer from './LocalListingsContainer';
+import SubContainer from './SubContainer';
 import Footer from './Footer';
 
 const StyledApp = styled.div`
@@ -21,7 +21,7 @@ class App extends React.Component {
         <Header />
         <HeroContainer />
         <MainContainer />
-        <LocalListingsContainer />
+        <SubContainer />
         <Footer />
       </StyledApp>
     );

@@ -20,7 +20,7 @@ const SectionContainer = styled.div`
 const Container = styled.div`
   width: 350px;
   height: 300px;    
-  border: 1px solid lightgray;
+  border: 1px solid #375D81;
   display: flex;
   flex-direction: column;
   justify-content: center;
