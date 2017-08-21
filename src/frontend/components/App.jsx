@@ -1,8 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import Header from './Header';
+import HeroContainer from './HeroContainer';
+import MainContainer from './MainContainer';
+import LocalListingsContainer from './LocalListingsContainer';
+import Divider from './Divider';
+import Footer from './Footer';
 
 const StyledApp = styled.div`
 `;
+
 
 class App extends React.Component {
   constructor(props) {
@@ -12,6 +19,12 @@ class App extends React.Component {
   render() {
     return (
       <StyledApp>
+        <Header />
+        <HeroContainer />
+        <MainContainer />
+        <Divider />
+        <LocalListingsContainer />
+        <Footer />
       </StyledApp>
     );
   }
