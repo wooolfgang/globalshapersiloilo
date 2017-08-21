@@ -4,7 +4,6 @@ import Header from './Header';
 import HeroContainer from './HeroContainer';
 import MainContainer from './MainContainer';
 import LocalListingsContainer from './LocalListingsContainer';
-import Divider from './Divider';
 import Footer from './Footer';
 
 const StyledApp = styled.div`
