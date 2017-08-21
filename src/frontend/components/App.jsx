@@ -22,7 +22,6 @@ class App extends React.Component {
         <Header />
         <HeroContainer />
         <MainContainer />
-        <Divider />
         <LocalListingsContainer />
         <Footer />
       </StyledApp>
