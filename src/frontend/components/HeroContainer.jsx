@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { observer, inject } from 'mobx-react';
 import { Primary } from './Buttons';
 import heroImg from '../assets/hero-img.jpg';
 
@@ -18,11 +19,11 @@ const StyledDiv = styled.div`
   }
 `
 
-const HeroContainer = () => (
+const HeroContainer = ({ rootStore }) => (
   <StyledDiv>
     <h1> Find a cause that's worth joining for. </h1>
-    <Primary> Call to Action </Primary>
+    <Primary onClick={rootStore.uiStore.onSignupModalView}> Call to Action </Primary>
   </StyledDiv>
 );
 
-export default HeroContainer;
+export default inject('rootStore')(observer(HeroContainer));

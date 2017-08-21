@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import fb from '../assets/fb.png';
+import instagram from '../assets/instagram.png';
+import twitter from '../assets/twitter.png';
 
 const StyledDiv = styled.div`
   height: 125px;
@@ -15,37 +18,18 @@ const StyledNav = styled.ul`
 
   li {
     padding: 5px;
+    cursor: pointer;
+    font-family: 'Roboto', 'sans-serif';
   }
 `
 
-const StyledContainer = styled.div`
-  width: 400px;
-  
-  input {
-    width: 200px;
-    background: none;
-    border: none;
-    border-bottom: 2px solid #333;
-    font-size: 17px;
-    color: #333;
-    font-family: 'Roboto', 'sans-serif';
-  }
+const SocialMediaContainer = styled.div`
+  display: flex;
 
-  input:focus {
-    outline: none;
-  }
-
-  button {
-    border: none;
-    background: none;
-    font-size: 17px;
-    font-family: 'Roboto', 'sans-serif';
-    color: #333;
-    cursor: pointer;
-  }
-
-  button:focus {
-    outline: none;
+  img {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
   }
 `
 
@@ -56,10 +40,11 @@ const Footer = () => (
       <li> Volunteer </li>
       <li> About Us </li>
     </StyledNav>
-    <StyledContainer>
-        <input type="text"/>
-        <button> Sign Up </button>
-    </StyledContainer>
+    <SocialMediaContainer>
+      <a href="#"><img src={fb}/></a>
+      <a href="#"><img src={twitter}/></a>
+      <a href="#"><img src={instagram}/></a>
+    </SocialMediaContainer>
   </StyledDiv>
 );
 
