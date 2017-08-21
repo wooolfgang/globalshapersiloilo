@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
-  background-color: #FAFAFA;
+  background-color: white;
   width: 100vw;
   height: 400px;
   display: flex;
@@ -20,16 +20,18 @@ const SectionContainer = styled.div`
 const Container = styled.div`
   width: 350px;
   height: 300px;    
-  border: 1px solid #375D81;
+  background: #F8F8F8;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
 
   h2 {
     margin: 0px;  
     margin-top: 20px;
+    color: #00529B;
+    font-family: 'Playfair Display', 'serif';
+    font-weight: bold;
   }
 
   p {
