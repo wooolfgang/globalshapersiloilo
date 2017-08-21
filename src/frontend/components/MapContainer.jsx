@@ -4,9 +4,8 @@ import React from 'react';
 const Map = withGoogleMap(props => (
   <GoogleMap
     ref={props.onMapLoad}
-    defaultZoom={8}
+    defaultZoom={12}
     defaultCenter={{ lat: 10.720321, lng: 122.562019 }}
-    onClick={props.onMapClick}
   >
     {props.markers.map(marker => (
       <Marker
@@ -17,7 +16,7 @@ const Map = withGoogleMap(props => (
   </GoogleMap>
 ));
 
-class GettingStartedExample extends React.Component {
+class MapContainer extends React.Component {
 
   state = {
     markers: [{
@@ -41,26 +40,26 @@ class GettingStartedExample extends React.Component {
    * This is called when you click on the map.
    * Go and try click now.
    */
-  handleMapClick = (event) => {
-    const nextMarkers = [
-      ...this.state.markers,
-      {
-        position: event.latLng,
-        defaultAnimation: 2,
-        key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
-      },
-    ];
-    this.setState({
-      markers: nextMarkers,
-    });
+  // handleMapClick = (event) => {
+  //   // const nextMarkers = [
+  //   //   ...this.state.markers,
+  //   //   {
+  //   //     position: event.latLng,
+  //   //     defaultAnimation: 2,
+  //   //     key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
+  //   //   },
+  //   // ];
+  //   // this.setState({
+  //   //   markers: nextMarkers,
+  //   // });
 
-    if (nextMarkers.length === 3) {
-      this.props.toast(
-        `Right click on the marker to remove it`,
-        `Also check the code!`
-      );
-    }
-  }
+  //   // if (nextMarkers.length === 3) {
+  //   //   this.props.toast(
+  //   //     `Right click on the marker to remove it`,
+  //   //     `Also check the code!`
+  //   //   );
+  //   // }
+  // }
 
   handleMarkerRightClick = (targetMarker) => {
     /*
@@ -94,4 +93,4 @@ class GettingStartedExample extends React.Component {
   }
 }
 
-export default GettingStartedExample;
+export default MapContainer;
