@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Secondary } from './Buttons';
+import GettingStartedGoogleMap from './MapContainer';
 
 const StyledDiv = styled.div`
   height: 475px;
@@ -59,6 +60,14 @@ const SubContainer = () => (
         </Container>
       </ProjectSearch>
       <LocalListings>
+        <GettingStartedGoogleMap
+          containerElement={
+            <div style={{ height: `100%` }} />
+          }
+          mapElement={
+            <div style={{ height: `100%` }} />
+          }
+        />
       </LocalListings>
     </SectionContainer>
   </StyledDiv>
