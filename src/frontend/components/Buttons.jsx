@@ -37,12 +37,12 @@ const StyledSecondary = styled.button`
   }
 `
 
-const Primary = ({ children }) => (
-  <StyledPrimary> {children} </StyledPrimary>
+const Primary = ({ children, onClick }) => (
+  <StyledPrimary onClick={onClick}> {children} </StyledPrimary>
 );
 
-const Secondary = ({ children }) => (
-  <StyledSecondary> {children} </StyledSecondary>
+const Secondary = ({ children, onClick }) => (
+  <StyledSecondary onClick={onClick}> {children} </StyledSecondary>
 );
 
 export { Primary, Secondary };
