@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Primary } from './Buttons';
+import heroImg from '../assets/hero-img.jpg';
 
 const StyledDiv = styled.div`
   height: 450px;
-  background: #375D81;
+  background: url(${heroImg}) no-repeat center center fixed;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
