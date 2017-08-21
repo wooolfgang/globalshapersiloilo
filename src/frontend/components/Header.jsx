@@ -4,7 +4,7 @@ import logoImg from '../assets/logo.png';
 
 const StyledDiv = styled.div`
   width: 100vw;
-  height: 140px;;
+  height: 120px;;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -13,7 +13,7 @@ const StyledDiv = styled.div`
 
 const StyledLogo = styled.a`
   img {
-    width: 140px;
+    width: 120px;
     height: auto;
   }
 `
