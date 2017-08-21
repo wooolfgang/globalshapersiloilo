@@ -4,6 +4,7 @@ import { injectGlobal } from 'styled-components';
 import { Provider } from 'mobx-react';
 import * as mobx from 'mobx';
 import App from './components/App';
+import RootStore from './stores/RootStore';
 
 mobx.useStrict(true);
 
@@ -21,4 +22,11 @@ injectGlobal`
   }
 `
 
-ReactDOM.render(<App />, document.getElementById('mount-point'));
+const rootStore = new RootStore();
+
+ReactDOM.render(
+  <Provider rootStore={rootStore}>
+    <App />
+  </Provider>,
+  document.getElementById('mount-point')
+);
