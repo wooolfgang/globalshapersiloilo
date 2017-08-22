@@ -38,15 +38,15 @@ const StyledSecondary = styled.button`
 `
 
 const StyledClose = styled.button`
-  color: #E75E40;
+  color: #000;
   background: none;
-  border: 2px solid #E75E40;
+  border: 2px solid #000;
   font-size: 22px;
   padding: 0px 8px;
   cursor: pointer;
   transition: .3s;
   font-family: 'Roboto', 'sans-serif';
-
+  float: right;
   :focus {
     outline: none;
   }
