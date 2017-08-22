@@ -5,6 +5,7 @@ import Header from './Header';
 import HeroContainer from './HeroContainer';
 import MainContainer from './MainContainer';
 import SubContainer from './SubContainer';
+import SignupContainer from './SignupContainer';
 import Footer from './Footer';
 
 const StyledApp = styled.div`
@@ -25,10 +26,7 @@ class App extends React.Component {
         <MainContainer />
         <SubContainer />
         <Footer />
-        {
-          rootStore.uiStore.signupModalViewed ? 
-          <SignupContainer /> : undefined
-        }
+        <SignupContainer/>
       </StyledApp>
     );
   }

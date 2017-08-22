@@ -37,6 +37,21 @@ const StyledSecondary = styled.button`
   }
 `
 
+const StyledClose = styled.button`
+  color: #E75E40;
+  background: none;
+  border: 2px solid #E75E40;
+  font-size: 22px;
+  padding: 0px 8px;
+  cursor: pointer;
+  transition: .3s;
+  font-family: 'Roboto', 'sans-serif';
+
+  :focus {
+    outline: none;
+  }
+`
+
 const Primary = ({ children, onClick }) => (
   <StyledPrimary onClick={onClick}> {children} </StyledPrimary>
 );
@@ -45,4 +60,8 @@ const Secondary = ({ children, onClick }) => (
   <StyledSecondary onClick={onClick}> {children} </StyledSecondary>
 );
 
-export { Primary, Secondary };
+const Close = ({ children, onClick }) => (
+  <StyledClose onClick={onClick}> {children} </StyledClose>
+);
+
+export { Primary, Secondary, Close };

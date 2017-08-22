@@ -17,7 +17,6 @@ const Map = withGoogleMap(props => (
 ));
 
 class MapContainer extends React.Component {
-
   state = {
     markers: [{
       position: {
