@@ -38,18 +38,31 @@ const StyledSecondary = styled.button`
 `
 
 const StyledClose = styled.button`
-  color: crimson;
-  background: none;
+  background: palevioletred;
+  padding: 5px 8px;
+  font-size: 17px;
   border: none;
-  font-size: 22px;
   cursor: pointer;
-  transition: .3s;
+  width: 100px;
+  color: white;
   font-family: 'Roboto', 'sans-serif';
-  float: right;
+  margin: 5px;
 
   :focus {
     outline: none;
   }
+`
+
+const StyledSubmit = styled.button`
+  background: DarkOrange;
+  padding: 5px 8px;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  color: white;
+  font-family: 'Roboto', 'sans-serif';
+  margin: 5px;
 `
 
 const Primary = ({ children, onClick }) => (
@@ -64,4 +77,8 @@ const Close = ({ children, onClick }) => (
   <StyledClose onClick={onClick}> {children} </StyledClose>
 );
 
-export { Primary, Secondary, Close };
+const Submit = ({ children, onClick }) => (
+  <StyledSubmit onClick={onClick}> {children} </StyledSubmit>
+);
+
+export { Primary, Secondary, Close, Submit };
