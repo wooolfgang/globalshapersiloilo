@@ -21,10 +21,10 @@ app.configure(hooks());
 app.configure(socketio({ wsEngine: 'uws' }));
 
 const setupApp = async () => {
-  // const db = await MongoClient.connect(app.get('mongoURI'));
-  // console.log('Connected to db');
+  const db = await MongoClient.connect(app.get('mongoURI'));
+  console.log('Connected to db');
 
-  // app.configure(services(db));
+  app.configure(services(db));
 
   return app;
 };
