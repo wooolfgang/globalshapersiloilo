@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import logoImg from '../assets/logo.png';
+import media from '../theme/media';
+import HamburgerIcon from './HamburgerIcon';
 
 const StyledDiv = styled.div`
   width: 100vw;
@@ -9,6 +11,10 @@ const StyledDiv = styled.div`
   align-items: center;
   justify-content: space-around;
   border-bottom: 1px solid #C4D7ED;
+
+  ${media.tablet`
+    justify-content: space-around;
+  `}
 `
 
 const StyledLogo = styled.a`
@@ -23,6 +29,10 @@ const StyledNav = styled.ul`
   width: 400px;
   display: flex;
   justify-content: space-around;
+
+  ${media.tablet`
+    display: none;
+  `}
 `
 
 const StyledList = styled.li`
@@ -63,6 +73,7 @@ const Header = () => (
         <span> About </span>
       </StyledList>
     </StyledNav>
+    <HamburgerIcon />
   </StyledDiv>
 );
 

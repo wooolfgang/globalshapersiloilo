@@ -1,8 +1,9 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 import styled from 'styled-components';
-import { Close } from './Buttons';
+import { Close, Submit } from './Buttons';
 import loginWithFacebook from '../assets/loginfb.png';
+import media from '../theme/media';
 
 const StyledDiv = styled.div`
   position: fixed;
@@ -20,6 +21,43 @@ const StyledDiv = styled.div`
   ${props => !props.viewed && 'display: none;'}
 `;
 
+const Modal = styled.div`
+  width: 800px;
+  height: 500px;
+  background-color: white;
+  margin-top: -30vh;
+  display: flex;
+  flex-wrap: wrap;
+
+  ${media.tablet`
+    height: 600px;
+    flex-direction: column;
+    padding: 0px 7px;
+  `}
+`
+
+const MiddleFloat = styled.div`
+  margin: auto;
+  padding: 10px;
+`
+
+const RightFloat = styled.div`
+  height: 96%;
+  border: 2px solid #375D81;  
+  flex: 1;
+  margin: 10px;
+  padding: 0px 7px;
+  min-width: 100px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  img {
+    width: 235px;
+    height: auto;
+  }
+`
+
 const LeftFloat = styled.div`
   background: #375D81;
   height: 96%;
@@ -30,6 +68,7 @@ const LeftFloat = styled.div`
   flex-direction: column;
   align-items: center;
   color: white;
+  min-width: 300px;
     
   h2 {
     font-family: 'Playfair Display', 'serif';
@@ -45,17 +84,6 @@ const Form = styled.form`
   flex-direction: column;
   align-items: center;
   width: 100%;
-
-  input[type="submit"] {
-    background: DarkOrange;
-    padding: 5px 8px;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-    width: 100px;
-    color: white;
-    font-family: 'Roboto', 'sans-serif';
-  }
 `
 
 const FormRow = styled.div`
@@ -76,37 +104,6 @@ const FormRow = styled.div`
     font-size: 15px;
     font-family: 'Raleway', 'sans-serif';
     flex: 1;
-  }
-`
-
-const Modal = styled.div`
-  width: 700px;
-  height: 500px;
-  background-color: white;
-  margin-top: -30vh;
-  display: flex;
-`
-
-const MiddleFloat = styled.div`
-  margin: auto;
-  padding: 10px;
-`
-
-const RightFloat = styled.div`
-  height: 96%;
-  border: 2px solid #375D81;  
-  flex: 1;
-  margin: 10px;
-  padding: 0px 7px;
-
-  img {
-    width: 200px;
-    height: auto;
-  }
-
-  a {
-    position: fixed;
-    top: 47%;
   }
 `
 
@@ -132,14 +129,16 @@ const SignupContainer = ({ viewed, rootStore }) => (
             <span> Skills: </span>
             <input type="text" name="occupation" placeholder="Software Engineer" />
           </FormRow>
-          <input type="submit" value="Submit" />
+          <div>
+            <Close onClick={rootStore.uiStore.onSignupModalView}>Cancel</Close>
+            <Submit> Submit </Submit>
+          </div>
         </Form>
       </LeftFloat>
       <MiddleFloat>
         <h3>or</h3>
       </MiddleFloat>
       <RightFloat>
-        <Close onClick={rootStore.uiStore.onSignupModalView}>x</Close>
         <a href="#"><img src={loginWithFacebook} alt="..." /> </a>
       </RightFloat>
     </Modal>

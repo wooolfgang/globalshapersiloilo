@@ -2,12 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import { Secondary } from './Buttons';
 import GettingStartedGoogleMap from './MapContainer';
+import media from '../theme/media';
 
 const StyledDiv = styled.div`
   height: 475px;
   background: #375D81;
   width: 100vw;
   display: flex;
+
+  ${media.tablet`
+    height: 850px;
+  `}
 `
 
 const SectionContainer = styled.div`  
@@ -15,12 +20,19 @@ const SectionContainer = styled.div`
   height: 80%;
   display: flex;
   margin: auto;
+  flex-wrap: wrap;
 `
 
 const ProjectSearch = styled.div`
   flex: 1;
+  min-width: 300px;
   background: #FAFAFA;
   display: flex;
+`
+
+const LocalListings = styled.div`
+  flex: 1;
+  min-width: 300px;
 `
 
 const Container = styled.div`
@@ -42,11 +54,6 @@ const Container = styled.div`
     margin: 0px;
     margin-bottom: 8px;
   }
-`
-
-const LocalListings = styled.div`
-  flex: 1;
-  border: 2px solid #FAFAFA;
 `
 
 const SubContainer = () => (

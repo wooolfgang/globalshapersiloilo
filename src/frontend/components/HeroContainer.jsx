@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { observer, inject } from 'mobx-react';
 import { Primary } from './Buttons';
 import heroImg from '../assets/hero-img.jpg';
+import media from '../theme/media';
 
 const StyledDiv = styled.div`
   height: 450px;
@@ -12,6 +13,7 @@ const StyledDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   h1 {
     color: white;

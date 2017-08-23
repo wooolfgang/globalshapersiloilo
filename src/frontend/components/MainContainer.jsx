@@ -1,11 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import media from '../theme/media';
 
 const StyledDiv = styled.div`
   background-color: white;
   width: 100vw;
   height: 400px;
   display: flex;
+
+  @media (max-width:1250px) {
+    height: 700px;
+  }
+
+  ${media.desktop`
+    height: 975px;
+  `}
+
+  ${media.phone`
+    height: 1450px;
+  `}
 `
 
 const SectionContainer = styled.div`
@@ -39,6 +52,19 @@ const Container = styled.div`
     line-height: 1.75;
     padding: 20px;
   }
+
+  @media (max-width:1250px) {
+    margin: 10px;
+  }
+
+  ${media.desktop`
+    width: 80%;
+  `}
+
+  ${media.phone`
+    height: 450px;
+    width: 95%;
+  `}
 `
 
 const MainContainer = () => (
