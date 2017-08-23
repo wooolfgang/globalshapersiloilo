@@ -8,7 +8,7 @@ class UIStore {
   }
 
   @action.bound onSignupModalView() {
-    this.signupModalViewed = !this.onSignupModalView;
+    this.signupModalViewed = !this.signupModalViewed;
   }
 }
 

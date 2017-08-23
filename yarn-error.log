@@ -21,7 +21,7 @@ npm manifest:
     "main": "index.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "start:dev": "node -r babel-register dist/backend/index.js",
+      "start:dev": "node -r babel-register src/backend/index.js",
       "bundle": "webpack --watch"
     },
     "dependencies": {
