@@ -1,6 +1,6 @@
 {
   "port": 3000,
-  "mongoURI": "mongodb://localhost:27017/GlobalShapers",
+  "mongoURI": "mongodb://localhost:27017/globalshapers",
   "auth": {
     "path": "api/authentication",
     "service": "api/users",
