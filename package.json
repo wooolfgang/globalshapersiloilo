@@ -41,11 +41,8 @@
     "url-loader": "^0.5.9"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "babel-cli": "^6.26.0",
-=======
     "babel": "^6.23.0",
->>>>>>> c06596ead2ac4307b8e1cccdeb3d6637982a99b8
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
