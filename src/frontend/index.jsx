@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
+import { HashRouter as Router } from 'react-router-dom';
 import * as mobx from 'mobx';
 import App from './components/App';
 import RootStore from './stores/RootStore';
@@ -13,7 +14,9 @@ globalStyle();
 
 ReactDOM.render(
   <Provider rootStore={rootStore}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('mount-point'),
 );

@@ -31,6 +31,11 @@ const setupApp = async () => {
   const db = await MongoClient.connect(app.get('mongoURI'));
   console.log('Connected to db');
   app.configure(services(db));
+  app.get('*.js', (req, res, next) => {
+    req.url += '.gz';
+    res.set('Content-Encoding', 'gzip');
+    next();
+  });
   return app;
 };
 
