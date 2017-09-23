@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { observer, inject } from 'mobx-react';
-import { Primary } from './Buttons';
-import heroImg from '../assets/hero-img.jpg';
-import media from '../theme/media';
+import { Primary } from '../Buttons';
+import heroImg from '../../assets/hero-iloilo.jpg';
 
 const StyledDiv = styled.div`
   height: 450px;
@@ -18,13 +17,18 @@ const StyledDiv = styled.div`
   h1 {
     color: white;
     font-family: 'Raleway', 'sans-serif';
+    font-size: 35px;
+    margin: 0px;
+    margin-bottom: 15px;
+    padding: 8px 20px;
+    color: white;
   }
-`
+`;
 
 const HeroContainer = ({ rootStore }) => (
   <StyledDiv>
-    <h1> Find a cause that's worth joining for. </h1>
-    <Primary onClick={rootStore.uiStore.onSignupModalView}> Call to Action </Primary>
+    <h1> Find a cause that's <strong><u>worth</u></strong> joining for.</h1>
+    <Primary onClick={rootStore.uiStore.onSignupModalView}> Volunteer Now </Primary>
   </StyledDiv>
 );
 

@@ -18,13 +18,13 @@ const StyledDiv = styled.div`
   ${media.tablet`
     display: flex;
   `}
-`
+`;
 
 const HamburgerIcon = () => (
   <StyledDiv>
-    <span /> 
-    <span /> 
-    <span /> 
+    <span />
+    <span />
+    <span />
   </StyledDiv>
 );
 

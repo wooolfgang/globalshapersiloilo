@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import logoImg from '../assets/logo.png';
 import media from '../theme/media';
 import HamburgerIcon from './HamburgerIcon';
+import colors from '../theme/constants';
 
 const StyledDiv = styled.div`
   width: 100vw;
@@ -15,14 +16,14 @@ const StyledDiv = styled.div`
   ${media.tablet`
     justify-content: space-around;
   `}
-`
+`;
 
 const StyledLogo = styled.a`
   img {
     width: 120px;
     height: auto;
   }
-`
+`;
 
 const StyledNav = styled.ul`
   list-style-type: none;
@@ -33,15 +34,16 @@ const StyledNav = styled.ul`
   ${media.tablet`
     display: none;
   `}
-`
+`;
 
 const StyledList = styled.li`
   cursor: pointer;
   padding: 10px;
+  border-left: 1px solid lightgray;
 
   :hover {
-    border-left: 1px solid #375D81;
-    color: #375D81;
+    border-left: 1px solid ${colors.secondary};
+    color: ${colors.secondary};
   }
 
   span:nth-child(1) {
@@ -54,8 +56,9 @@ const StyledList = styled.li`
   span:nth-child(2) {
     font-size: 14px;
     font-family: 'Raleway', 'sans-serif'; 
+    text-decoration: 'underline';
   }
-`
+`;
 
 const Header = () => (
   <StyledDiv>

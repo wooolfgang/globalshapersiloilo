@@ -11,6 +11,7 @@ const StyledPrimary = styled.button`
   cursor: pointer;
   transition: .3s;
   font-family: 'Roboto', 'sans-serif';
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
   :focus {
     outline: none;
@@ -20,14 +21,15 @@ const StyledPrimary = styled.button`
     color: white;
     background: none;
   }
-`
+`;
 
 const StyledSecondary = styled.button`
   color: #00529B;
   background: none;
   border: 2px solid #00529B;
+  border-radius: 5px;
   font-size: 22px;
-  padding: 0px 8px;
+  padding: 5px;
   cursor: pointer;
   transition: .3s;
   font-family: 'Roboto', 'sans-serif';
@@ -35,7 +37,7 @@ const StyledSecondary = styled.button`
   :focus {
     outline: none;
   }
-`
+`;
 
 const StyledClose = styled.button`
   background: palevioletred;
@@ -51,7 +53,7 @@ const StyledClose = styled.button`
   :focus {
     outline: none;
   }
-`
+`;
 
 const StyledSubmit = styled.button`
   background: DarkOrange;
@@ -63,7 +65,7 @@ const StyledSubmit = styled.button`
   color: white;
   font-family: 'Roboto', 'sans-serif';
   margin: 5px;
-`
+`;
 
 const Primary = ({ children, onClick }) => (
   <StyledPrimary onClick={onClick}> {children} </StyledPrimary>
