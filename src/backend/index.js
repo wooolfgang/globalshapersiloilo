@@ -2,7 +2,7 @@ import setupApp from './app';
 
 const startServer = async () => {
   const app = await setupApp();
-  app.listen(process.ENV.port || app.get('port'), () => {
+  app.listen(app.get('port') || process.ENV.port, () => {
     console.log('App live at 3000');
   });
 };
