@@ -9,7 +9,7 @@
     "pack": "webpack",
     "babel": "babel src -d dist",
     "heroku-postbuild": "npm install --only=dev && npm run babel && npm run pack -p",
-    "start" : "node dist/backend/index.js"
+    "start": "node dist/backend/index.js"
   },
   "engines": {
     "node": "8.0.0"
@@ -41,20 +41,24 @@
     "url-loader": "^0.5.9"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "babel-register": "^6.26.0",
+    "eslint": "^4.7.2",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-config-airbnb-standard": "^1.4.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.2.1",
+    "react-hot-loader": "^3.0.0-beta.7",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-hot-middleware": "^2.18.2",
     "webpack": "^3.5.5"
   },
   "repository": {

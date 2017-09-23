@@ -1,7 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: [
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client?http://localhost:3000/',
     './src/frontend/index.jsx',
   ],
 
@@ -10,6 +13,10 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/',
   },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 
   module: {
     rules: [{
@@ -23,9 +30,9 @@ module.exports = {
       test: /\.(png|jpg|gif)$/,
       use: [
         {
-          loader: 'url-loader'
+          loader: 'url-loader',
         }],
-    }]
+    }],
   },
 
   resolve: {
