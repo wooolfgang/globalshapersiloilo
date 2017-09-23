@@ -4,12 +4,23 @@ import fb from '../assets/fb.png';
 import instagram from '../assets/instagram.png';
 import twitter from '../assets/twitter.png';
 import colors from '../theme/constants';
+import media from '../theme/media';
 
 const StyledDiv = styled.div`
   height: 150px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+
+  ${media.tablet`
+    flex-direction: column;
+    height: 400px;
+  `} 
+
+  ${media.phone`
+    height: 500px;
+  `}
 `;
 
 const StyledNav = styled.ul`
@@ -34,13 +45,19 @@ const StyledNav = styled.ul`
 const Container = styled.div`
   width: 370px;
   font-size: 15px;
-  margin-left: 170px;
-  margin-right: 150px;
 
   h3 {
     margin: 0px;
     color: ${colors.secondary}
   }
+
+  ${media.tablet`
+    text-align: center;
+  `}
+
+  ${media.phone`
+    width: 300px;
+  `}
 `;
 
 const SocialMediaContainer = styled.div`
