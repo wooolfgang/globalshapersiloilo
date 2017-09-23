@@ -7,16 +7,15 @@
     "start:dev": "node -r babel-register src/backend/index.js",
     "bundle": "webpack --watch",
     "pack": "webpack",
+    "build": "NODE_ENV=production webpack -p --config webpack.prod.js",
     "babel": "babel src -d dist",
-    "heroku-postbuild": "npm install --only=dev && npm run babel && npm run pack -p",
+    "heroku-postbuild": "npm install --only=dev && npm run babel && npm run build -p",
     "start": "node dist/backend/index.js"
   },
   "engines": {
     "node": "8.0.0"
   },
   "dependencies": {
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-polyfill": "^6.26.0",
     "body-parser": "^1.17.2",
     "feathers": "^2.1.7",
     "feathers-authentication": "^1.2.7",
@@ -36,6 +35,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-google-maps": "^7.2.0",
+    "react-router-dom": "^4.2.2",
     "socket.io-client": "^2.0.3",
     "styled-components": "^2.1.2",
     "url-loader": "^0.5.9"
@@ -45,6 +45,8 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
@@ -57,9 +59,10 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.2.1",
     "react-hot-loader": "^3.0.0-beta.7",
+    "webpack": "^3.5.5",
+    "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-middleware": "^1.12.0",
-    "webpack-hot-middleware": "^2.18.2",
-    "webpack": "^3.5.5"
+    "webpack-hot-middleware": "^2.18.2"
   },
   "repository": {
     "type": "git",

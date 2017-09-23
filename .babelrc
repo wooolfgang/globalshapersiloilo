@@ -3,9 +3,13 @@
     [
       "env",
       {
+        "es2015": {
+          "modules": false
+        },
         "targets": {
           "browsers": [
-            "last 2 Chrome versions"
+            "last 2 versions",
+            "safari >= 7"
           ]
         }
       }
