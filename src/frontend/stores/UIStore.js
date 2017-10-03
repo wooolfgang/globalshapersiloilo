@@ -3,8 +3,8 @@ import { action, observable } from 'mobx';
 class UIStore {
   @observable signupModalViewed;
 
-  constructor(rootStore) {
-    this.rootStore = rootStore;
+  constructor(store) {
+    this.store = store;
   }
 
   @action.bound onSignupModalView() {

@@ -1,8 +1,9 @@
-import UIStore from './UIStore'
-import client from '../client';
+import UserStore from './UserStore';
+import UIStore from './UIStore';
 
 class RootStore {
-  constructor() {
+  constructor(client) {
+    this.userStore = new UserStore(this, client);
     this.uiStore = new UIStore(this);
   }
 }
