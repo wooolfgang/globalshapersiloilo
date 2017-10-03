@@ -5,15 +5,16 @@ import { HashRouter as Router } from 'react-router-dom';
 import * as mobx from 'mobx';
 import App from './components/App';
 import RootStore from './stores/RootStore';
-import globalStyle from './theme/global.js';
+import globalStyle from './theme/global';
+import client from './client';
 
 mobx.useStrict(true);
-const rootStore = new RootStore();
+const store = new RootStore(client);
 
 globalStyle();
 
 ReactDOM.render(
-  <Provider rootStore={rootStore}>
+  <Provider store={store}>
     <Router>
       <App />
     </Router>

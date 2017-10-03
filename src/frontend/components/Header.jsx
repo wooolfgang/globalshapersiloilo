@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import logoImg from '../assets/logo.png';
 import media from '../theme/media';
 import HamburgerIcon from './HamburgerIcon';
@@ -11,7 +12,7 @@ const StyledDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border-bottom: 1px solid #C4D7ED;
+  border-bottom: 1px solid #FAFAFA;
 
   ${media.tablet`
     justify-content: space-around;
@@ -27,7 +28,7 @@ const StyledLogo = styled.a`
 
 const StyledNav = styled.ul`
   list-style-type: none;
-  width: 400px;
+  width: 480px;
   display: flex;
   justify-content: space-around;
 
@@ -36,10 +37,15 @@ const StyledNav = styled.ul`
   `}
 `;
 
-const StyledList = styled.li`
+const StyledLink = styled(Link) `
   cursor: pointer;
   padding: 10px;
   border-left: 1px solid lightgray;
+  font-family: 'Open Sans', 'sans-serif';
+  text-decoration: none !important;
+  color: #333;
+
+  ${props => props.login && 'font-size: 16px;'};
 
   :hover {
     border-left: 1px solid ${colors.secondary};
@@ -64,17 +70,18 @@ const Header = () => (
   <StyledDiv>
     <StyledLogo href="#"><img src={logoImg} /></StyledLogo>
     <StyledNav>
-      <StyledList>
+      <StyledLink to="/">
         <span> Volunteer </span>
         <span> Find a Cause </span>
-      </StyledList>
-      <StyledList>
+      </StyledLink>
+      <StyledLink to="/">
         <span> Organize </span>
         <span> Start a Cause </span>
-      </StyledList>
-      <StyledList>
+      </StyledLink>
+      <StyledLink to="/">
         <span> About </span>
-      </StyledList>
+      </StyledLink>
+      <StyledLink to="/signin" login> Sign in / Sign up </StyledLink>
     </StyledNav>
     <HamburgerIcon />
   </StyledDiv>

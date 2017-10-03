@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import fb from '../assets/fb.png';
+import fb from '../assets/facebook.png';
 import instagram from '../assets/instagram.png';
 import twitter from '../assets/twitter.png';
 import colors from '../theme/constants';
@@ -12,6 +12,8 @@ const StyledDiv = styled.div`
   align-items: center;
   justify-content: space-around;
   align-items: center;
+  border-top: 1px solid lightgray;
+  background: #FAFAFA;
 
   ${media.tablet`
     flex-direction: column;
@@ -19,7 +21,7 @@ const StyledDiv = styled.div`
   `} 
 
   ${media.phone`
-    height: 500px;
+    height: 375px;
   `}
 `;
 
@@ -40,6 +42,10 @@ const StyledNav = styled.ul`
   li:hover {
     text-decoration: underline;
   }
+
+  ${media.phone`
+    text-align: center;
+  `}
 `;
 
 const Container = styled.div`

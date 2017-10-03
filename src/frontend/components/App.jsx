@@ -1,23 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
 import { observer, inject } from 'mobx-react';
-import { Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import Header from './Header';
-import SignupContainer from './SignupContainer';
 import Footer from './Footer';
 import HomePage from './HomePage';
+import Signin from './Signin';
+import Signup from './Signup';
 
-@observer @inject('rootStore')
+const StyledDiv = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+
+const Section = styled.div`
+  flex: 1;
+`
+
+@inject('store') @observer
 class App extends React.Component {
   render() {
-    const { rootStore } = this.props;
     return (
-      <div>
+      <StyledDiv>
         <Header />
-        <Route exact path="/" component={HomePage} />
+        <Router>
+          <Section>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/signin" component={Signin} />
+            <Route path="/signup" component={Signup} />
+          </Section>
+        </Router>
         <Footer />
-        <SignupContainer />
-      </div>
+      </StyledDiv>
     );
   }
 }

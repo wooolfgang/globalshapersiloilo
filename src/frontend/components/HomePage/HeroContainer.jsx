@@ -25,11 +25,11 @@ const StyledDiv = styled.div`
   }
 `;
 
-const HeroContainer = ({ rootStore }) => (
+const HeroContainer = () => (
   <StyledDiv>
     <h1> Find a cause that's <strong><u>worth</u></strong> joining for.</h1>
-    <Primary onClick={rootStore.uiStore.onSignupModalView}> Volunteer Now </Primary>
+    <Primary > Volunteer Now </Primary>
   </StyledDiv>
 );
 
-export default inject('rootStore')(observer(HeroContainer));
+export default HeroContainer;
