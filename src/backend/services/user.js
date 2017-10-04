@@ -1,6 +1,9 @@
 import feathersMongo from 'feathers-mongodb';
 import { hooks } from 'feathers-authentication-local';
 import auth from 'feathers-authentication';
+import transform from '../../hooks/transform';
+import validate from '../../hooks/validate';
+import User from '../../models/User';
 
 function userService(db) {
   return function execute() {
@@ -12,7 +15,9 @@ function userService(db) {
       before: {
         find: [auth.hooks.authenticate('jwt')],
         get: [],
-        create: [hooks.hashPassword({ passwordField: 'password' })],
+        create: [
+          transform(User), validate(), hooks.hashPassword({ passwordField: 'password' }),
+        ],
         update: [],
         patch: [],
         remove: [],
