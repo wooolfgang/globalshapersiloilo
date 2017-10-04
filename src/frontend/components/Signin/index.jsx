@@ -2,7 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import loginwithFB from '../../assets/loginfb.png';
 import loginwithGoogle from '../../assets/logingoogle.png';
-import Input from './Input';
+import Input from '../Input';
 import { StyledDiv, StyledLink } from './styles';
 
 const SignupComponent = ({ store: { userStore } }) => (
@@ -20,8 +20,8 @@ const SignupComponent = ({ store: { userStore } }) => (
           </div>
           <p id="line" />
           <div id="field-container">
-            <Input label="Username" type="text" id="username" required onChange={e => userStore.onSigninInput(e)} />
-            <Input label="Password" type="password" id="password" required onChange={e => userStore.onSigninInput(e)} />
+            <Input label="Username" type="text" id="username" required signIn />
+            <Input label="Password" type="password" id="password" required signIn />
           </div>
           <div id="btn-container">
             <button onClick={(e) => { e.preventDefault(); userStore.login(); }} id="loginbtn"> SIGN IN </button>

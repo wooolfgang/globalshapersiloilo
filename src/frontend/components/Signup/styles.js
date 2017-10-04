@@ -11,8 +11,8 @@ const StyledDiv = styled.div`
     padding: 0px;
   `}
 
-  h2 {
-    color: ${colors.primary};
+  h1, h2 {
+    color: ${colors.tertiary};
     text-align: center;
     margin-bottom: 30px;
   }
@@ -20,7 +20,6 @@ const StyledDiv = styled.div`
   #container {
     background-color: #fafafa;
     text-align: center;
-    border-radius: 5px; 
   }
 
   form {
@@ -118,7 +117,7 @@ const StyledDiv = styled.div`
     width: 15px;
   }
 
-  img {
+  #fblogin, #googlelogin {
     height: 35px;
     margin: 10px;
     cursor: pointer;

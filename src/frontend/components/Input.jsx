@@ -1,6 +1,7 @@
 import React from 'react';
+import { inject } from 'mobx-react';
 import styled from 'styled-components';
-import colors from '../../theme/constants';
+import colors from '../theme/constants';
 
 const StyledDiv = styled.div`
   position: relative; 
@@ -8,20 +9,22 @@ const StyledDiv = styled.div`
   font-family: 'Open Sans', 'sans-serif';
 
   input {
-    font-size: 17px;
+    font-size: 14px;
     padding: 10px 10px 10px 5px;
     display: block;
-    width: 285px;
     border: none;
     border-bottom: 1px solid #757575;
     background: none;
+    ${props => props.signUp && 'width: 200px;'};
+    ${props => props.signIn && 'width: 285px;'};
+    
   }
 
   input:focus { outline:none; }
 
   label {
     color: #999; 
-    font-size: 16px;
+    font-size: 14px;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
@@ -33,12 +36,17 @@ const StyledDiv = styled.div`
   }
 
   input:focus ~ label, input:valid ~ label {
-    top:-20px;
-    font-size:14px;
+    top: -20px;
+    font-size: 12px;
     color: ${colors.secondary};
   }
 
-  .bar { position:relative; display:block; width:300px; }
+  .bar { 
+    position:relative; 
+    display:block; 
+    ${props => props.signUp && 'width: 215px;'};
+    ${props => props.signIn && 'width: 300px;'};
+  }
   .bar:before, .bar:after {
     content:'';
     height: 2px; 
@@ -91,13 +99,13 @@ const StyledDiv = styled.div`
   }
 `;
 
-const Input = ({ label, onChange, type, id, required }) => (
-  <StyledDiv>
-    <input type={type} required={required} onChange={onChange} id={id} />
+const Input = ({ label, type, id, required, signIn, signUp, store: { userStore } }) => (
+  <StyledDiv signIn={signIn} signUp={signUp}>
+    <input type={type} required={required} onChange={e => userStore.onSignupInput(e)} id={id} />
     <span className="highlight" />
     <span className="bar" />
     <label>{label}</label>
   </StyledDiv>
 );
 
-export default Input;
+export default inject('store')(Input);

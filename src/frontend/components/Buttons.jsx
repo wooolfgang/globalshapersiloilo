@@ -55,32 +55,14 @@ const StyledClose = styled.button`
   }
 `;
 
-const StyledSubmit = styled.button`
-  background: DarkOrange;
-  padding: 5px 8px;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-  width: 100px;
-  color: white;
-  font-family: 'Roboto', 'sans-serif';
-  margin: 5px;
-`;
-
-const Primary = ({ children, onClick }) => (
+export const Primary = ({ children, onClick }) => (
   <StyledPrimary onClick={onClick}> {children} </StyledPrimary>
 );
 
-const Secondary = ({ children, onClick }) => (
+export const Secondary = ({ children, onClick }) => (
   <StyledSecondary onClick={onClick}> {children} </StyledSecondary>
 );
 
-const Close = ({ children, onClick }) => (
+export const Close = ({ children, onClick }) => (
   <StyledClose onClick={onClick}> {children} </StyledClose>
 );
-
-const Submit = ({ children, onClick }) => (
-  <StyledSubmit onClick={onClick}> {children} </StyledSubmit>
-);
-
-export { Primary, Secondary, Close, Submit };

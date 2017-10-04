@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { Secondary } from '../Buttons';
 import GettingStartedGoogleMap from './MapContainer';
 import media from '../../theme/media';
+import colors from '../../theme/constants';
 
 const StyledDiv = styled.div`
   height: 475px;
-  background: #375D81;
+  background: ${colors.tertiary};
   width: 100vw;
   display: flex;
 
