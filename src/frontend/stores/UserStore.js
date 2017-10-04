@@ -2,7 +2,8 @@ import { observable, action } from 'mobx';
 
 class UserStore {
   @observable currentUser;
-  @observable userInput = { username: '', password: '' };
+  @observable signinInput = { username: '', password: '' };
+  @observable signupInput = {};
 
   constructor(store, client) {
     this.store = store;
@@ -27,8 +28,8 @@ class UserStore {
   @action.bound async login() {
     try {
       const token = await client.authenticate({
-        username: this.userInput.username,
-        password: this.userInput.password,
+        username: this.signinInput.username,
+        password: this.signinInput.password,
         strategy: 'local',
       });
       const payload = await client.passport.verifyJWT(token.accessToken);
@@ -39,8 +40,20 @@ class UserStore {
     }
   }
 
+  @action.bound async signup() {
+    try {
+      const user = this.client.service('api/users').create(this.signupInput);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   @action.bound onSigninInput(e) {
-    this.userInput[e.target.id] = e.target.value;
+    this.signinInput[e.target.id] = e.target.value;
+  }
+
+  @action.bound onSignupInput(e) {
+    this.signupInput[e.target.id] = e.target.value;
   }
 }
 
