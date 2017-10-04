@@ -1,7 +1,7 @@
 const colors = {
   primary: '#00244d',
   secondary: '#005C9C',
-  tertiary: '#09133b',
+  tertiary: '#375D81',
   footer: '#FAFAFA',
   buttonPrimary: '#4E7AC7',
   buttonPrimaryDarker: '#3a68b9',
