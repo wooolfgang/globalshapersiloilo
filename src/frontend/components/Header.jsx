@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link, withRouter } from 'react-router-dom';
 import logoImg from '../assets/logo.png';
+import logoImgInverted from '../assets/logo-inverted.png';
 import media from '../theme/media';
 import HamburgerIcon from './HamburgerIcon';
 import colors from '../theme/constants';
@@ -13,6 +14,7 @@ const StyledDiv = styled.div`
   align-items: center;
   justify-content: space-around;
   border-bottom: 1px solid #FAFAFA;
+  ${props => props.signup && `background: ${colors.secondary};`};
 
   ${media.tablet`
     justify-content: space-around;
@@ -67,8 +69,10 @@ const StyledLink = styled(Link) `
 `;
 
 const Header = ({ location }) => (
-  <StyledDiv>
-    <StyledLogo href="#"><img src={logoImg} /></StyledLogo>
+  <StyledDiv signup={location.pathname === '/signup'}>
+    <StyledLogo href="#">
+      <img src={location.pathname === '/signup' ? logoImgInverted : logoImg} alt="logo" />
+    </StyledLogo>
     {
       location.pathname !== '/signup' &&
       <StyledNav>
