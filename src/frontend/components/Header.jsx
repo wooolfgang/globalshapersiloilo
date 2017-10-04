@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import logoImg from '../assets/logo.png';
 import media from '../theme/media';
 import HamburgerIcon from './HamburgerIcon';
@@ -66,25 +66,28 @@ const StyledLink = styled(Link) `
   }
 `;
 
-const Header = () => (
+const Header = ({ location }) => (
   <StyledDiv>
     <StyledLogo href="#"><img src={logoImg} /></StyledLogo>
-    <StyledNav>
-      <StyledLink to="/">
-        <span> Volunteer </span>
-        <span> Find a Cause </span>
-      </StyledLink>
-      <StyledLink to="/">
-        <span> Organize </span>
-        <span> Start a Cause </span>
-      </StyledLink>
-      <StyledLink to="/">
-        <span> About </span>
-      </StyledLink>
-      <StyledLink to="/signin" login> Sign in / Sign up </StyledLink>
-    </StyledNav>
+    {
+      location.pathname !== '/signup' &&
+      <StyledNav>
+        <StyledLink to="/">
+          <span> Volunteer </span>
+          <span> Find a Cause </span>
+        </StyledLink>
+        <StyledLink to="/">
+          <span> Organize </span>
+          <span> Start a Cause </span>
+        </StyledLink>
+        <StyledLink to="/">
+          <span> About </span>
+        </StyledLink>
+        <StyledLink to="/signin" login> Sign in / Sign up </StyledLink>
+      </StyledNav>
+    }
     <HamburgerIcon />
   </StyledDiv>
 );
 
-export default Header;
+export default withRouter(Header);

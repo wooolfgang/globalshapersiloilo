@@ -23,15 +23,17 @@ class App extends React.Component {
   render() {
     return (
       <StyledDiv>
-        <Header />
         <Router>
-          <Section>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/signin" component={Signin} />
-            <Route path="/signup" component={Signup} />
-          </Section>
+          <div>
+            <Header />
+            <Section>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/signin" component={Signin} />
+              <Route path="/signup" component={Signup} />
+            </Section>
+            <Footer />
+          </div>
         </Router>
-        <Footer />
       </StyledDiv>
     );
   }

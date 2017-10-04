@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { observer, inject } from 'mobx-react';
-import { Primary } from '../Buttons';
+import { Link } from 'react-router-dom';
 import heroImg from '../../assets/hero-iloilo.jpg';
+import colors from '../../theme/constants';
 
 const StyledDiv = styled.div`
   height: 450px;
@@ -25,10 +25,34 @@ const StyledDiv = styled.div`
   }
 `;
 
+const StyledLink = styled(Link) ` 
+  color: ${colors.secondary};
+  background: white;
+  border: 2px solid white;
+  border-radius: 5px;
+  font-size: 22px;
+  padding: 8px;
+  cursor: pointer;
+  transition: .3s;
+  font-family: 'Roboto', 'sans-serif';
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  text-decoration: none !important;
+
+  :focus {
+    outline: none;
+  }
+
+  :hover {
+    color: white !important;
+    background: none;
+  }
+`;
+
+
 const HeroContainer = () => (
   <StyledDiv>
     <h1> Find a cause that's <strong><u>worth</u></strong> joining for.</h1>
-    <Primary > Volunteer Now </Primary>
+    <StyledLink to="/signup">Volunteer Now </StyledLink>
   </StyledDiv>
 );
 

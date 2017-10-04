@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 import fb from '../assets/facebook.png';
 import instagram from '../assets/instagram.png';
 import twitter from '../assets/twitter.png';
@@ -12,8 +13,7 @@ const StyledDiv = styled.div`
   align-items: center;
   justify-content: space-around;
   align-items: center;
-  border-top: 1px solid lightgray;
-  background: #FAFAFA;
+  background: ${colors.footer};
 
   ${media.tablet`
     flex-direction: column;
@@ -76,24 +76,29 @@ const SocialMediaContainer = styled.div`
   }
 `;
 
-const Footer = () => (
-  <StyledDiv>
-    <StyledNav>
-      <li> Home </li>
-      <li> Volunteer </li>
-      <li> Organize </li>
-      <li> About Us </li>
-    </StyledNav>
-    <Container>
-      <h3> Global Shapers Iloilo © </h3>
-      <p> The Global Shapers Community is a network of young people driving dialogue, action and change. </p>
-    </Container>
-    <SocialMediaContainer>
-      <a href="#"><img src={fb} /></a>
-      <a href="#"><img src={twitter} /></a>
-      <a href="#"><img src={instagram} /></a>
-    </SocialMediaContainer>
-  </StyledDiv>
+const Footer = ({ location }) => (
+  <div>
+    {
+      location.pathname !== '/signup' &&
+      <StyledDiv>
+        <StyledNav>
+          <li> Home </li>
+          <li> Volunteer </li>
+          <li> Organize </li>
+          <li> About Us </li>
+        </StyledNav>
+        <Container>
+          <h3> Global Shapers Iloilo © </h3>
+          <p> The Global Shapers Community is a network of young people driving dialogue, action and change. </p>
+        </Container>
+        <SocialMediaContainer>
+          <a href="#"><img src={fb} /></a>
+          <a href="#"><img src={twitter} /></a>
+          <a href="#"><img src={instagram} /></a>
+        </SocialMediaContainer>
+      </StyledDiv>
+    }
+  </div>
 );
 
-export default Footer;
+export default withRouter(Footer);
