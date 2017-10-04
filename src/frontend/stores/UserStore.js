@@ -1,9 +1,10 @@
-import { observable, action } from 'mobx';
+import { observable, action, runInAction } from 'mobx';
 
 class UserStore {
   @observable currentUser;
   @observable signinInput = { username: '', password: '' };
   @observable signupInput = {};
+  @observable signupSuccess;
 
   constructor(store, client) {
     this.store = store;
@@ -42,7 +43,13 @@ class UserStore {
 
   @action.bound async signup() {
     try {
-      const user = this.client.service('api/users').create(this.signupInput);
+      const user = await this.client.service('api/users').create(this.signupInput);
+      runInAction(() => {
+        if (user) {
+          this.signupInput = undefined;
+          this.signupSuccess = true;
+        }
+      })
     } catch (e) {
       console.log(e);
     }
