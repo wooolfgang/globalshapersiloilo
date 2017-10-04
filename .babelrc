@@ -3,16 +3,21 @@
     [
       "env",
       {
+        "es2015": {
+          "modules": false
+        },
         "targets": {
-          "node": true
+          "browsers": [
+            "last 2 versions"
+          ]
         }
       }
     ],
-    "react",
-    "stage-0"
+    "stage-1",
+    "react"
   ],
   "plugins": [
-    "transform-decorators-legacy",
-    "react-hot-loader/babel"
+    "transform-runtime",
+    "transform-decorators-legacy"
   ]
 }
