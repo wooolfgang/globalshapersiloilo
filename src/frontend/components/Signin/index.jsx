@@ -1,12 +1,19 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import loginwithFB from '../../assets/loginfb.png';
 import loginwithGoogle from '../../assets/logingoogle.png';
 import Input from '../Input';
-import { StyledDiv, StyledLink } from './styles';
+import Container from './Container';
+import colors from '../../theme/constants';
+
+const StyledLink = styled(Link) `
+  color: ${colors.secondary}
+ `;
 
 const SignupComponent = ({ store: { userStore } }) => (
-  <StyledDiv>
+  <Container>
     <div id="heading">
       <h1> Building a movement </h1>
       <p> We believe in a world where young people are a central to solution building, policy-making and lasting change. </p>
@@ -30,7 +37,7 @@ const SignupComponent = ({ store: { userStore } }) => (
         </form>
       </div>
     </div>
-  </StyledDiv>
+  </Container>
 );
 
 export default inject('store')(observer(SignupComponent));

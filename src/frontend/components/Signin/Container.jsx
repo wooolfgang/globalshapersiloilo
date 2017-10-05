@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import colors from '../../theme/constants';
 import media from '../../theme/media';
 
-export const StyledDiv = styled.div`
+const Container = styled.div`
   background: ${colors.secondary};
   height: 80vh;
   width: 100%;
@@ -102,6 +101,4 @@ export const StyledDiv = styled.div`
   }
 `;
 
-export const StyledLink = styled(Link) `
-  color: ${colors.secondary}
- `;
+export default Container;

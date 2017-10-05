@@ -62,10 +62,10 @@ const StyledDiv = styled.div`
 
   #account, #personal {
     font-size: 17px;
+  }
 
-    p {
-      margin-bottom: 30px;
-    }
+  #title {
+    margin-bottom: 30px;
   }
 
   input[type=date] {
