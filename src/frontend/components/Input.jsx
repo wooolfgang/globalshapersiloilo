@@ -5,7 +5,7 @@ import colors from '../theme/constants';
 
 const StyledDiv = styled.div`
   position: relative; 
-  margin-bottom: 45px; 
+  margin-bottom: 30px; 
   font-family: 'Open Sans', 'sans-serif';
 
   input {
@@ -99,12 +99,13 @@ const StyledDiv = styled.div`
   }
 `;
 
-const Input = ({ label, type, id, required, signIn, signUp, store: { userStore } }) => (
+const Input = ({ children, label, type, id, required, signIn, signUp, store: { userStore } }) => (
   <StyledDiv signIn={signIn} signUp={signUp}>
     <input type={type} required={required} onChange={e => userStore.onSignupInput(e)} id={id} />
     <span className="highlight" />
     <span className="bar" />
     <label>{label}</label>
+    {children}
   </StyledDiv>
 );
 

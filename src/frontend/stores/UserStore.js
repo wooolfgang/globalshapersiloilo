@@ -1,10 +1,17 @@
 import { observable, action, runInAction } from 'mobx';
 
+const initialErrorState = {
+  username: '', password: '', email: '',
+  fullName: '', birthDay: '', addres: '',
+  phoneNumber: '', occupation: '', affiliation: ''
+}
+
 class UserStore {
   @observable currentUser;
   @observable signinInput = { username: '', password: '' };
   @observable signupInput = {};
   @observable signupSuccess;
+  @observable signupError = initialErrorState;
 
   constructor(store, client) {
     this.store = store;
@@ -43,15 +50,20 @@ class UserStore {
 
   @action.bound async signup() {
     try {
+      this.signupError = initialErrorState;
       const user = await this.client.service('api/users').create(this.signupInput);
       runInAction(() => {
         if (user) {
-          this.signupInput = undefined;
           this.signupSuccess = true;
+          this.signupInput = undefined;
         }
       })
     } catch (e) {
-      console.log(e);
+      runInAction(() => {
+        const key = e.details[0].context.key;
+        const message = e.details[0].message;
+        this.signupError[key] = message;
+      })
     }
   }
 

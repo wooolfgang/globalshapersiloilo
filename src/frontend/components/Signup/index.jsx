@@ -4,10 +4,11 @@ import signupwithFB from '../../assets/fb.png';
 import signupwithGoogle from '../../assets/google.png';
 import Input from '../Input';
 import Success from './Success';
-import StyledDiv from './styles';
+import Container from './Container';
+import Error from '../ErrorMsg';
 
 const SignupComponent = ({ store: { userStore } }) => (
-  <StyledDiv>
+  <Container>
     {
       !userStore.signupSuccess ?
         <div>
@@ -20,19 +21,37 @@ const SignupComponent = ({ store: { userStore } }) => (
             <hr />
             <form action="POST">
               <div id="account">
-                <p>Account Details</p>
-                <Input type="text" label="Username" required id="username" signUp />
-                <Input type="password" label="Password" required id="password" signUp />
-                <Input type="email" label="Email" required id="email" signUp />
+                <p id="title">Account Details</p>
+                <Input type="text" label="Username" required id="username" signUp>
+                  <Error message={userStore.signupError.username} />
+                </Input>
+                <Input type="password" label="Password" required id="password" signUp>
+                  <Error message={userStore.signupError.password} />
+                </Input>
+                <Input type="email" label="Email" required id="email" signUp>
+                  <Error message={userStore.signupError.email} />
+                </Input>
               </div>
               <div id="personal">
-                <p>Personal Details</p>
-                <Input type="text" label="Full Name" required id="fullName" signUp />
-                <Input type="date" required id="birthDay" signUp />
-                <Input type="text" label="Address" required id="address" signUp />
-                <Input type="text" label="Phone Number" required id="phoneNumber" signUp />
-                <Input type="text" label="Occupation" required id="occupation" signUp />
-                <Input type="text" label="Company/School/Organization" required id="affiliation" signUp />
+                <p id="title">Personal Details</p>
+                <Input type="text" label="Full Name" required id="fullName" signUp>
+                  <Error message={userStore.signupError.fullName} />
+                </Input>
+                <Input type="date" required id="birthDay" signUp >
+                  <Error message={userStore.signupError.birthDay} />
+                </Input>
+                <Input type="text" label="Address" required id="address" signUp >
+                  <Error message={userStore.signupError.address} />
+                </Input>
+                <Input type="text" label="Phone Number" required id="phoneNumber" signUp >
+                  <Error message={userStore.signupError.phoneNumber} />
+                </Input>
+                <Input type="text" label="Occupation" required id="occupation" signUp >
+                  <Error message={userStore.signupError.occupation} />
+                </Input>
+                <Input type="text" label="Company/School/Organization" required id="affiliation" signUp >
+                  <Error message={userStore.signupError.affiliation} />
+                </Input>
               </div>
               <div id="signup">
                 <button id="signupbtn" onClick={(e) => { e.preventDefault(); userStore.signup(); }}>
@@ -44,7 +63,7 @@ const SignupComponent = ({ store: { userStore } }) => (
         </div>
         : <Success />
     }
-  </StyledDiv>
+  </Container>
 );
 
 export default inject('store')(observer(SignupComponent));
