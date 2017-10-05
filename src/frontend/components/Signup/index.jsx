@@ -1,11 +1,10 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import signupwithFB from '../../assets/fb.png';
-import signupwithGoogle from '../../assets/google.png';
 import Input from '../Input';
 import Success from './Success';
 import Container from './Container';
 import Error from '../ErrorMsg';
+import { Google, Facebook } from '../Buttons';
 
 const SignupComponent = ({ store: { userStore } }) => (
   <Container>
@@ -15,8 +14,8 @@ const SignupComponent = ({ store: { userStore } }) => (
           <h2> Become a pioneer of the Iloilo Shaper Community. </h2>
           <div id="container">
             <div>
-              <img id="fblogin" src={signupwithFB} alt="fb" />
-              <img id="googlelogin" src={signupwithGoogle} alt="google" />
+              <Google onPath={'/signup'}> Continue with Google </Google>
+              <Facebook onPath={'/signup'} > Continue with Facebook </Facebook>
             </div>
             <hr />
             <form action="POST">
@@ -55,7 +54,7 @@ const SignupComponent = ({ store: { userStore } }) => (
               </div>
               <div id="signup">
                 <button id="signupbtn" onClick={(e) => { e.preventDefault(); userStore.signup(); }}>
-                  BECOME A SHAPER
+                  SIGN UP
                 </button>
               </div>
             </form>

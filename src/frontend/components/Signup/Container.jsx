@@ -36,6 +36,7 @@ const StyledDiv = styled.div`
     font-size: 15px;
     cursor: pointer;
     transition-duration: .2s;
+    font-family: 'Raleway', 'sans-serif';
 
     :hover {
       background-color: ${colors.buttonPrimaryDarker};
@@ -73,6 +74,15 @@ const StyledDiv = styled.div`
     font-family: 'Open Sans', 'sans-serif';
   }
 
+  label {
+    margin-left: 5px;
+  }
+
+  input[type=radio] {
+    height: 15px;
+    width: 15px;
+  }
+
   @media screen and (max-width: 550px) {
     form {
       grid-template-areas: 
@@ -95,7 +105,7 @@ const StyledDiv = styled.div`
 
     #container {
       padding: 20px;
-      width: 500px; 
+      width: 550px; 
       margin: auto;
     }
   }
@@ -106,21 +116,6 @@ const StyledDiv = styled.div`
 
   #organizer-span {
     grid-area: organizer;
-  }
-
-  label {
-    margin-left: 5px;
-  }
-
-  input[type=radio] {
-    height: 15px;
-    width: 15px;
-  }
-
-  #fblogin, #googlelogin {
-    height: 35px;
-    margin: 10px;
-    cursor: pointer;
   }
 `;
 

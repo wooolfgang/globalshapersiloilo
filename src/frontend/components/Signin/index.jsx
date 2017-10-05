@@ -2,8 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import loginwithFB from '../../assets/loginfb.png';
-import loginwithGoogle from '../../assets/logingoogle.png';
+import { Google, Facebook } from '../Buttons';
 import Input from '../Input';
 import Container from './Container';
 import colors from '../../theme/constants';
@@ -22,8 +21,8 @@ const SignupComponent = ({ store: { userStore } }) => (
       <div>
         <form action="POST">
           <div id="loginvia">
-            <img src={loginwithFB} alt="fb" />
-            <img src={loginwithGoogle} alt="google" />
+            <Google onPath="/signin"> Signin with Google </Google>
+            <Facebook onPath="/signin"> Signin with Facebook </Facebook>
           </div>
           <p id="line" />
           <div id="field-container">

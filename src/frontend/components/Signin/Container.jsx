@@ -41,14 +41,14 @@ const Container = styled.div`
   
   #loginbtn {
     background-color: ${colors.buttonPrimary};
-    width: 180px;
     border: none;
     color: white;
     height: 40px;
-    width: 150px;
-    font-size: 17px;
+    font-size: 16px;
     cursor: pointer;  
     text-align: center;  
+    width: 290px;
+    font-family: 'Raleway', 'sans-serif';
 
     :hover {
       background-color: ${colors.buttonPrimaryDarker};
@@ -87,17 +87,6 @@ const Container = styled.div`
 
   #btn-container {
     grid-area: btn-container;
-
-    button {
-      width: 290px;
-      font-size: 16px;
-    }
-  }
-
-  img {
-    height: 40px;
-    margin: 10px;
-    cursor: pointer;
   }
 `;
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import facebookPng from '../assets/facebook-app-logo.png';
+import googlePng from '../assets/google-app-logo.png';
 
 const StyledPrimary = styled.button`
   color: #00529B;
@@ -55,6 +57,39 @@ const StyledClose = styled.button`
   }
 `;
 
+const Social = styled.a`
+  font-family: 'Raleway', 'sans-serif';
+  padding: 12px 28px;
+  border-radius: 3px;
+  font-size: 14px;
+  color: white;
+  margin: 0px 5px 15px 5px;
+  cursor: pointer;
+  position: relative;
+
+  ${props => props.onPath === '/signin' && 'width: 300px; display: flex;'};  
+  ${props => props.onPath === '/signup' && 'width: 200px; display: inline-block;'};  
+
+  img {
+    width: 16px;
+    height: 16px; 
+    position: absolute;
+    left: 20px;
+  }
+
+  span {
+    margin: auto;
+  }
+`;
+
+const StyledGoogle = styled(Social) `
+  background-color: #DB3236;
+`;
+
+const StyledFacebook = styled(Social) `
+  background-color: #3B579D;
+`;
+
 export const Primary = ({ children, onClick }) => (
   <StyledPrimary onClick={onClick}> {children} </StyledPrimary>
 );
@@ -65,4 +100,12 @@ export const Secondary = ({ children, onClick }) => (
 
 export const Close = ({ children, onClick }) => (
   <StyledClose onClick={onClick}> {children} </StyledClose>
+);
+
+export const Google = ({ children, href, onPath }) => (
+  <StyledGoogle href={href} onPath={onPath}><img src={googlePng} alt="google" /><span>{children}</span> </StyledGoogle>
+);
+
+export const Facebook = ({ children, href, onPath }) => (
+  <StyledFacebook href={href} onPath={onPath} ><img src={facebookPng} alt="facebook" /><span> {children} </span> </StyledFacebook>
 );
