@@ -8,26 +8,27 @@ const initialErrorState = {
 
 class UserStore {
   @observable currentUser;
-  @observable signinInput = { username: '', password: '' };
+  @observable authenticated;
+  @observable signinInput = {};
   @observable signupInput = {};
   @observable signupSuccess;
-  @observable signupError = initialErrorState;
+  @observable signupErrorMsg = initialErrorState;
+  @observable signinErrorMsg;
 
   constructor(store, client) {
     this.store = store;
     this.client = client;
   }
 
-  @action.bound setUser(user) {
-    this.currentUser = user;
-  }
-
   @action.bound async authenticate() {
     try {
-      const token = await client.authenticate();
-      const payload = await client.passport.verifyJWT(token.accessToken);
-      const user = await client.service('api/users').get(payload.userId);
-      this.setUser(user);
+      const token = await this.client.authenticate();
+      const payload = await this.client.passport.verifyJWT(token.accessToken);
+      const user = await this.client.service('api/users').get(payload.userId);
+      runInAction(() => {
+        this.currentUser = user;
+        this.authenticated = true;
+      })
     } catch (e) {
       console.log(e);
     }
@@ -35,22 +36,28 @@ class UserStore {
 
   @action.bound async login() {
     try {
-      const token = await client.authenticate({
+      console.log(this.signinInput)
+      const token = await this.client.authenticate({
         username: this.signinInput.username,
         password: this.signinInput.password,
         strategy: 'local',
       });
-      const payload = await client.passport.verifyJWT(token.accessToken);
-      const user = await client.service('api/users').get(payload.userId);
-      this.setUser(user);
+      const payload = await this.client.passport.verifyJWT(token.accessToken);
+      const user = await this.client.service('api/users').get(payload.userId);
+      runInAction(() => {
+        this.currentUser = user;
+        this.authenticated = true;
+      })
     } catch (e) {
-      console.log(e);
+      runInAction(() => {
+        this.signinErrorMsg = 'Invalid login or password'
+      })
     }
   }
 
   @action.bound async signup() {
     try {
-      this.signupError = initialErrorState;
+      this.signupErrorMsg = initialErrorState;
       const user = await this.client.service('api/users').create(this.signupInput);
       runInAction(() => {
         if (user) {
@@ -62,16 +69,29 @@ class UserStore {
       runInAction(() => {
         const key = e.details[0].context.key;
         const message = e.details[0].message;
-        this.signupError[key] = message;
+        this.signupErrorMsg[key] = message;
       })
     }
   }
 
+  @action.bound async logout() {
+    try {
+      await this.client.logout();
+      runInAction(() => {
+        this.authenticated = false;
+      })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   @action.bound onSigninInput(e) {
+    this.signinErrorMsg = '';
     this.signinInput[e.target.id] = e.target.value;
   }
 
   @action.bound onSignupInput(e) {
+    this.signupErrorMsg = ''
     this.signupInput[e.target.id] = e.target.value;
   }
 }
