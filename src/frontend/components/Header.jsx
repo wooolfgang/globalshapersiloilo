@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { inject, observer } from 'mobx-react';
 import { Link, withRouter } from 'react-router-dom';
 import logoImg from '../assets/logo.png';
 import logoImgInverted from '../assets/logo-inverted.png';
@@ -30,7 +31,7 @@ const StyledLogo = styled.a`
 
 const StyledNav = styled.ul`
   list-style-type: none;
-  width: 480px;
+  width: 420px;
   display: flex;
   justify-content: space-around;
 
@@ -42,8 +43,8 @@ const StyledNav = styled.ul`
 const StyledLink = styled(Link) `
   cursor: pointer;
   padding: 10px;
-  border-left: 1px solid lightgray;
   font-family: 'Open Sans', 'sans-serif';
+  border-left: 1px solid lightgray;
   text-decoration: none !important;
   color: #333;
 
@@ -68,7 +69,47 @@ const StyledLink = styled(Link) `
   }
 `;
 
-const Header = ({ location }) => (
+const LeftContainer = styled.div`
+  margin-left: 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+`;
+
+
+const User = styled.div`
+  padding: 15px;
+  border: 1px solid ${colors.secondary};
+  border-radius: 999px;
+
+  #user, #logout {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  #user {
+    font-size: 17px;
+  }
+
+  #logout {
+    font-size: 11px;
+    text-decoration: underline;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+`;
+
+const SigninLink = styled(Link) `
+  display: inline-block !important;
+  width: 135px;
+  padding: 15px;
+  text-decoration: none;
+  font-family: 'Raleway', 'sans-serif';
+  color: ${colors.secondary}
+`;
+
+const Header = ({ location, store: { userStore } }) => (
   <StyledDiv signup={location.pathname === '/signup'}>
     <StyledLogo href="#">
       <img src={location.pathname === '/signup' ? logoImgInverted : logoImg} alt="logo" />
@@ -87,11 +128,20 @@ const Header = ({ location }) => (
         <StyledLink to="/">
           <span> About </span>
         </StyledLink>
-        <StyledLink to="/signin" login> Sign in / Sign up </StyledLink>
+        <LeftContainer>
+          {
+            userStore.authenticated ?
+              <User>
+                <p id="user">  {userStore.currentUser.username} </p>
+                <button id="logout" onClick={userStore.logout}> Logout </button>
+              </User> :
+              <SigninLink to="/signin" login> Sign in / Sign up </SigninLink>
+          }
+        </LeftContainer>
       </StyledNav>
     }
     <HamburgerIcon />
-  </StyledDiv>
+  </StyledDiv >
 );
 
-export default withRouter(Header);
+export default inject('store')(withRouter(observer(Header)));
