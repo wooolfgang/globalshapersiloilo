@@ -5,7 +5,7 @@ import hooks from 'feathers-hooks';
 import auth from 'feathers-authentication-client';
 import services from './services';
 
-const socket = io('http://localhost:3000');
+const socket = io(location.origin);
 
 const client = feathers();
 
