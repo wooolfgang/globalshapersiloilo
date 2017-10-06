@@ -20,11 +20,16 @@ const Section = styled.div`
 
 @inject('store') @observer
 class App extends React.Component {
+  componentDidMount() {
+    const { store: { userStore } } = this.props;
+    userStore.authenticate();
+  }
+
   render() {
     return (
-      <StyledDiv>
+      <div>
         <Router>
-          <div>
+          <StyledDiv>
             <Header />
             <Section>
               <Route exact path="/" component={HomePage} />
@@ -32,9 +37,9 @@ class App extends React.Component {
               <Route path="/signup" component={Signup} />
             </Section>
             <Footer />
-          </div>
+          </StyledDiv>
         </Router>
-      </StyledDiv>
+      </div>
     );
   }
 }

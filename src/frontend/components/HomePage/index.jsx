@@ -1,14 +1,23 @@
 import React from 'react';
+import { observer, inject } from 'mobx-react';
 import HeroContainer from './HeroContainer';
 import Content from './Content';
 import SubContainer from './SubContainer';
+import Dashboard from '../Dashboard';
 
-const HomePage = () => (
+const HomePage = ({ store: { userStore } }) => (
   <div>
-    <HeroContainer />
-    <Content />
-    <SubContainer />
+    {
+      userStore.authenticated ?
+        <Dashboard />
+        :
+        <div>
+          <HeroContainer />
+          <Content />
+          <SubContainer />
+        </div>
+    }
   </div>
 );
 
-export default HomePage;
+export default inject('store')(observer(HomePage));

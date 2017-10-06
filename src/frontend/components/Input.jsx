@@ -101,7 +101,12 @@ const StyledDiv = styled.div`
 
 const Input = ({ children, label, type, id, required, signIn, signUp, store: { userStore } }) => (
   <StyledDiv signIn={signIn} signUp={signUp}>
-    <input type={type} required={required} onChange={e => userStore.onSignupInput(e)} id={id} />
+    <input
+      type={type}
+      required={required}
+      onChange={signUp ? e => userStore.onSignupInput(e) : e => userStore.onSigninInput(e)}
+      id={id}
+    />
     <span className="highlight" />
     <span className="bar" />
     <label>{label}</label>
