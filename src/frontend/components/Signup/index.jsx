@@ -18,8 +18,8 @@ const SignupComponent = ({ store: { userStore } }) => (
                 <h2> Become a pioneer of the Iloilo Shaper Community. </h2>
                 <div id="container">
                   <div>
-                    <Google onPath={'/signup'}> Continue with Google </Google>
-                    <Facebook onPath={'/signup'} > Continue with Facebook </Facebook>
+                    <Google onPath={'/signup'} href={'/auth/google'}> Continue with Google </Google>
+                    <Facebook onPath={'/signup'} href={'/auth/facebook'}> Continue with Facebook </Facebook>
                   </div>
                   <hr />
                   <form action="POST">
