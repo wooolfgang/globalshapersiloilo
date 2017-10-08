@@ -1,7 +1,6 @@
 const customizeProviderData = () => async (hook) => {
   if (hook.type === 'before') {
     if (hook.data.facebook) {
-      console.log(hook);
       const { email, name, id } = hook.data.facebook.profile._json;
       hook.data.email = email;
       hook.data.fullName = name;
