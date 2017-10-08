@@ -3,6 +3,7 @@ import { hooks } from 'feathers-authentication-local';
 import auth from 'feathers-authentication';
 import transform from '../../hooks/transform';
 import validate from '../../hooks/validate';
+import customizeProviderData from '../../hooks/customizeProviderData';
 import User from '../../models/User';
 
 function userService(db) {
@@ -16,9 +17,14 @@ function userService(db) {
         find: [auth.hooks.authenticate('jwt')],
         get: [],
         create: [
-          transform(User), validate(), hooks.hashPassword({ passwordField: 'password' }),
+          customizeProviderData(),
+          transform(User), 
+          validate(), 
+          hooks.hashPassword({ passwordField: 'password' }),
         ],
-        update: [],
+        update: [
+          customizeProviderData(),
+        ],
         patch: [],
         remove: [],
       },
