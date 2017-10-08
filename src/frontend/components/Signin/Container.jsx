@@ -4,39 +4,62 @@ import media from '../../theme/media';
 
 const Container = styled.div`
   background: ${colors.secondary};
-  height: 80vh;
   width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
 
-  ${media.desktop`
-    height: 100vh;
-  `}
+  @media screen and (min-width: 700px) {
+    height: 80vh;
+    grid-template-areas: "heading . form-container";
+    grid-auto-columns: auto 1fr auto;
 
-  ${media.phone`
-    height: 135vh;
-  `}
+    #form-container {
+      height: 400px;
+      margin: 50px;
+      padding: 30px;
+    }
 
-  #heading {
-    width: 400px;
-    color: white;
-    line-height: 1.5;
-    padding: 15px;
-    margin-top: -175px;
-    margin-left: 20px;
-
-    h1 {
-      font-family: 'Playfair Display', 'sans-serif';
+    #heading {
+      padding: 50px 100px;
+      width: 80%;
     }
   }
 
-  #form-container {    
+  @media screen and (max-width: 700px) {
+    height: 100%;
+    grid-template-areas: "heading" "form-container";
+    width: 100%;
+
+    #heading {
+      text-align: center;
+      width: 70%;
+    }
+
+    #form-container > div {
+      margin: auto;
+      padding: 30px 0;
+    }
+  }
+
+  #heading {
+    color: white;
+    line-height: 1.5;
+    grid-area: heading;
+    margin: 0 auto;
+  }
+
+  #title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    font-style: italic;
+    font-weight: bolder;
+  }
+
+  #form-container {
+    display: flex;
     text-align: center;
     background: white;
-    padding: 30px;
     background: #FAFAFA;
+    grid-area: form-container;
   }
   
   #loginbtn {
@@ -55,18 +78,6 @@ const Container = styled.div`
     }
   }
 
-  @media screen and (max-width: 600px) {
-    #container {
-      width: 100vw;
-    }
-  }
-
-  @media screen and (min-width: 600px) {
-    #container {
-      width: 600px;
-    }
-  }
-
   #line {
     grid-area: line;
     border-top: 1px solid #aaa;
@@ -79,10 +90,11 @@ const Container = styled.div`
 
   #field-container {
     grid-area: field-container;
-    display: flex;
     align-items: center;
     flex-direction: column;
     margin-top: 35px;
+    width: 100%;
+    display: flex;
   }
 
   #btn-container {

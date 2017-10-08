@@ -18,7 +18,7 @@ const SignupComponent = ({ store: { userStore } }) => (
       !userStore.authenticated ?
         <Container>
           <div id="heading">
-            <h1> Building a movement </h1>
+            <p id="title"> Building a movement </p>
             <p> We believe in a world where young people are a central to solution building, policy-making and lasting change. </p>
           </div>
           <div id="form-container">

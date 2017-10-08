@@ -5,42 +5,41 @@ import Divider from './Divider';
 
 const StyledDiv = styled.div`
   background-color: white;
-  width: 100vw;
-  height: 500px;
-  display: flex;
-
-  @media (max-width:1250px) {
-    height: 750px;
-  }
-
-  ${media.desktop`
-    height: 1150px;
-  `}
-
-  ${media.phone`
-    height: 1600px;
-  `}
 `;
 
 const SectionContainer = styled.div`
-  width: 85%;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  display: flex;  
-  margin: auto;
+  
+  display: grid;
+  text-align: center;
+
+  @media screen and (min-width: 800px) {
+    grid-template-areas: "why how who";
+    grid-auto-columns: 1fr;
+    padding: 50px;
+  }
+
+  @media screen and (max-width: 800px) {
+    grid-template-areas: "why" "how" "who";
+    grid-auto-columns: 1fr;
+    padding: 50px 0;
+  }
+
+  #why {
+    grid-area: why;
+  }
+
+  #how {
+    grid-area: how;
+  }
+
+  #who {
+    grid-area: who;
+  }
 `;
 
 const Container = styled.div`
-  width: 350px;
-  height: 350px;    
   background: #F8F8F8;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
+  padding: 30px 0;
   h2 {
     margin: 0px;  
     margin-top: -10px;
@@ -56,38 +55,35 @@ const Container = styled.div`
     padding: 20px;
   }
 
-  @media (max-width:1250px) {
-    margin: 10px;
+  @media screen and (min-width: 700px) {
+    margin: 0 20px;    
   }
-
-  ${media.desktop`
-    width: 80%;
-  `}
-
-  ${media.phone`
-    height: 450px;
-    width: 95%;
-  `}
 `;
 
 const Content = () => (
   <StyledDiv>
     <SectionContainer>
-      <Container>
-        <h2> Why </h2>
-        <Divider />
-        <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." </p>
-      </Container>
-      <Container>
-        <h2> How </h2>
-        <Divider />
-        <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." </p>
-      </Container>
-      <Container>
-        <h2> Who </h2>
-        <Divider />
-        <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." </p>
-      </Container>
+      <div id="why">
+        <Container>
+          <h2> Why </h2>
+          <Divider />
+          <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." </p>
+        </Container>
+      </div>
+      <div id="how">
+        <Container>
+          <h2> How </h2>
+          <Divider />
+          <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." </p>
+        </Container>
+      </div>
+      <div id="who">
+        <Container>
+          <h2> Who </h2>
+          <Divider />
+          <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." </p>
+        </Container>
+      </div>
     </SectionContainer>
   </StyledDiv>
 );

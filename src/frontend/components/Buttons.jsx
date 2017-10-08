@@ -47,13 +47,21 @@ const StyledClose = styled.button`
   font-size: 17px;
   border: none;
   cursor: pointer;
-  width: 100px;
+  
   color: white;
   font-family: 'Roboto', 'sans-serif';
   margin: 5px;
 
   :focus {
     outline: none;
+  }
+
+  @media screen and (min-width: 700px) {
+    width: 100px;
+  }
+
+  @media screen and (max-width: 700px) {
+    width: 100%;
   }
 `;
 
