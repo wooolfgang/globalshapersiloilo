@@ -5,6 +5,17 @@
     "path": "api/authentication",
     "service": "api/users",
     "secret": "xxxx",
+    "strategies": [
+      "jwt",
+      "local",
+      "facebook",
+      "google"
+    ],
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt"
+    },
+    "secretOrKey": "xxxx",
     "local": {
       "usernameField": "username",
       "passwordField": "password"
