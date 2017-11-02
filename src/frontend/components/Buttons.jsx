@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import facebookPng from '../assets/facebook-app-logo.png';
-import googlePng from '../assets/google-app-logo.png';
+import facebookPng from '../assets/images/facebook-app-logo.png';
+import googlePng from '../assets/images/google-app-logo.png';
 
 const StyledPrimary = styled.button`
   color: #00529B;

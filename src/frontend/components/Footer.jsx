@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
-import fb from '../assets/facebook.png';
-import instagram from '../assets/instagram.png';
-import twitter from '../assets/twitter.png';
-import colors from '../theme/constants';
-import media from '../theme/media';
+import fb from '../assets/images/facebook.png';
+import instagram from '../assets/images/instagram.png';
+import twitter from '../assets/images/twitter.png';
+import media from '../assets/theme/media';
 
 const StyledDiv = styled.div`
   height: 150px;
@@ -13,7 +12,7 @@ const StyledDiv = styled.div`
   align-items: center;
   justify-content: space-around;
   align-items: center;
-  background: ${colors.footer};
+  background: ${props => props.theme.footer};
 
   ${media.tablet`
     flex-direction: column;
@@ -54,7 +53,7 @@ const Container = styled.div`
 
   h3 {
     margin: 0px;
-    color: ${colors.secondary}
+    color: ${props => props.theme.secondary}
   }
 
   ${media.tablet`

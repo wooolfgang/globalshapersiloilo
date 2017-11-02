@@ -1,14 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import media from '../../theme/media';
 import Divider from './Divider';
 
 const StyledDiv = styled.div`
   background-color: white;
 `;
 
-const SectionContainer = styled.div`
-  
+const SectionContainer = styled.div` 
   display: grid;
   text-align: center;
 
@@ -39,14 +37,16 @@ const SectionContainer = styled.div`
 
 const Container = styled.div`
   background: #F8F8F8;
-  padding: 30px 0;
+  padding: 30px 0;  
+  box-shadow: ${props => props.theme.cardTwo};
+
   h2 {
     margin: 0px;  
     margin-top: -10px;
-    color: #00529B;
     font-family: 'Playfair Display', 'serif';
     font-weight: bold;
     font-size: 32px;
+    color: ${props => props.theme.secondary};
   }
 
   p {

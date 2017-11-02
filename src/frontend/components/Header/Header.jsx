@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
 import { Link, withRouter } from 'react-router-dom';
-import logoImg from '../assets/logo.png';
-import logoImgInverted from '../assets/logo-inverted.png';
-import media from '../theme/media';
 import HamburgerIcon from './HamburgerIcon';
-import colors from '../theme/constants';
+import media from '../../assets/theme/media';
+import logoImg from '../../assets/images/logo.png';
+import logoImgInverted from '../../assets/images/logo-inverted.png';
+import User from './User';
 
 const StyledDiv = styled.div`
   width: 100vw;
@@ -15,7 +15,7 @@ const StyledDiv = styled.div`
   align-items: center;
   justify-content: space-around;
   border-bottom: 1px solid #FAFAFA;
-  ${props => props.signup && `background: ${colors.secondary};`};
+  ${props => props.signup && `background: ${props.theme.secondary};`};
 
   ${media.tablet`
     justify-content: space-around;
@@ -47,12 +47,11 @@ const StyledLink = styled(Link) `
   border-left: 1px solid lightgray;
   text-decoration: none !important;
   color: #333;
-
   ${props => props.login && 'font-size: 16px;'};
 
   :hover {
-    border-left: 1px solid ${colors.secondary};
-    color: ${colors.secondary};
+    border-left: 1px solid ${props => props.theme.secondary};
+    color: ${props => props.theme.secondary};
   }
 
   span:nth-child(1) {
@@ -76,37 +75,13 @@ const LeftContainer = styled.div`
   justify-content: flex-start;
 `;
 
-
-const User = styled.div`
-  padding: 15px;
-  border: 1px solid ${colors.secondary};
-  border-radius: 999px;
-
-  #user, #logout {
-    padding: 0px;
-    margin: 0px;
-  }
-
-  #user {
-    font-size: 17px;
-  }
-
-  #logout {
-    font-size: 11px;
-    text-decoration: underline;
-    cursor: pointer;
-    border: none;
-    background: none;
-  }
-`;
-
 const SigninLink = styled(Link) `
   display: inline-block !important;
   width: 135px;
   padding: 15px;
   text-decoration: none;
   font-family: 'Raleway', 'sans-serif';
-  color: ${colors.secondary}
+  color: ${props => props.theme.secondary}
 `;
 
 const Header = ({ location, store: { userStore } }) => (
@@ -125,16 +100,14 @@ const Header = ({ location, store: { userStore } }) => (
           <span> Organize </span>
           <span> Start a Cause </span>
         </StyledLink>
-        <StyledLink to="/">
-          <span> About </span>
-        </StyledLink>
         <LeftContainer>
           {
             userStore.authenticated ?
-              <User>
-                <p id="user">  {userStore.currentUser.username} </p>
-                <button id="logout" onClick={userStore.logout}> Logout </button>
-              </User> :
+              <User
+                username={userStore.currentUser.username}
+                handleLogout={userStore.logout}
+              />
+              :
               <SigninLink to="/signin" login> Sign in / Sign up </SigninLink>
           }
         </LeftContainer>

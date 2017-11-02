@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import heroImg from '../../assets/hero-iloilo.jpg';
-import colors from '../../theme/constants';
+import heroImg from '../../assets/images/hero-iloilo.jpg';
 
 const StyledDiv = styled.div`
   height: 450px;
@@ -26,7 +25,6 @@ const StyledDiv = styled.div`
 `;
 
 const StyledLink = styled(Link) ` 
-  color: ${colors.secondary};
   background: white;
   border: 2px solid white;
   border-radius: 5px;
@@ -37,6 +35,7 @@ const StyledLink = styled(Link) `
   font-family: 'Roboto', 'sans-serif';
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   text-decoration: none !important;
+  color: ${props => props.theme.secondary};  
 
   :focus {
     outline: none;

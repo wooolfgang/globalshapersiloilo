@@ -2,14 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { Secondary } from '../Buttons';
 import GettingStartedGoogleMap from './MapContainer';
-import media from '../../theme/media';
-import colors from '../../theme/constants';
+import media from '../../assets/theme/media';
 
 const StyledDiv = styled.div`
   height: 475px;
-  background: ${colors.tertiary};
   width: 100vw;
   display: flex;
+  background: ${props => props.theme.tertiary};
 
   ${media.tablet`
     height: 850px;

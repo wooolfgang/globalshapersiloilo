@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import media from '../theme/media';
+import media from '../../assets/theme/media';
 
 const StyledDiv = styled.div`
   width: 40px;

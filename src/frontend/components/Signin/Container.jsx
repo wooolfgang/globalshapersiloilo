@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import colors from '../../theme/constants';
-import media from '../../theme/media';
 
 const Container = styled.div`
-  background: ${colors.secondary};
   width: 100%;
   display: grid;
+  background: ${props => props.theme.secondary};
 
   @media screen and (min-width: 700px) {
     height: 80vh;
@@ -42,16 +40,14 @@ const Container = styled.div`
 
   #heading {
     color: white;
-    line-height: 1.5;
     grid-area: heading;
     margin: 0 auto;
+    width: 580px;
   }
 
   #title {
     font-family: 'Playfair Display', serif;
-    font-size: 3em;
-    font-style: italic;
-    font-weight: bolder;
+    font-size: 2.3em;
   }
 
   #form-container {
@@ -63,7 +59,6 @@ const Container = styled.div`
   }
   
   #loginbtn {
-    background-color: ${colors.buttonPrimary};
     border: none;
     color: white;
     height: 40px;
@@ -72,9 +67,10 @@ const Container = styled.div`
     text-align: center;  
     width: 290px;
     font-family: 'Raleway', 'sans-serif';
+    background-color: ${props => props.theme.buttonPrimary};    
 
     :hover {
-      background-color: ${colors.buttonPrimaryDarker};
+      background-color: ${props => props.theme.buttonPrimaryDarker};
     }
   }
 

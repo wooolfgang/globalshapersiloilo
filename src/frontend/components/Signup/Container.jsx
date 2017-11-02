@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../theme/constants';
-import media from '../../theme/media';
+import media from '../../assets/theme/media';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -12,9 +11,9 @@ const StyledDiv = styled.div`
   `}
 
   h1, h2 {
-    color: ${colors.tertiary};
     text-align: center;
     margin-bottom: 30px;
+    color: ${props => props.theme.tertiary};
   }
 
   #container {
@@ -27,7 +26,6 @@ const StyledDiv = styled.div`
   }
 
   #signupbtn {
-    background-color: ${colors.buttonPrimary};
     width: 180px;
     border: none;
     color: white;
@@ -37,9 +35,10 @@ const StyledDiv = styled.div`
     cursor: pointer;
     transition-duration: .2s;
     font-family: 'Raleway', 'sans-serif';
+    background-color: ${props => props.theme.buttonPrimary};
 
     :hover {
-      background-color: ${colors.buttonPrimaryDarker};
+      background-color: ${props => props.theme.buttonPrimaryDarker};
     }
   }
 
