@@ -7,6 +7,8 @@ import Footer from './Footer';
 import HomePage from './HomePage/Homepage';
 import Signin from './Signin/Signin';
 import Signup from './Signup/Signup';
+import ProjectFind from './ProjectFind/ProjectFind';
+import ProjectOrganize from './ProjectOrganize/ProjectOrganize';
 
 const StyledDiv = styled.div`
   min-height: 100vh;
@@ -33,6 +35,8 @@ class App extends React.Component {
             <Route exact path="/" component={HomePage} />
             <Route path="/signin" component={Signin} />
             <Route path="/signup" component={Signup} />
+            <Route path="/find" component={ProjectFind} />
+            <Route path="/organize" component={ProjectOrganize} />
           </Section>
           <Footer />
         </StyledDiv>

@@ -84,37 +84,43 @@ const SigninLink = styled(Link) `
   color: ${props => props.theme.secondary}
 `;
 
-const Header = ({ location, store: { userStore } }) => (
-  <StyledDiv signup={location.pathname === '/signup'}>
-    <StyledLogo href="#">
-      <img src={location.pathname === '/signup' ? logoImgInverted : logoImg} alt="logo" />
-    </StyledLogo>
-    {
-      location.pathname !== '/signup' &&
-      <StyledNav>
-        <StyledLink to="/">
-          <span> Volunteer </span>
-          <span> Find a Cause </span>
-        </StyledLink>
-        <StyledLink to="/">
-          <span> Organize </span>
-          <span> Start a Cause </span>
-        </StyledLink>
-        <LeftContainer>
-          {
-            userStore.authenticated ?
-              <User
-                username={userStore.currentUser.username}
-                handleLogout={userStore.logout}
-              />
-              :
-              <SigninLink to="/signin" login> Sign in / Sign up </SigninLink>
-          }
-        </LeftContainer>
-      </StyledNav>
-    }
-    <HamburgerIcon />
-  </StyledDiv >
-);
+const Header = ({ location, store: { userStore } }) => {
+  if (userStore.isAuthenticating) {
+    return null;
+  }
+
+  return (
+    <StyledDiv signup={location.pathname === '/signup'}>
+      <StyledLogo href="#">
+        <img src={location.pathname === '/signup' ? logoImgInverted : logoImg} alt="logo" />
+      </StyledLogo>
+      {
+        location.pathname !== '/signup' &&
+        <StyledNav>
+          <StyledLink to="/find">
+            <span> Volunteer </span>
+            <span> Find a Cause </span>
+          </StyledLink>
+          <StyledLink to="/organize">
+            <span> Organize </span>
+            <span> Start a Cause </span>
+          </StyledLink>
+          <LeftContainer>
+            {
+              userStore.authenticated ?
+                <User
+                  username={userStore.currentUser.username}
+                  handleLogout={userStore.logout}
+                />
+                :
+                <SigninLink to="/signin" login> Sign in / Sign up </SigninLink>
+            }
+          </LeftContainer>
+        </StyledNav>
+      }
+      <HamburgerIcon />
+    </StyledDiv >
+  );
+};
 
 export default inject('store')(withRouter(observer(Header)));
