@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
 const Projects = ({ projects }) => (
   <StyledDiv>
     {
-      projects.map(project => <Project project={project} />)
+      projects.map(project => <Project key={project._id} project={project} />)
     }
   </StyledDiv>
 );

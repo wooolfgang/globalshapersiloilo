@@ -10,7 +10,6 @@ class ProjectsContainer extends React.Component {
 
   render() {
     const { store: { projectStore: { projects, isFetching } } } = this.props;
-    console.log(projects);
     return (
       <div>
         {
