@@ -17,14 +17,6 @@ function userService(db) {
         find: [],
         get: [],
         create: [
-          auth.hooks.authenticate('jwt'),
-          hook.restrictToAuthenticated(),
-          hook.restrictToRoles({
-            roles: ['admin'],
-            fieldName: 'role',
-            idField: '_id',
-            ownerField: '_id',
-          }),
           transform(User),
           validate(),
           hooks.hashPassword({ passwordField: 'password' }),
@@ -32,22 +24,10 @@ function userService(db) {
         update: [
           auth.hooks.authenticate('jwt'),
           hook.restrictToAuthenticated(),
-          hook.restrictToRoles({
-            roles: ['admin'],
-            fieldName: 'role',
-            idField: '_id',
-            ownerField: '_id',
-          }),
         ],
         patch: [
           auth.hooks.authenticate('jwt'),
           hook.restrictToAuthenticated(),
-          hook.restrictToRoles({
-            roles: ['admin'],
-            fieldName: 'role',
-            idField: '_id',
-            ownerField: '_id',
-          }),
         ],
         remove: [],
       },
