@@ -13,11 +13,9 @@ function userService(db) {
 
     app.service('api/users').hooks({
       before: {
-        find: [auth.hooks.authenticate('jwt')],
+        find: [],
         get: [],
-        create: [
-          transform(User), validate(), hooks.hashPassword({ passwordField: 'password' }),
-        ],
+        create: [transform(User), validate(), hooks.hashPassword({ passwordField: 'password' })],
         update: [],
         patch: [],
         remove: [],

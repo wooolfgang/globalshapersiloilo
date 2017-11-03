@@ -6,6 +6,7 @@
   "scripts": {
     "start:dev": "node -r babel-register src/backend/index.js",
     "bundle": "webpack --watch",
+    "seed": "node -r babel-register src/backend/seeds/runSeeds.js",
     "pack": "webpack",
     "build": "NODE_ENV=production webpack -p --config webpack.prod.js",
     "babel": "BABEL_ENV=production babel src -d dist",
