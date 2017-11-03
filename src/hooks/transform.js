@@ -4,7 +4,7 @@ const transform = Model => (hookDetails) => {
   if (hookDetails[key] instanceof Array) {
     const transformData = hookDetails[key].map(data => new Model(data));
     hookDetails[key] = transformData;
-  } else if (hookDetails[key] instanceof Object) {
+  } else {
     hookDetails[key] = new Model(hookDetails[key]);
   }
 };

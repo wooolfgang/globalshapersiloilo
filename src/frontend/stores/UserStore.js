@@ -14,6 +14,7 @@ class UserStore {
   @observable signupSuccess;
   @observable signupErrorMsg = initialErrorState;
   @observable signinErrorMsg;
+  @observable isAuthenticating = false;
 
   constructor(store, client) {
     this.store = store;
@@ -22,21 +23,22 @@ class UserStore {
 
   @action.bound async authenticate() {
     try {
+      runInAction(() => this.isAuthenticating = true);
       const token = await this.client.authenticate();
       const payload = await this.client.passport.verifyJWT(token.accessToken);
       const user = await this.client.service('api/users').get(payload.userId);
       runInAction(() => {
         this.currentUser = user;
         this.authenticated = true;
-      })
+        this.isAuthenticating = false;
+      });
     } catch (e) {
-      console.log(e);
+      runInAction(() => this.isAuthenticating = false);
     }
   }
 
   @action.bound async login() {
     try {
-      console.log(this.signinInput)
       const token = await this.client.authenticate({
         username: this.signinInput.username,
         password: this.signinInput.password,
@@ -44,14 +46,9 @@ class UserStore {
       });
       const payload = await this.client.passport.verifyJWT(token.accessToken);
       const user = await this.client.service('api/users').get(payload.userId);
-      runInAction(() => {
-        this.currentUser = user;
-        this.authenticated = true;
-      })
+      runInAction(() => { this.currentUser = user; this.authenticated = true; });
     } catch (e) {
-      runInAction(() => {
-        this.signinErrorMsg = 'Invalid login or password'
-      })
+      runInAction(() => this.signinErrorMsg = 'Invalid login or password');
     }
   }
 
@@ -59,12 +56,7 @@ class UserStore {
     try {
       this.signupErrorMsg = initialErrorState;
       const user = await this.client.service('api/users').create(this.signupInput);
-      runInAction(() => {
-        if (user) {
-          this.signupSuccess = true;
-          this.signupInput = undefined;
-        }
-      })
+      runInAction(() => { this.signupSuccess = true; this.signupInput = undefined; });
     } catch (e) {
       runInAction(() => {
         const key = e.details[0].context.key;
@@ -77,9 +69,7 @@ class UserStore {
   @action.bound async logout() {
     try {
       await this.client.logout();
-      runInAction(() => {
-        this.authenticated = false;
-      })
+      runInAction(() => this.authenticated = false);
     } catch (e) {
       console.log(e);
     }
