@@ -11,6 +11,7 @@ const theme = {
   cardThree: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
   cardFour: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
   cardFive: '0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)',
+  grayOne: '#f4f7f6',
 };
 
 export default theme;
