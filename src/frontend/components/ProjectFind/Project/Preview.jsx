@@ -26,7 +26,7 @@ const ProposalContainer = styled.div`
   padding: 20px;
   height: 160px;
   color: lightgray;
-  font-family: 'Raleway', sans-serif;
+  font-family: ${props => props.theme.fontTwo};
   display: ${props => (props.show ? 'block' : 'none')};
 `;
 

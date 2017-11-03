@@ -15,12 +15,12 @@ const StyledDiv = styled.div`
 
   h1 {
     color: white;
-    font-family: 'Raleway', 'sans-serif';
     font-size: 35px;
     margin: 0px;
     margin-bottom: 15px;
     padding: 8px 20px;
     color: white;
+    font-family: ${props => props.theme.fontTwo};
   }
 `;
 
@@ -32,21 +32,17 @@ const StyledLink = styled(Link) `
   padding: 8px;
   cursor: pointer;
   transition: .3s;
-  font-family: 'Roboto', 'sans-serif';
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   text-decoration: none !important;
-  color: ${props => props.theme.secondary};  
-
-  :focus {
-    outline: none;
-  }
-
+  color: ${props => props.theme.secondary}; 
+  font-family: ${props => props.theme.fontOne};
+  outline: none;
+  
   :hover {
     color: white !important;
     background: none;
   }
 `;
-
 
 const HeroContainer = () => (
   <StyledDiv>

@@ -19,9 +19,9 @@ const StyledNav = styled.ul`
 const StyledLink = styled(Link) `
   cursor: pointer;
   padding: 8px;
-  font-family: 'Open Sans', 'sans-serif';
   text-decoration: none !important;
   color: #333;
+  font-family: ${props => props.theme.fontOne};
   ${props => props.login && 'font-size: 16px;'};
 
   :hover {
@@ -33,12 +33,12 @@ const Header = styled.span`
   font-size: 16.5px;
   display: block;
   margin-bottom: 2px;
-  font-family: 'Playfair Display'
+  font-family: ${props => props.theme.fontThree};
 `;
 
 const Tagline = styled.span`
   font-size: 14px;
-  font-family: 'Raleway', 'sans-serif'; 
+  font-family: ${props => props.theme.fontTwo};
 `;
 
 const LeftContainer = styled.div`
@@ -54,7 +54,7 @@ const SigninLink = styled(Link) `
   margin-top: 15px;
   font-size: 16px;
   text-decoration: none;
-  font-family: 'Raleway', 'sans-serif';
+  font-family: ${props => props.theme.fontTwo};
   color: ${props => props.theme.secondary};
 
   :hover {

@@ -46,7 +46,7 @@ const Container = styled.div`
   }
 
   #title {
-    font-family: 'Playfair Display', serif;
+    font-family: ${props => props.theme.fontThree};
     font-size: 2.3em;
   }
 
@@ -66,7 +66,7 @@ const Container = styled.div`
     cursor: pointer;  
     text-align: center;  
     width: 290px;
-    font-family: 'Raleway', 'sans-serif';
+    font-family: ${props => props.theme.fontTwo};
     background-color: ${props => props.theme.buttonPrimary};    
 
     :hover {
