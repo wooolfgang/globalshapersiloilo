@@ -24,7 +24,7 @@ class Admin extends React.Component {
 
   render() {
     const { store: { userStore } } = this.props;
-    if (userStore.currentUser.role === 'admin') {
+    if (userStore.currentUser && userStore.currentUser.role === 'admin') {
       return (
         <Container>
           <UserList />
