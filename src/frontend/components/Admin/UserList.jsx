@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
-import colors from '../../assets/theme';
 
 const Container = styled.div`
   margin-left: 11vw;
@@ -13,7 +12,7 @@ const Table = styled.table`
   border-collapse: collapse;
   width: 100%;
   
-  tr:nth-child(even){background-color: ${colors.primary}}
+  tr:nth-child(even){background-color: ${props => props.theme.primary}}
 `;
 
 const TableDiv = styled.td`

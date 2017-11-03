@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import colors from '../../assets/theme/';
 
 const Container = styled.div`
   width: 12vw;
   height: 100vh;
-  background: ${colors.primary};
+  background: ${props => props.theme.primary};
   position: absolute;
   left: 0;
   display: flex;
@@ -14,7 +13,7 @@ const Container = styled.div`
 
 const SideCategories = styled.div`
   width: 100%;
-  background: ${colors.buttonPrimary};
+  background: ${props => props.theme.buttonPrimary};
   color: white;
   border: 1px solid black; 
   flex: 1;
