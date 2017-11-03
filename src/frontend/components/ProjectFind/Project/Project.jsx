@@ -11,15 +11,15 @@ const StyledDiv = styled.div`
 const ProjectDetails = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: 'Raleway', sans-serif;
   height: 110px;
   padding: 20px;
+  font-family: ${props => props.theme.fontTwo};
 
   #project-title {
-    font-family: 'Open Sans', serif;
     font-weight: 800;
     text-decoration: underline;
     margin-bottom: 10px;
+    font-family: ${props => props.theme.fontOne};
   }
 `;
 
@@ -27,7 +27,6 @@ const VolunteerButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
-  font-family: 'Playfair Display', sans-serif;
   padding: 5px 22px;
   font-size: 18.5px;
   color: white;
@@ -36,13 +35,13 @@ const VolunteerButton = styled.button`
   margin: auto;
   box-shadow: 3px 3px ${props => props.theme.tertiary};
   background: ${props => props.theme.secondary};
+  font-family: ${props => props.theme.fontThree};
 
   :hover {
     background: white;
     color: ${props => props.theme.secondary}; 
   }
 `;
-
 
 const Project = ({ project }) => (
   <StyledDiv>

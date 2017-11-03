@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { observer, inject } from 'mobx-react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import Header from './Header/Header';
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 import HomePage from './HomePage/Homepage';
 import Signin from './Signin/Signin';
 import Signup from './Signup/Signup';

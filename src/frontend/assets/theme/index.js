@@ -12,6 +12,9 @@ const theme = {
   cardFour: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
   cardFive: '0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)',
   grayOne: '#f4f7f6',
+  fontOne: "'Open Sans', sans-serif",
+  fontTwo: "'Raleway', sans-serif",
+  fontThree: "'Playfair Display', serif",
 };
 
 export default theme;

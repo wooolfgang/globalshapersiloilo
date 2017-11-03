@@ -43,18 +43,17 @@ const Container = styled.div`
   padding: 20px;
 
   h2 {
-    font-family: 'Playfair Display', 'serif';
     margin: 0px;
     margin-top: 25px;
     margin-bottom: 15px;
+    font-family: ${props => props.theme.fontThree};
   }
 
   h3 {
-    font-family: 'Raleway', 'sans-serif';
     margin: 0px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-family: ${props => props.theme.fontTwo};
   }
-
 `;
 
 const SubContainer = () => (
@@ -64,7 +63,7 @@ const SubContainer = () => (
         <Container>
           <h2> What's your passion? </h2>
           <h3> We'll find the right projects for you. </h3>
-          <Secondary> Find Projects</Secondary>
+          <Secondary href="/#/find"> Find Projects</Secondary>
         </Container>
       </ProjectSearch>
       <LocalListings>

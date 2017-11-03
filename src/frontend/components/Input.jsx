@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const StyledDiv = styled.div`
   position: relative; 
   margin-bottom: 30px; 
-  font-family: 'Open Sans', 'sans-serif';
+  font-family: ${props => props.theme.fontOne};
 
   input {
     font-size: 14px;

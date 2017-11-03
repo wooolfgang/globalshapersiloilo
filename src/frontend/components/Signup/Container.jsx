@@ -34,7 +34,7 @@ const StyledDiv = styled.div`
     font-size: 15px;
     cursor: pointer;
     transition-duration: .2s;
-    font-family: 'Raleway', 'sans-serif';
+    font-family: ${props => props.theme.fontTwo};
     background-color: ${props => props.theme.buttonPrimary};
 
     :hover {
@@ -70,7 +70,7 @@ const StyledDiv = styled.div`
 
   input[type=date] {
     color: gray;
-    font-family: 'Open Sans', 'sans-serif';
+    font-family: ${props => props.theme.fontOne};
   }
 
   label {

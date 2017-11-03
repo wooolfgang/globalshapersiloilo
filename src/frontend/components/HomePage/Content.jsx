@@ -43,10 +43,10 @@ const Container = styled.div`
   h2 {
     margin: 0px;  
     margin-top: -10px;
-    font-family: 'Playfair Display', 'serif';
     font-weight: bold;
     font-size: 32px;
     color: ${props => props.theme.secondary};
+    font-family: ${props => props.theme.fontThree};
   }
 
   p {

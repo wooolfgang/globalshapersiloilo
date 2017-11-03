@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
   }
 
   h1 {
-    font-family: 'Playfair Display', 'serif';
+    font-family: ${props => props.theme.fontThree};
   }
 
   h1, h2{
