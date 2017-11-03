@@ -8,6 +8,7 @@ const initialErrorState = {
 
 class UserStore {
   @observable currentUser;
+  @observable users = [];
   @observable authenticated;
   @observable signinInput = {};
   @observable signupInput = {};
@@ -83,6 +84,15 @@ class UserStore {
   @action.bound onSignupInput(e) {
     this.signupErrorMsg = ''
     this.signupInput[e.target.id] = e.target.value;
+  }
+
+  @action.bound async fetchUsers() {
+    try {
+      const users = await this.client.service('api/users').find();
+      runInAction(() => { this.users = users; });
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 

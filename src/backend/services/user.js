@@ -22,6 +22,9 @@ function userService(db) {
           hooks.hashPassword({ passwordField: 'password' }),
         ],
         update: [
+          (x) => {
+            console.log(x)
+          },
           auth.hooks.authenticate('jwt'),
           hook.restrictToAuthenticated(),
         ],
