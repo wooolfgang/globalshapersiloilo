@@ -1,5 +1,6 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import colors from '../../assets/theme';
 import Sidebar from './Sidebar';
@@ -22,11 +23,17 @@ class Admin extends React.Component {
   }
 
   render() {
+    const { store: { userStore } } = this.props;
+    if (userStore.currentUser.role === 'admin') {
+      return (
+        <Container>
+          <UserList />
+          <Sidebar />
+        </Container>
+      )
+    }
     return (
-      <Container>
-        <UserList />
-        <Sidebar />
-      </Container>
+      <Redirect to="/" />
     )
   }
 };
