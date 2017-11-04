@@ -45,7 +45,7 @@ const SearchButton = styled.input`
 
 const Search = () => (
   <StyledDiv>
-    <SearchInput placeholder="Community work... " />
+    <SearchInput placeholder="Search projects..." />
     <SearchButton type="submit" value="Search" />
   </StyledDiv>
 );

@@ -9,7 +9,7 @@ import Signin from './Signin/Signin';
 import Signup from './Signup/Signup';
 import ProjectFind from './ProjectFind/ProjectFind';
 import ProjectOrganize from './ProjectOrganize/ProjectOrganize';
-import Admin from './Admin';
+import Admin from './Admin/Admin';
 
 const StyledDiv = styled.div`
   min-height: 100vh;
