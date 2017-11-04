@@ -4,6 +4,7 @@ import local from 'feathers-authentication-local';
 import oauth2 from 'feathers-authentication-oauth2';
 import { Strategy as FBStrategy } from 'passport-facebook';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
+import CustomVerifier from '../../models/CustomVerifier';
 
 function authentication() {
   return function execute() {
@@ -21,6 +22,7 @@ function authentication() {
       successRedirect: 'http://localhost:3000/#/signup',
       scope: ['public_profile', 'email'],
       profileFields: ['email', 'gender', 'displayName'],
+      Verifier: CustomVerifier,
     }));
     app.configure(oauth2({
       name: 'google',
@@ -32,6 +34,7 @@ function authentication() {
       successRedirect: 'http://localhost:3000/#/signup',
       scope: ['profile', 'email'],
       profileFields: ['email', 'gender', 'displayName'],
+      Verifier: CustomVerifier,
     }));
     app.configure(jwt());
     app.service('api/authentication').hooks({
