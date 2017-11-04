@@ -4,6 +4,7 @@ import auth from 'feathers-authentication';
 import hook from 'feathers-authentication-hooks';
 import transform from '../../hooks/transform';
 import validate from '../../hooks/validate';
+import restrictUser from '../../hooks/restrictUser';
 import User from '../../models/User';
 
 function userService(db) {
@@ -22,17 +23,20 @@ function userService(db) {
           hooks.hashPassword({ passwordField: 'password' }),
         ],
         update: [
-          (x) => {
-            console.log(x)
-          },
           auth.hooks.authenticate('jwt'),
           hook.restrictToAuthenticated(),
+          restrictUser(),
         ],
         patch: [
           auth.hooks.authenticate('jwt'),
           hook.restrictToAuthenticated(),
+          restrictUser(),
         ],
-        remove: [],
+        remove: [
+          auth.hooks.authenticate('jwt'),
+          hook.restrictToAuthenticated(),
+          restrictUser(),
+        ],
       },
       after: {
         find: [],
