@@ -24,7 +24,7 @@ class ProjectsContainer extends React.Component {
     return (
       <div>
         {
-          projects &&
+          !projectStore.isLoading &&
           <Projects projects={projects} />
         }
       </div>

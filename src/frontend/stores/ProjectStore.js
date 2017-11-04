@@ -4,7 +4,6 @@ import Api from '../../models/Api';
 class ProjectStore {
   @observable projects = [];
   @observable searchResults = [];
-  @observable isFetching = false;
   @observable hasSearched = false;
   @observable searchInput = '';
 
@@ -12,25 +11,27 @@ class ProjectStore {
     this.store = store;
     this.client = client;
     this.api = new Api('api/projects', client);
+    this.setIsLoading = store.viewStore.setIsLoading;
   }
 
   @action.bound async fetchProjects() {
     try {
-      runInAction(() => this.isFetching = true);
+      this.setIsLoading(true);
       const projects = await this.api.fetchAll();
-      runInAction(() => { this.isFetching = true; this.projects = projects; });
+      runInAction(() => { this.setIsLoading(false); this.projects = projects; });
     } catch (e) {
+      this.setIsLoading(false);
       console.log(e);
     }
   }
 
   @action.bound async search() {
     try {
-      runInAction(() => { this.isFetching = true; this.hasSearched = true });
+      runInAction(() => { this.setIsLoading(true); this.hasSearched = true });
       const projects = await this.api.search(this.searchInput);
-      runInAction(() => { this.isFetching = false; this.searchResults = projects; });
+      runInAction(() => { this.setIsLoading(false); this.searchResults = projects; });
     } catch (e) {
-      runInAction(() => this.isFetching = false);
+      this.setIsLoading(false)
       console.log(e);
     }
   }

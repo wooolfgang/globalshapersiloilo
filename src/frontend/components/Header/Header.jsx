@@ -13,7 +13,7 @@ const StyledDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  z-index: 99999;
+  z-index: 100;
   box-shadow: ${props => props.theme.cardOne};
   ${props => props.signup && `background: ${props.theme.secondary};`};
 

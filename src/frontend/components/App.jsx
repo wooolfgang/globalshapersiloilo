@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ProgressBar } from 'reprogressbars';
 import { observer, inject } from 'mobx-react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import Header from './Header/Header';
@@ -28,9 +29,11 @@ class App extends React.Component {
   }
 
   render() {
+    const { store: { viewStore } } = this.props;
     return (
       <Router>
         <StyledDiv>
+          <ProgressBar isLoading={viewStore.isLoading} color={'#07d'} />
           <Header />
           <Section>
             <Route exact path="/" component={HomePage} />
