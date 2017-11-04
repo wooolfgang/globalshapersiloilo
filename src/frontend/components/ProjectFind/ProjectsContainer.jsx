@@ -1,6 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import Projects from './Projects';
+import NoResults from './NoResults';
 
 class ProjectsContainer extends React.Component {
   async componentDidMount() {
@@ -9,11 +10,21 @@ class ProjectsContainer extends React.Component {
   }
 
   render() {
-    const { store: { projectStore: { projects, isFetching } } } = this.props;
+    const { store: { projectStore } } = this.props;
+    let projects = projectStore.projects;
+
+    if (projectStore.hasSearched) {
+      projects = projectStore.searchResults;
+    }
+
+    if (projects.length === 0 && projectStore.hasSearched) {
+      return <NoResults />;
+    }
+
     return (
       <div>
         {
-          (projects.length && !isFetching) !== 0 &&
+          projects &&
           <Projects projects={projects} />
         }
       </div>

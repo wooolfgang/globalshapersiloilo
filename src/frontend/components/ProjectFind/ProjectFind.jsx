@@ -37,14 +37,14 @@ const Header = styled.div`
   }
 `;
 
-const ProjectFind = ({ store: { userStore } }) => (
+const ProjectFind = ({ store: { projectStore } }) => (
   <StyledDiv>
     <Container>
       <h3> Find projects and make an impact </h3>
       <Search />
     </Container>
     <Header>
-      <h4> Projects in Iloilo </h4>
+      <h4> {projectStore.hasSearched ? 'Search results' : 'Projects in Iloilo'} </h4>
     </Header>
     <ProjectsContainer />
   </StyledDiv>
