@@ -51,6 +51,13 @@ class Search extends React.Component {
     projectStore.resetSearchFields();
   }
 
+  handleOnEnter = (e) => {
+    const { store: { projectStore } } = this.props;
+    if (e.key === 'Enter') {
+      projectStore.search();
+    }
+  }
+
   render() {
     const { store: { projectStore } } = this.props;
     return (
@@ -59,8 +66,13 @@ class Search extends React.Component {
           placeholder="Search projects..."
           onChange={projectStore.handleInputChange}
           value={projectStore.searchInput}
+          onKeyPress={this.handleOnEnter}
         />
-        <SearchButton type="submit" value="Search" onClick={projectStore.search} />
+        <SearchButton
+          type="submit"
+          value="Search"
+          onClick={projectStore.search}
+        />
       </StyledDiv>
     );
   }
