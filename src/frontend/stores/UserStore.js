@@ -20,11 +20,12 @@ class UserStore {
   constructor(store, client) {
     this.store = store;
     this.client = client;
+    this.setIsLoading = store.viewStore.setIsLoading;
   }
 
   @action.bound async authenticate() {
     try {
-      runInAction(() => this.isAuthenticating = true);
+      runInAction(() => { this.isAuthenticating = true; this.setIsLoading(true) });
       const token = await this.client.authenticate();
       const payload = await this.client.passport.verifyJWT(token.accessToken);
       const user = await this.client.service('api/users').get(payload.userId);
@@ -32,14 +33,16 @@ class UserStore {
         this.currentUser = user;
         this.authenticated = true;
         this.isAuthenticating = false;
+        this.setIsLoading(false);
       });
     } catch (e) {
-      runInAction(() => this.isAuthenticating = false);
+      runInAction(() => { this.isAuthenticating = false; this.setIsLoading(false); });
     }
   }
 
   @action.bound async login() {
     try {
+      this.setIsLoading(true)
       const token = await this.client.authenticate({
         username: this.signinInput.username,
         password: this.signinInput.password,
@@ -47,31 +50,48 @@ class UserStore {
       });
       const payload = await this.client.passport.verifyJWT(token.accessToken);
       const user = await this.client.service('api/users').get(payload.userId);
-      runInAction(() => { this.currentUser = user; this.authenticated = true; });
+      runInAction(() => {
+        this.currentUser = user;
+        this.authenticated = true;
+        this.setIsLoading(false);
+      });
     } catch (e) {
-      runInAction(() => this.signinErrorMsg = 'Invalid login or password');
+      runInAction(() => {
+        this.signinErrorMsg = 'Invalid login or password';
+        this.setIsLoading(false);
+      });
     }
   }
 
   @action.bound async signup() {
     try {
-      this.signupErrorMsg = initialErrorState;
+      runInAction(() => {
+        this.signupErrorMsg = initialErrorState;
+        this.setIsLoading(true);
+      });
       const user = await this.client.service('api/users').create(this.signupInput);
-      runInAction(() => { this.signupSuccess = true; this.signupInput = undefined; });
+      runInAction(() => {
+        this.signupSuccess = true;
+        this.signupInput = undefined;
+        this.setIsLoading(false);
+      });
     } catch (e) {
       runInAction(() => {
         const key = e.details[0].context.key;
         const message = e.details[0].message;
         this.signupErrorMsg[key] = message;
-      })
+        this.setIsLoading(false);
+      });
     }
   }
 
   @action.bound async logout() {
     try {
+      this.setIsLoading(true);
       await this.client.logout();
-      runInAction(() => this.authenticated = false);
+      runInAction(() => { this.authenticated = false; this.setIsLoading(false) });
     } catch (e) {
+      this.setIsLoading(false);
       console.log(e);
     }
   }
