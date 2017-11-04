@@ -13,9 +13,7 @@ const Container = styled.div`
   padding: 0px 20px;
 `;
 
-
 class Admin extends React.Component {
-
   async componentDidMount() {
     const { store: { userStore } } = this.props;
     await userStore.fetchUsers();
@@ -29,13 +27,13 @@ class Admin extends React.Component {
           <UserList />
           <Sidebar />
         </Container>
-      )
+      );
     }
     return (
       <Redirect to="/" />
-    )
+    );
   }
-};
+}
 
 export default inject('store')(observer(Admin));
 
