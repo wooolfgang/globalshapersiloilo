@@ -2,10 +2,17 @@ import feathersMongo from 'feathers-mongodb';
 import { populate } from 'feathers-hooks-common';
 
 function project(db) {
-  return function execute() {
+  return async function execute() {
     const app = this;
 
     app.use('api/projects', feathersMongo({ Model: db.collection('projects') }));
+
+    await db.collection('projects').createIndex({
+      organizationName: 'text',
+      projectName: 'text',
+      sector: 'text',
+      proposal: 'text',
+    });
 
     const projectSchema = {
       include: {

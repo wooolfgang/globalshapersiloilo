@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { observable, action } from 'mobx';
+import { observer, inject } from 'mobx-react';
 
 const StyledDiv = styled.div`
   height: 60px;
@@ -43,11 +45,37 @@ const SearchButton = styled.input`
   }
 `;
 
-const Search = () => (
-  <StyledDiv>
-    <SearchInput placeholder="Search projects..." />
-    <SearchButton type="submit" value="Search" />
-  </StyledDiv>
-);
+class Search extends React.Component {
+  componentWillUnmount() {
+    const { store: { projectStore } } = this.props;
+    projectStore.resetSearchFields();
+  }
 
-export default Search;
+  handleOnEnter = (e) => {
+    const { store: { projectStore } } = this.props;
+    if (e.key === 'Enter') {
+      projectStore.search();
+    }
+  }
+
+  render() {
+    const { store: { projectStore } } = this.props;
+    return (
+      <StyledDiv>
+        <SearchInput
+          placeholder="Search projects..."
+          onChange={projectStore.handleInputChange}
+          value={projectStore.searchInput}
+          onKeyPress={this.handleOnEnter}
+        />
+        <SearchButton
+          type="submit"
+          value="Search"
+          onClick={projectStore.search}
+        />
+      </StyledDiv>
+    );
+  }
+}
+
+export default inject('store')(observer(Search));
