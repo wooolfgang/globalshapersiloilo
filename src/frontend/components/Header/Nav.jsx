@@ -44,8 +44,6 @@ const Tagline = styled.span`
 const LeftContainer = styled.div`
   margin-left: 30px;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
 `;
 
 const SigninLink = styled(Link) `
@@ -75,10 +73,7 @@ const Nav = ({ store: { userStore } }) => (
     <LeftContainer>
       {
         userStore.authenticated ?
-          <User
-            username={userStore.currentUser.username}
-            handleLogout={userStore.logout}
-          />
+          <User />
           :
           <SigninLink to="/signin"> Sign in / Sign up </SigninLink>
       }
