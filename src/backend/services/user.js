@@ -14,31 +14,38 @@ function userService(db) {
 
     app.use('api/users', feathersMongo({ Model: db.collection('users') }));
 
+    const security = [
+      auth.hooks.authenticate('jwt'),
+      hook.restrictToAuthenticated(),
+      restrictUser(),
+    ];
+
+    const validation = [
+      transform(User),
+      validate(),
+    ];
+
     app.service('api/users').hooks({
       before: {
         find: [auth.hooks.authenticate('jwt')],
         get: [],
         create: [
           customizeProviderData(),
-          transform(User),
-          validate(),
+          ...validation,
           hooks.hashPassword({ passwordField: 'password' }),
         ],
         update: [
           customizeProviderData(),
-          auth.hooks.authenticate('jwt'),
-          hook.restrictToAuthenticated(),
-          restrictUser(),
+          transform(User),
+          validate(),
+          ...validation,
+          ...security,
         ],
         patch: [
-          auth.hooks.authenticate('jwt'),
-          hook.restrictToAuthenticated(),
-          restrictUser(),
+          ...security,
         ],
         remove: [
-          auth.hooks.authenticate('jwt'),
-          hook.restrictToAuthenticated(),
-          restrictUser(),
+          ...security,
         ],
       },
       after: {
