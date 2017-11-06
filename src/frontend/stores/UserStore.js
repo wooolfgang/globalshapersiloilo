@@ -87,6 +87,7 @@ class UserStore {
 
   @action.bound async logout() {
     try {
+      this.store.viewStore.setUserDropdownView(false);
       this.setIsLoading(true);
       await this.client.logout();
       runInAction(() => { this.authenticated = false; this.setIsLoading(false) });
