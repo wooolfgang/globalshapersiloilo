@@ -33,7 +33,7 @@ class App extends React.Component {
     return (
       <Router>
         <StyledDiv>
-          <ProgressBar isLoading={viewStore.isLoading} color={'#07d'} />
+          <ProgressBar isLoading={viewStore.isLoading} color={'#07d'} height="1px" />
           <Header />
           <Section>
             <Route exact path="/" component={HomePage} />
