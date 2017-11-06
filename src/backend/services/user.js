@@ -27,7 +27,7 @@ function userService(db) {
 
     app.service('api/users').hooks({
       before: {
-        find: [auth.hooks.authenticate('jwt')],
+        find: [],
         get: [],
         create: [
           customizeProviderData(),
