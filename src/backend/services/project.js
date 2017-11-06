@@ -1,5 +1,7 @@
 import feathersMongo from 'feathers-mongodb';
 import { populate } from 'feathers-hooks-common';
+import auth from 'feathers-authentication';
+import restrictToOwner from '../../hooks/restictToOwner';
 
 function project(db) {
   return async function execute() {
@@ -26,14 +28,19 @@ function project(db) {
       },
     };
 
+    const authorization = [
+      auth.hooks.authenticate('jwt'),
+      restrictToOwner({ userIdField: '_id', ownerField: 'contactPersonId' }),
+    ];
+
     app.service('api/projects').hooks({
       before: {
         find: [],
         get: [],
         create: [],
-        update: [],
-        patch: [],
-        remove: [],
+        update: [...authorization],
+        patch: [...authorization],
+        remove: [...authorization],
       },
       after: {
         find: [populate({ schema: projectSchema })],
