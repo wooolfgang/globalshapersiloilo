@@ -22,7 +22,6 @@ const customizeProviderData = () => async (hook) => {
       return hook;
     }
     throw new Error('Not Valid Provider');
-
   }
   throw new Error('Validate hook should be used as a before hook');
 };

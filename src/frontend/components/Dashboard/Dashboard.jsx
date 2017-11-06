@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import colors from '../../theme/constants';
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${colors.tertiary};
   color: white;
   padding: 0px 20px;
+  background: ${props => props.theme.tertiary};
 `;
 
 const Dashboard = () => (

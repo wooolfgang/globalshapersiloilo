@@ -17,8 +17,8 @@
     },
     "secretOrKey": "xxxx",
     "local": {
-      "usernameField": "username",
-      "passwordField": "password"
+      "usernameField": "\\username",
+      "passwordField": "\\password"
     }
   }
 }

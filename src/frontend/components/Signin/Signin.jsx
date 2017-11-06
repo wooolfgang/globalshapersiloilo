@@ -6,11 +6,10 @@ import { Google, Facebook } from '../Buttons';
 import Input from '../Input';
 import ErrorMsg from '../ErrorMsg';
 import Container from './Container';
-import colors from '../../theme/constants';
 
 const StyledLink = styled(Link) `
-  color: ${colors.secondary}
- `;
+  color: ${props => props.theme.secondary}
+`;
 
 const SignupComponent = ({ store: { userStore } }) => (
   <div>

@@ -1,9 +1,11 @@
 import feathersMongo from 'feathers-mongodb';
 import { hooks } from 'feathers-authentication-local';
 import auth from 'feathers-authentication';
+import hook from 'feathers-authentication-hooks';
 import transform from '../../hooks/transform';
 import validate from '../../hooks/validate';
 import customizeProviderData from '../../hooks/customizeProviderData';
+import restrictUser from '../../hooks/restrictUser';
 import User from '../../models/User';
 
 function userService(db) {
@@ -14,21 +16,30 @@ function userService(db) {
 
     app.service('api/users').hooks({
       before: {
-        find: [
-          auth.hooks.authenticate('jwt')
-        ],
+        find: [auth.hooks.authenticate('jwt')],
         get: [],
         create: [
           customizeProviderData(),
-          transform(User), 
-          validate(), 
+          transform(User),
+          validate(),
           hooks.hashPassword({ passwordField: 'password' }),
         ],
         update: [
           customizeProviderData(),
+          auth.hooks.authenticate('jwt'),
+          hook.restrictToAuthenticated(),
+          restrictUser(),
         ],
-        patch: [],
-        remove: [],
+        patch: [
+          auth.hooks.authenticate('jwt'),
+          hook.restrictToAuthenticated(),
+          restrictUser(),
+        ],
+        remove: [
+          auth.hooks.authenticate('jwt'),
+          hook.restrictToAuthenticated(),
+          restrictUser(),
+        ],
       },
       after: {
         find: [],

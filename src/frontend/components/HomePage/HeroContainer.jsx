@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import heroImg from '../../assets/hero-iloilo.jpg';
-import colors from '../../theme/constants';
+import heroImg from '../../assets/images/hero-iloilo.jpg';
 
 const StyledDiv = styled.div`
   height: 450px;
@@ -16,17 +15,16 @@ const StyledDiv = styled.div`
 
   h1 {
     color: white;
-    font-family: 'Raleway', 'sans-serif';
     font-size: 35px;
     margin: 0px;
     margin-bottom: 15px;
     padding: 8px 20px;
     color: white;
+    font-family: ${props => props.theme.fontTwo};
   }
 `;
 
 const StyledLink = styled(Link) ` 
-  color: ${colors.secondary};
   background: white;
   border: 2px solid white;
   border-radius: 5px;
@@ -34,20 +32,17 @@ const StyledLink = styled(Link) `
   padding: 8px;
   cursor: pointer;
   transition: .3s;
-  font-family: 'Roboto', 'sans-serif';
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   text-decoration: none !important;
-
-  :focus {
-    outline: none;
-  }
-
+  color: ${props => props.theme.secondary}; 
+  font-family: ${props => props.theme.fontOne};
+  outline: none;
+  
   :hover {
     color: white !important;
     background: none;
   }
 `;
-
 
 const HeroContainer = () => (
   <StyledDiv>

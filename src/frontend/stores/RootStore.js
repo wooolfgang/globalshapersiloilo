@@ -1,10 +1,12 @@
 import UserStore from './UserStore';
-import UIStore from './UIStore';
+import ViewStore from './ViewStore';
+import ProjectStore from './ProjectStore';
 
 class RootStore {
   constructor(client) {
+    this.viewStore = new ViewStore(this);
     this.userStore = new UserStore(this, client);
-    this.uiStore = new UIStore(this);
+    this.projectStore = new ProjectStore(this, client);
   }
 }
 

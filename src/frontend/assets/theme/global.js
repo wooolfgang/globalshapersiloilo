@@ -8,7 +8,7 @@ const globalStyle = () => injectGlobal`
     padding: 0px;
     height: 100vh;
     width: 100vw;
-    font-family: 'Open Sans', 'sans-serif', 'Helvetica', 'Arial';
+    font-family: 'Open Sans', sans-serif;
     font-size: 17px;
     color: #333;
     overflow-x: hidden;

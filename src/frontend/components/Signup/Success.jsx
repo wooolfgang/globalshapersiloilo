@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import successIcon from '../../assets/success.png';
+import successIcon from '../../assets/images/success.png';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
   }
 
   h1 {
-    font-family: 'Playfair Display', 'serif';
+    font-family: ${props => props.theme.fontThree};
   }
 
   h1, h2{

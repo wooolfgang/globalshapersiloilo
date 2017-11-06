@@ -1,24 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ProgressBar } from 'reprogressbars';
 import { observer, inject } from 'mobx-react';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import Header from './Header';
-import Footer from './Footer';
-import HomePage from './HomePage';
-import Signin from './Signin';
-import Signup from './Signup';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
+import HomePage from './HomePage/Homepage';
+import Signin from './Signin/Signin';
+import Signup from './Signup/Signup';
+import ProjectFind from './ProjectFind/ProjectFind';
+import ProjectOrganize from './ProjectOrganize/ProjectOrganize';
+import Admin from './Admin/Admin';
 
 const StyledDiv = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const Section = styled.div`
   flex: 1;
-`
+`;
 
-@inject('store') @observer
 class App extends React.Component {
   componentDidMount() {
     const { store: { userStore } } = this.props;
@@ -26,22 +29,25 @@ class App extends React.Component {
   }
 
   render() {
+    const { store: { viewStore } } = this.props;
     return (
-      <div>
-        <Router>
-          <StyledDiv>
-            <Header />
-            <Section>
-              <Route exact path="/" component={HomePage} />
-              <Route path="/signin" component={Signin} />
-              <Route path="/signup" component={Signup} />
-            </Section>
-            <Footer />
-          </StyledDiv>
-        </Router>
-      </div>
+      <Router>
+        <StyledDiv>
+          <ProgressBar isLoading={viewStore.isLoading} color={'#07d'} />
+          <Header />
+          <Section>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/signin" component={Signin} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/find" component={ProjectFind} />
+            <Route path="/organize" component={ProjectOrganize} />
+            <Route path="/admin" component={Admin} />
+          </Section>
+          <Footer />
+        </StyledDiv>
+      </Router>
     );
   }
 }
 
-export default App;
+export default inject('store')(observer(App));

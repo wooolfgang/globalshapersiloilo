@@ -1,12 +1,11 @@
 import React from 'react';
 import { inject } from 'mobx-react';
 import styled from 'styled-components';
-import colors from '../theme/constants';
 
 const StyledDiv = styled.div`
   position: relative; 
   margin-bottom: 30px; 
-  font-family: 'Open Sans', 'sans-serif';
+  font-family: ${props => props.theme.fontOne};
 
   input {
     font-size: 14px;
@@ -17,7 +16,6 @@ const StyledDiv = styled.div`
     background: none;
     ${props => props.signUp && 'width: 200px;'};
     ${props => props.signIn && 'width: 285px;'};
-    
   }
 
   input:focus { outline:none; }
@@ -38,7 +36,7 @@ const StyledDiv = styled.div`
   input:focus ~ label, input:valid ~ label {
     top: -20px;
     font-size: 12px;
-    color: ${colors.secondary};
+    color: ${props => props.theme.secondary};
   }
 
   .bar { 
@@ -47,20 +45,23 @@ const StyledDiv = styled.div`
     ${props => props.signUp && 'width: 215px;'};
     ${props => props.signIn && 'width: 300px;'};
   }
+
   .bar:before, .bar:after {
     content:'';
     height: 2px; 
     width: 0;
     bottom: 1px; 
     position: absolute;
-    background: ${colors.secondary}; 
     transition: 0.2s ease all; 
     -moz-transition: 0.2s ease all; 
     -webkit-transition: 0.2s ease all;
+    background: ${props => props.theme.secondary}; 
   }
+
   .bar:before {
     left: 50%;
   }
+
   .bar:after {
     right: 50%; 
   }
@@ -86,15 +87,15 @@ const StyledDiv = styled.div`
   }
 
   @-webkit-keyframes inputHighlighter {
-    from { background:${colors.secondary}; }
+    from { background:${props => props.theme.secondary}; }
     to { width:0; background:transparent; }
   }
   @-moz-keyframes inputHighlighter {
-    from { background:${colors.secondary}; }
+    from { background:${props => props.theme.secondary}; }
     to { width:0; background:transparent; }
   }
   @keyframes inputHighlighter {
-    from { background:${colors.secondary}; }
+    from { background:${props => props.theme.secondary}; }
     to { width:0; background:transparent; }
   }
 `;
