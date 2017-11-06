@@ -6,7 +6,7 @@ const seed = async () => {
 
   const users = [
     {
-      // _id: ObjectId('429BDC3BAFF43767141EF562'),
+      _id: ObjectId('429BDC3BAFF43767141EF562'),
       username: 'wooolfgang',
       password: 'password',
       fullName: 'Li Arolf Rey',
@@ -18,7 +18,7 @@ const seed = async () => {
       affiliation: 'N/A',
     },
     {
-      // _id: ObjectId('D2133E4769E046781F282A09'),
+      _id: ObjectId('D2133E4769E046781F282A09'),
       username: 'dummy123',
       password: 'password',
       fullName: 'Robert De Niro',
@@ -27,10 +27,10 @@ const seed = async () => {
       address: 'somewhere',
       phoneNumber: '3510267',
       occupation: 'N/A',
-      affiliation: 'N/A',      
+      affiliation: 'N/A',
     },
     {
-      // _id: ObjectId('B25752FC70EDC7EE6D81FF0F'),
+      _id: ObjectId('B25752FC70EDC7EE6D81FF0F'),
       username: 'jeanna',
       password: 'password',
       fullName: 'Wesley Snipers',
