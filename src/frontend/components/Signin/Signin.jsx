@@ -24,8 +24,8 @@ const SignupComponent = ({ store: { userStore } }) => (
             <div>
               <form action="POST">
                 <div id="loginvia">
-                  <Google onPath="/signin"> Signin with Google </Google>
-                  <Facebook onPath="/signin"> Signin with Facebook </Facebook>
+                  <Google onPath="/signin" href="auth/google"> Signin with Google </Google>
+                  <Facebook onPath="/signin" href="auth/facebook"> Signin with Facebook </Facebook>
                 </div>
                 <p id="line" />
                 <ErrorMsg message={userStore.signinErrorMsg} />

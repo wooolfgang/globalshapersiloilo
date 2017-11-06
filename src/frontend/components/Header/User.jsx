@@ -40,7 +40,7 @@ const Button = styled.button`
 
 const User = ({ store: { viewStore, userStore } }) => (
   <StyledDiv>
-    <Username onClick={viewStore.toggleDropdownView}> {userStore.currentUser.username} </Username>
+    <Username onClick={viewStore.toggleDropdownView}> {userStore.currentUser.fullName} </Username>
     {
       viewStore.userDropdownViewed &&
       <Dropdown

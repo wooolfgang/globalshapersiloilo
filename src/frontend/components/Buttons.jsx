@@ -72,6 +72,7 @@ const Social = styled.a`
   margin: 0px 5px 15px 5px;
   cursor: pointer;
   position: relative;
+  text-decoration: none !important;
   font-family: ${props => props.theme.fontTwo};
   
   ${props => props.onPath === '/signin' && 'width: 300px; display: flex;'};  
