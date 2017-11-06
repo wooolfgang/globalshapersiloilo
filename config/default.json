@@ -19,6 +19,38 @@
     "local": {
       "usernameField": "\\username",
       "passwordField": "\\password"
+    },
+    "facebook": {
+      "service": "api/users",
+      "clientID": "338814276566702",
+      "clientSecret": "e286376f8175bcb8fc549224fc73f3cc",
+      "callbackURL": "http://localhost:3000/auth/facebook/callback",
+      "successRedirect": "/",
+      "scope": [
+        "public_profile",
+        "email"
+      ],
+      "profileFields": [
+        "email",
+        "gender",
+        "displayName"
+      ]
+    },
+    "google": {
+      "service": "api/users",
+      "clientID": "206616668311-3o0ls5sopak3e02vhkmvhpjnl9gqlk5f.apps.googleusercontent.com",
+      "clientSecret": "pW3jXSpRYbpp0JgdEmWuDapR",
+      "callbackURL": "http://localhost:3000/auth/google/callback",
+      "successRedirect": "/",
+      "scope": [
+        "profile",
+        "email"
+      ],
+      "profileFields": [
+        "email",
+        "gender",
+        "displayName"
+      ]
     }
   }
 }
