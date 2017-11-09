@@ -5,7 +5,7 @@ import { observer, inject } from 'mobx-react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
-import HomePage from './HomePage/Homepage';
+import LandingPage from './LandingPage/LandingPage';
 import Signin from './Signin/Signin';
 import Signup from './Signup/Signup';
 import ProjectFind from './ProjectFind/ProjectFind';
@@ -36,7 +36,7 @@ class App extends React.Component {
           <ProgressBar isLoading={viewStore.isLoading} color={'#07d'} height="1.5px" />
           <Header />
           <Section>
-            <Route exact path="/" component={HomePage} />
+            <Route exact path="/" component={LandingPage} />
             <Route path="/signin" component={Signin} />
             <Route path="/signup" component={Signup} />
             <Route path="/find" component={ProjectFind} />

@@ -5,7 +5,7 @@ import Content from './Content';
 import FindProjects from './FindProjects';
 import Dashboard from '../Dashboard/Dashboard';
 
-const HomePage = ({ store: { userStore } }) => {
+const LandingPage = ({ store: { userStore } }) => {
   if (userStore.isAuthenticating) {
     return null;
   }
@@ -26,4 +26,4 @@ const HomePage = ({ store: { userStore } }) => {
   );
 };
 
-export default inject('store')(observer(HomePage));
+export default inject('store')(observer(LandingPage));
