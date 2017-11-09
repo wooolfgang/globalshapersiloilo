@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import facebookPng from '../assets/images/facebook-app-logo.png';
-import googlePng from '../assets/images/google-app-logo.png';
+import { facebookApp, googleApp } from '../assets/theme/images';
 
 const StyledPrimary = styled.button`
   color: #00529B;
@@ -111,9 +110,9 @@ export const Close = ({ children, onClick }) => (
 );
 
 export const Google = ({ children, href, onPath }) => (
-  <StyledGoogle href={href} onPath={onPath}><img src={googlePng} alt="google" /><span>{children}</span> </StyledGoogle>
+  <StyledGoogle href={href} onPath={onPath}><img src={googleApp} alt="google" /><span>{children}</span> </StyledGoogle>
 );
 
 export const Facebook = ({ children, href, onPath }) => (
-  <StyledFacebook href={href} onPath={onPath} ><img src={facebookPng} alt="facebook" /><span> {children} </span> </StyledFacebook>
+  <StyledFacebook href={href} onPath={onPath} ><img src={facebookApp} alt="facebook" /><span> {children} </span> </StyledFacebook>
 );

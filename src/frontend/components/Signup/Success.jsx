@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import successIcon from '../../assets/images/success.png';
+import { successIcon } from '../../assets/theme/images';
 
 const StyledDiv = styled.div`
   display: flex;

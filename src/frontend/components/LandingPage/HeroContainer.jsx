@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import heroImg from '../../assets/images/hero-iloilo.jpg';
+import { heroImg } from '../../assets/theme/images';
 
 const StyledDiv = styled.div`
   height: 450px;
@@ -46,7 +46,7 @@ const StyledLink = styled(Link) `
 
 const HeroContainer = () => (
   <StyledDiv>
-    <h1> Find a cause that's <strong><u>worth</u></strong> joining for.</h1>
+    <h1> {console.log(heroImg)} Find a cause that's <strong><u>worth</u></strong> joining for.</h1>
     <StyledLink to="/signup">Volunteer Now </StyledLink>
   </StyledDiv>
 );

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import logoImg from '../../assets/images/logo.png';
-import logoImgInverted from '../../assets/images/logo-inverted.png';
+import { logo, invertedLogo } from '../../assets/theme/images';
 
 const StyledLogo = styled.a`
   img {
@@ -12,7 +11,7 @@ const StyledLogo = styled.a`
 
 const Logo = ({ pathname }) => (
   <StyledLogo href="#">
-    <img src={pathname === '/signup' ? logoImgInverted : logoImg} alt="logo" />
+    <img src={pathname === '/signup' ? invertedLogo : logo} alt="logo" />
   </StyledLogo>
 );
 
