@@ -44,6 +44,7 @@ const Tagline = styled.span`
 const LeftContainer = styled.div`
   margin-left: 30px;
   display: flex;
+  min-width: 120px;
 `;
 
 const SigninLink = styled(Link) `
@@ -72,10 +73,15 @@ const Nav = ({ store: { userStore } }) => (
     </StyledLink>
     <LeftContainer>
       {
-        userStore.authenticated ?
-          <User />
-          :
-          <SigninLink to="/signin"> Sign in / Sign up </SigninLink>
+        !userStore.isAuthenticating &&
+        <LeftContainer>
+          {
+            userStore.authenticated ?
+              <User />
+              :
+              <SigninLink to="/signin"> Sign in / Sign up </SigninLink>
+          }
+        </LeftContainer>
       }
     </LeftContainer>
   </StyledNav>

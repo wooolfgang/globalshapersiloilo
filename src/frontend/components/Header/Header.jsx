@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import HamburgerIcon from './HamburgerIcon';
 import media from '../../assets/theme/media';
@@ -22,21 +21,15 @@ const StyledDiv = styled.div`
   `}
 `;
 
-const Header = ({ location, store: { userStore } }) => {
-  if (userStore.isAuthenticating) {
-    return null;
-  }
+const Header = ({ location }) => (
+  <StyledDiv signup={location.pathname === '/signup'}>
+    <Logo pathname={location.pathname} />
+    {
+      location.pathname !== '/signup' &&
+      <Nav />
+    }
+    <HamburgerIcon />
+  </StyledDiv >
+);
 
-  return (
-    <StyledDiv signup={location.pathname === '/signup'}>
-      <Logo pathname={location.pathname} />
-      {
-        location.pathname !== '/signup' &&
-        <Nav />
-      }
-      <HamburgerIcon />
-    </StyledDiv >
-  );
-};
-
-export default inject('store')(withRouter(observer(Header)));
+export default withRouter(Header);
