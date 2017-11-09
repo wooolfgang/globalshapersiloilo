@@ -5,6 +5,7 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   padding: 25px 0px;
+  background: ${props => props.theme.grayOne};
 
   ${media.phone`
     padding: 0px;
@@ -17,8 +18,9 @@ const StyledDiv = styled.div`
   }
 
   #container {
-    background-color: #fafafa;
+    background: white;
     text-align: center;
+    box-shadow: ${props => props.theme.cardTwo};
   }
 
   form {
