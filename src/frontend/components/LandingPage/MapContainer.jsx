@@ -1,62 +1,39 @@
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import React from 'react';
 
-const Map = withGoogleMap(props => (
-  <GoogleMap
-    ref={props.onMapLoad}
-    defaultZoom={12}
-    defaultCenter={{ lat: 10.720321, lng: 122.562019 }}
-  >
-    {props.markers.map(marker => (
-      <Marker
-        {...marker}
-        onRightClick={() => props.onMarkerRightClick(marker)}
-      />
-    ))}
-  </GoogleMap>
-));
-
 class MapContainer extends React.Component {
-  state = {
-    markers: [{
-      position: {
-        lat: 10.720321,
-        lng: 122.562019,
-      },
-      key: `Philippines`,
-      defaultAnimation: 2,
-    }],
-  };
-
-  handleMapLoad = (map) => {
-    this._mapComponent = map;
-    if (map) {
-      console.log(map.getZoom());
-    }
+  constructor(props) {
+    super(props);
+    this.markers = [{
+      lat: 10.720321,
+      lng: 122.562019,
+    }, {
+      lat: 10.7186,
+      lng: 122.5477,
+    }, {
+      lat: 10.7603,
+      lng: 122.5260,
+    }]
   }
 
-  handleMarkerRightClick = (targetMarker) => {
-    const nextMarkers = this.state.markers.filter(marker => marker !== targetMarker);
-    this.setState({
-      markers: nextMarkers,
+  retrieveMapUrl() {
+    let markersString = '';
+    this.markers.forEach((marker) => {
+      markersString +=
+        `&markers=color:red%7Clabel:P%7C${marker.lat},${marker.lng}`;
     });
+    return `https://maps.googleapis.com/maps/api/staticmap?center=10.720321,122.562019
+        &zoom=12&size=500x500&scale=2
+        ${markersString}
+        &key=AIzaSyBaklewD90QQZTb8YRJLJ_k7XoZMIBM25U`
   }
 
   render() {
     return (
-      <div style={{ height: `100%` }}>
-        <Map
-          containerElement={
-            <div style={{ height: `100%` }} />
-          }
-          mapElement={
-            <div style={{ height: `100%` }} />
-          }
-          onMapLoad={this.handleMapLoad}
-          onMapClick={this.handleMapClick}
-          markers={this.state.markers}
-          onMarkerRightClick={this.handleMarkerRightClick}
-        />
+      <div style={{ height: `100%`, width: `100%` }}>
+        <img
+          style={{ height: `100%`, width: `100%` }}
+          src={this.retrieveMapUrl()}
+          alt="" />
       </div>
     );
   }
