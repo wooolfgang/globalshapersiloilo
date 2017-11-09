@@ -1,7 +1,7 @@
 import { injectGlobal } from 'styled-components';
 
 const globalStyle = () => injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Playfair+Display');
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Playfair+Display:700i');
 
   body {
     margin: 0px;
