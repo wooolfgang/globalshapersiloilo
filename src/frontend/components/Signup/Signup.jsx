@@ -1,11 +1,11 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Redirect } from 'react-router-dom';
-import Input from '../Input';
+import SignupInput from './SignupInput';
 import Success from './Success';
 import Container from './Container';
 import Error from '../ErrorMsg';
-import { Google, Facebook } from '../Buttons';
+import { Google, Facebook, Submit } from '../Buttons';
 
 const SignupComponent = ({ store: { userStore } }) => (
   <div>
@@ -25,41 +25,41 @@ const SignupComponent = ({ store: { userStore } }) => (
                   <form action="POST">
                     <div id="account">
                       <p id="title">Account Details</p>
-                      <Input type="text" label="Username" required id="username" signUp>
+                      <SignupInput type="text" label="Username" required id="username" signUp>
                         <Error message={userStore.signupErrorMsg.username} />
-                      </Input>
-                      <Input type="password" label="Password" required id="password" signUp>
+                      </SignupInput>
+                      <SignupInput type="password" label="Password" required id="password" signUp>
                         <Error message={userStore.signupErrorMsg.password} />
-                      </Input>
-                      <Input type="email" label="Email" required id="email" signUp>
+                      </SignupInput>
+                      <SignupInput type="email" label="Email" required id="email" signUp>
                         <Error message={userStore.signupErrorMsg.email} />
-                      </Input>
+                      </SignupInput>
                     </div>
                     <div id="personal">
                       <p id="title">Personal Details</p>
-                      <Input type="text" label="Full Name" required id="fullName" signUp>
+                      <SignupInput type="text" label="Full Name" required id="fullName" signUp>
                         <Error message={userStore.signupErrorMsg.fullName} />
-                      </Input>
-                      <Input type="date" required id="birthDay" signUp >
+                      </SignupInput>
+                      <SignupInput type="date" required id="birthDay" signUp >
                         <Error message={userStore.signupErrorMsg.birthDay} />
-                      </Input>
-                      <Input type="text" label="Address" required id="address" signUp >
+                      </SignupInput>
+                      <SignupInput type="text" label="Address" required id="address" signUp >
                         <Error message={userStore.signupErrorMsg.address} />
-                      </Input>
-                      <Input type="text" label="Phone Number" required id="phoneNumber" signUp >
+                      </SignupInput>
+                      <SignupInput type="text" label="Phone Number" required id="phoneNumber" signUp >
                         <Error message={userStore.signupErrorMsg.phoneNumber} />
-                      </Input>
-                      <Input type="text" label="Occupation" required id="occupation" signUp >
+                      </SignupInput>
+                      <SignupInput type="text" label="Occupation" required id="occupation" signUp >
                         <Error message={userStore.signupErrorMsg.occupation} />
-                      </Input>
-                      <Input type="text" label="Company/School/Organization" required id="affiliation" signUp >
+                      </SignupInput>
+                      <SignupInput type="text" label="Company/School/Organization" required id="affiliation" signUp >
                         <Error message={userStore.signupErrorMsg.affiliation} />
-                      </Input>
+                      </SignupInput>
                     </div>
                     <div id="signup">
-                      <button id="signupbtn" onClick={(e) => { e.preventDefault(); userStore.signup(); }}>
+                      <Submit onClick={(e) => { e.preventDefault(); userStore.signup(); }} width="200px">
                         SIGN UP
-                      </button>
+                      </Submit>
                     </div>
                   </form>
                 </div>

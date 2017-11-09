@@ -57,22 +57,6 @@ const Container = styled.div`
     background: #FAFAFA;
     grid-area: form-container;
   }
-  
-  #loginbtn {
-    border: none;
-    color: white;
-    height: 40px;
-    font-size: 16px;
-    cursor: pointer;  
-    text-align: center;  
-    width: 290px;
-    font-family: ${props => props.theme.fontTwo};
-    background-color: ${props => props.theme.buttonPrimary};    
-
-    :hover {
-      background-color: ${props => props.theme.buttonPrimaryDarker};
-    }
-  }
 
   #line {
     grid-area: line;

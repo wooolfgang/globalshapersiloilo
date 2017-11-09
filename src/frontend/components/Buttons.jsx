@@ -89,6 +89,23 @@ const Social = styled.a`
   }
 `;
 
+const StyledSubmit = styled.button`
+  border: none;
+  color: white;
+  height: 40px;
+  width: 200px;
+  font-size: 15px;
+  cursor: pointer;
+  transition-duration: .2s;
+  width: ${props => props.width && props.width};
+  font-family: ${props => props.theme.fontTwo};
+  background-color: ${props => props.theme.buttonPrimary};
+
+  :hover {
+    background-color: ${props => props.theme.buttonPrimaryDarker};
+  }
+`;
+
 const StyledGoogle = styled(Social) `
   background-color: #DB3236;
 `;
@@ -116,3 +133,8 @@ export const Google = ({ children, href, onPath }) => (
 export const Facebook = ({ children, href, onPath }) => (
   <StyledFacebook href={href} onPath={onPath} ><img src={facebookApp} alt="facebook" /><span> {children} </span> </StyledFacebook>
 );
+
+export const Submit = ({ children, onClick, width }) => (
+  <StyledSubmit onClick={onClick} width={width}> {children} </StyledSubmit>
+);
+

@@ -2,8 +2,8 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
-import { Google, Facebook } from '../Buttons';
-import Input from '../Input';
+import { Google, Facebook, Submit } from '../Buttons';
+import SigninInput from './SigninInput';
 import ErrorMsg from '../ErrorMsg';
 import Container from './Container';
 
@@ -30,11 +30,13 @@ const SignupComponent = ({ store: { userStore } }) => (
                 <p id="line" />
                 <ErrorMsg message={userStore.signinErrorMsg} />
                 <div id="field-container">
-                  <Input label="Username" type="text" id="username" required signIn />
-                  <Input label="Password" type="password" id="password" required signIn />
+                  <SigninInput label="Username" type="text" id="username" required />
+                  <SigninInput label="Password" type="password" id="password" required />
                 </div>
                 <div id="btn-container">
-                  <button onClick={(e) => { e.preventDefault(); userStore.login(); }} id="loginbtn"> SIGN IN </button>
+                  <Submit onClick={(e) => { e.preventDefault(); userStore.login(); }} width="290px">
+                    SIGN IN
+                  </Submit>
                 </div>
                 <h4> Don't have an account? <StyledLink to="/signup">Register now. </StyledLink></h4>
               </form>

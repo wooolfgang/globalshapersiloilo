@@ -25,23 +25,6 @@ const StyledDiv = styled.div`
     display: grid;
   }
 
-  #signupbtn {
-    width: 180px;
-    border: none;
-    color: white;
-    height: 40px;
-    width: 200px;
-    font-size: 15px;
-    cursor: pointer;
-    transition-duration: .2s;
-    font-family: ${props => props.theme.fontTwo};
-    background-color: ${props => props.theme.buttonPrimary};
-
-    :hover {
-      background-color: ${props => props.theme.buttonPrimaryDarker};
-    }
-  }
-
   #signup {
     grid-area: signup;
   }

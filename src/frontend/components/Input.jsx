@@ -14,8 +14,7 @@ const StyledDiv = styled.div`
     border: none;
     border-bottom: 1px solid #757575;
     background: none;
-    ${props => props.signUp && 'width: 200px;'};
-    ${props => props.signIn && 'width: 285px;'};
+    width: ${props => (props.inputWidth && props.inputWidth)};
   }
 
   input:focus { outline:none; }
@@ -42,8 +41,7 @@ const StyledDiv = styled.div`
   .bar { 
     position:relative; 
     display:block; 
-    ${props => props.signUp && 'width: 215px;'};
-    ${props => props.signIn && 'width: 300px;'};
+    width: ${props => (props.barWidth && props.barWidth)};
   }
 
   .bar:before, .bar:after {
@@ -100,19 +98,23 @@ const StyledDiv = styled.div`
   }
 `;
 
-const Input = ({ children, label, type, id, required, signIn, signUp, store: { userStore } }) => (
-  <StyledDiv signIn={signIn} signUp={signUp}>
+const Input = ({ children, label, type, id, required, inputWidth, barWidth, onChange }) => (
+  <StyledDiv
+    inputWidth={inputWidth}
+    barWidth={barWidth}
+  >
     <input
       type={type}
       required={required}
-      onChange={signUp ? e => userStore.onSignupInput(e) : e => userStore.onSigninInput(e)}
+      onChange={onChange}
       id={id}
+
     />
     <span className="highlight" />
     <span className="bar" />
     <label>{label}</label>
     {children}
-  </StyledDiv>
+  </StyledDiv >
 );
 
-export default inject('store')(Input);
+export default Input;
