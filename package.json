@@ -45,7 +45,6 @@
     "passport-google-oauth20": "^1.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-google-maps": "^7.2.0",
     "react-router-dom": "^4.2.2",
     "reprogressbars": "^0.2.1",
     "socket.io-client": "^2.0.3",
