@@ -6,6 +6,7 @@ import Search from './Search';
 
 const StyledDiv = styled.div`
   height: 700px;
+  min-height: calc(100vh - 250px);
   background: ${props => props.theme.grayOne};
 `;
 

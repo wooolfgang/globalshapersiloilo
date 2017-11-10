@@ -2,6 +2,7 @@ const theme = {
   primary: '#00244d',
   secondary: '#00529B',
   tertiary: '#375D81',
+  accent: '#FF4081',
   footer: '#FAFAFA',
   buttonPrimary: '#4E7AC7',
   buttonPrimaryDarker: '#3a68b9',
