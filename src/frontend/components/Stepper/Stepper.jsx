@@ -13,10 +13,6 @@ const StyledDiv = styled.div`
   height: ${props => (props.height ? props.height : '500px')};
 `;
 
-const Container = styled.div`
-  display: flex;
-`;
-
 class Stepper extends React.Component {
   state = {
     activeIndex: 0,
@@ -54,9 +50,7 @@ class Stepper extends React.Component {
           activeIndex={this.state.activeIndex}
           lastIndex={lastIndex}
         />
-        <Container>
-          {this.renderSteps()}
-        </Container>
+        {this.renderSteps()}
         <StepButtons
           handleNextStep={this.handleNextStep}
           handlePreviousStep={this.handlePreviousStep}
