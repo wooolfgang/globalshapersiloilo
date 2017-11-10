@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Secondary } from '../Buttons';
-import GettingStartedGoogleMap from './MapContainer';
+import GoogleMap from './GoogleMap';
 import media from '../../assets/theme/media';
 
 const StyledDiv = styled.div`
@@ -33,6 +33,7 @@ const ProjectSearch = styled.div`
 const LocalListings = styled.div`
   flex: 1;
   min-width: 300px;
+  overflow: hidden;
 `;
 
 const Container = styled.div`
@@ -45,7 +46,7 @@ const Container = styled.div`
   h2 {
     margin: 0px;
     margin-top: 25px;
-    margin-bottom: 15px;
+    margin-bottom: 15px;  
     font-family: ${props => props.theme.fontThree};
   }
 
@@ -55,6 +56,17 @@ const Container = styled.div`
     font-family: ${props => props.theme.fontTwo};
   }
 `;
+
+const markers = [{
+  lat: 10.720321,
+  lng: 122.562019,
+}, {
+  lat: 10.7186,
+  lng: 122.5477,
+}, {
+  lat: 10.7603,
+  lng: 122.5260,
+}];
 
 const SubContainer = () => (
   <StyledDiv>
@@ -67,14 +79,7 @@ const SubContainer = () => (
         </Container>
       </ProjectSearch>
       <LocalListings>
-        <GettingStartedGoogleMap
-          containerElement={
-            <div style={{ height: '100%' }} />
-          }
-          mapElement={
-            <div style={{ height: '100%' }} />
-          }
-        />
+        <GoogleMap markers={markers} />
       </LocalListings>
     </SectionContainer>
   </StyledDiv>
