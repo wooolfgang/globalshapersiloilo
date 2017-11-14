@@ -8,7 +8,7 @@ const StyledDiv = styled.div`
   width: 100%;
 `;
 
-const StepHeader = ({ headers, activeIndex, lastIndex }) => (
+const StepHeader = ({ headers, activeIndex }) => (
   <StyledDiv>
     {
       headers.map((header, index) =>

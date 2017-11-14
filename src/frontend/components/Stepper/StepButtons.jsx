@@ -35,7 +35,7 @@ const Back = styled.button`
   }
 `;
 
-const Next = styled.button`
+const Next = styled.input`
   border: none;
   color: white;
   width: 80px;
@@ -53,10 +53,10 @@ const Next = styled.button`
   }
 `;
 
-const StepButtons = ({ activeIndex, lastIndex, handleNextStep, handlePreviousStep }) => (
+const StepButtons = ({ activeIndex, lastIndex, handleNextStep, handlePrevStep }) => (
   <StyledDiv>
-    <Back onClick={handlePreviousStep} disabled={activeIndex === 0} faded={activeIndex === 0}> Back </Back>
-    <Next onClick={handleNextStep}> {activeIndex === lastIndex - 1 ? 'Finish' : 'Next'} </Next>
+    <Back onClick={handlePrevStep} disabled={activeIndex === 0} faded={activeIndex === 0}> Back </Back>
+    <Next type="submit" onClick={handleNextStep} value={activeIndex === lastIndex ? 'Finish' : 'Next'} />
   </StyledDiv>
 );
 

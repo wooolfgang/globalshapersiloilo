@@ -14,26 +14,26 @@ const StyledDiv = styled.div`
 `;
 
 class Stepper extends React.Component {
-  state = {
-    activeIndex: 0,
-  }
-
   handleNextStep = () => {
-    if (this.state.activeIndex < this.props.children.length - 1) {
-      this.setState({ activeIndex: this.state.activeIndex + 1 });
+    const { activeIndex, handleNextStep, handleLastStep, children } = this.props;
+    if (activeIndex < children.length - 1) {
+      handleNextStep();
+    } else if (activeIndex === children.length - 1) {
+      handleLastStep();
     }
   }
 
-  handlePreviousStep = () => {
-    if (this.state.activeIndex > 0) {
-      this.setState({ activeIndex: this.state.activeIndex - 1 });
+  handlePrevStep = () => {
+    const { activeIndex, handlePrevStep } = this.props;
+    if (activeIndex > 0) {
+      handlePrevStep();
     }
   }
 
   renderSteps = () => {
-    const children = this.props.children;
+    const { children, activeIndex } = this.props;
     return React.Children.map(children, (child, index) => {
-      if (index === this.state.activeIndex) {
+      if (index === activeIndex) {
         return React.cloneElement(child, { ...child.props, showed: true });
       }
       return child;
@@ -41,20 +41,20 @@ class Stepper extends React.Component {
   }
 
   render() {
-    const { headers, width, height } = this.props;
-    const lastIndex = this.props.children.length;
+    const { headers, width, height, activeIndex, children } = this.props;
+    const lastIndex = children.length - 1;
     return (
       <StyledDiv height={height} width={width}>
         <HeaderContainer
           headers={headers}
-          activeIndex={this.state.activeIndex}
+          activeIndex={activeIndex}
           lastIndex={lastIndex}
         />
         {this.renderSteps()}
         <StepButtons
           handleNextStep={this.handleNextStep}
-          handlePreviousStep={this.handlePreviousStep}
-          activeIndex={this.state.activeIndex}
+          handlePrevStep={this.handlePrevStep}
+          activeIndex={activeIndex}
           lastIndex={lastIndex}
         />
       </StyledDiv>

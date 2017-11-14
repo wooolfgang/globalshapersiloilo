@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import SignupInput from './SignupInput';
 import Success from './Success';
 import Container from './Container';
-import Error from '../ErrorMsg';
+import Error from '../Form/ErrorMsg';
 import { Google, Facebook, Submit } from '../Buttons';
 
 const SignupComponent = ({ store: { userStore } }) => (

@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { inject } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import { Redirect } from 'react-router-dom';
 import Stepper from '../Stepper/Stepper';
 import Step from '../Stepper/Step';
-import FirstStep from './Forms/FirstStep';
-import SecondStep from './Forms/FirstStep';
-import ThirdStep from './Forms/FirstStep';
+import FirstStep from './Steps/FirstStep';
+import SecondStep from './Steps/SecondStep';
+import ThirdStep from './Steps/ThirdStep';
 
 const StyledDiv = styled.div`
   min-height: 875px;
@@ -28,8 +28,10 @@ const StepperContainer = styled.div`
   width: 540px;
 `;
 
-const ProjectOrganize = ({ store: { userStore } }) => {
-  if (!userStore.authenticated) {
+const ProjectOrganize = ({ store: { userStore, viewStore } }) => {
+  const { orgActiveStepIndex, orgFormHandleNextStep, orgFormHandlePrevStep, orgFormHandleLastStep } = viewStore;
+
+  if (!userStore.isAuthenticating && !userStore.authenticated) {
     return <Redirect to="/signin" />;
   }
 
@@ -41,6 +43,10 @@ const ProjectOrganize = ({ store: { userStore } }) => {
           headers={['Organization Details', 'Project Details', 'Additional Info']}
           height="650px"
           width="600px"
+          handleNextStep={orgFormHandleNextStep}
+          handlePrevStep={orgFormHandlePrevStep}
+          handleLastStep={orgFormHandleLastStep}
+          activeIndex={orgActiveStepIndex}
         >
           <Step> <FirstStep /> </Step >
           <Step> <SecondStep /> </Step>
@@ -51,4 +57,4 @@ const ProjectOrganize = ({ store: { userStore } }) => {
   );
 };
 
-export default inject('store')(ProjectOrganize);
+export default inject('store')(observer(ProjectOrganize));

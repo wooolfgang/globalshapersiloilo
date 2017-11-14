@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { Google, Facebook, Submit } from '../Buttons';
 import SigninInput from './SigninInput';
-import ErrorMsg from '../ErrorMsg';
+import ErrorMsg from '../Form/ErrorMsg';
 import Container from './Container';
 
 const StyledLink = styled(Link) `
