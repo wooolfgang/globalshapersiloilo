@@ -11,7 +11,7 @@ const StyledLink = styled(Link) `
   color: ${props => props.theme.secondary}
 `;
 
-const SignupComponent = ({ store: { userStore } }) => (
+const SignupComponent = ({ store: { formsStore, userStore } }) => (
   <div>
     {
       !userStore.authenticated ?
@@ -28,7 +28,7 @@ const SignupComponent = ({ store: { userStore } }) => (
                   <Facebook onPath="/signin" href="auth/facebook"> Signin with Facebook </Facebook>
                 </div>
                 <p id="line" />
-                <ErrorMsg message={userStore.signinErrorMsg} />
+                <ErrorMsg message={formsStore.signinErrorMsg} />
                 <div id="field-container">
                   <SigninInput label="Username" type="text" id="username" required />
                   <SigninInput label="Password" type="password" id="password" required />
