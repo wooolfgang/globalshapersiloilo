@@ -45,12 +45,12 @@ const VolunteerButton = styled.button`
 
 const Project = ({ project }) => (
   <StyledDiv>
-    <Preview imgUrl={project.imgUrl} proposal={project.proposal} />
+    <Preview imgUrl={project.imgUrl} taskDescription={project.taskDescription} />
     <ProjectDetails>
-      <span id="project-title">{project.projectName} </span>
+      <span id="project-title">{project.name} </span>
       <span>By: {project.organizationName} </span>
-      <span>Contact Person: {project.contactPerson.fullName} </span>
-      <span>Contact #: {project.contactPerson.phoneNumber} </span>
+      <span>Contact Person: {project.organization.contactPerson} </span>
+      <span>Contact #: {project.organization.phoneNumber} </span>
       <span>Slots left: {project.getRemainingSlots()} </span>
     </ProjectDetails>
     <VolunteerButton> Volunteer </VolunteerButton>

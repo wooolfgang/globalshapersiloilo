@@ -28,8 +28,9 @@ const StepperContainer = styled.div`
   width: 540px;
 `;
 
-const ProjectOrganize = ({ store: { userStore, viewStore } }) => {
-  const { orgActiveStepIndex, orgFormHandleNextStep, orgFormHandlePrevStep, orgFormHandleLastStep } = viewStore;
+const ProjectOrganize = ({ store: { userStore, viewStore, formsStore } }) => {
+  const { orgActiveStepIndex } = viewStore;
+  const { orgFormHandleNextStep, orgFormHandlePrevStep } = formsStore;
 
   if (!userStore.isAuthenticating && !userStore.authenticated) {
     return <Redirect to="/signin" />;
@@ -45,7 +46,6 @@ const ProjectOrganize = ({ store: { userStore, viewStore } }) => {
           width="600px"
           handleNextStep={orgFormHandleNextStep}
           handlePrevStep={orgFormHandlePrevStep}
-          handleLastStep={orgFormHandleLastStep}
           activeIndex={orgActiveStepIndex}
         >
           <Step> <FirstStep /> </Step >

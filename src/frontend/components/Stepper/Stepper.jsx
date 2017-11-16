@@ -15,12 +15,8 @@ const StyledDiv = styled.div`
 
 class Stepper extends React.Component {
   handleNextStep = () => {
-    const { activeIndex, handleNextStep, handleLastStep, children } = this.props;
-    if (activeIndex < children.length - 1) {
-      handleNextStep();
-    } else if (activeIndex === children.length - 1) {
-      handleLastStep();
-    }
+    const { handleNextStep } = this.props;
+    handleNextStep();
   }
 
   handlePrevStep = () => {

@@ -13,27 +13,27 @@ const StyledDiv = styled.div`
   margin-top: 10px;
 `;
 
-const FirstStep = ({ store: { organizationStore: { orgFormErrorMsg, handleFormInput } } }) => (
+const FirstStep = ({ store: { formsStore: { orgFormErrorMsg, handleOrgFormInput } } }) => (
   <StyledDiv>
-    <FormInput label="Name of Organization" required id="name" onChange={handleFormInput}>
+    <FormInput label="Name of Organization" required id="name" onChange={handleOrgFormInput}>
       <ErrorMsg message={orgFormErrorMsg.name} />
     </FormInput>
-    <FormInput label="Description of Organization" required id="description" onChange={handleFormInput}>
+    <FormInput label="Description of Organization" required id="description" onChange={handleOrgFormInput}>
       <ErrorMsg message={orgFormErrorMsg.description} />
     </FormInput>
-    <FormInput label="Website/Social Media Page" required id="website" onChange={handleFormInput}>
+    <FormInput label="Website/Social Media Page" required id="website" onChange={handleOrgFormInput}>
       <ErrorMsg message={orgFormErrorMsg.website} />
     </FormInput>
-    <FormInput label="Contact Person" required id="contactPerson" onChange={handleFormInput}>
+    <FormInput label="Contact Person" required id="contactPerson" onChange={handleOrgFormInput}>
       <ErrorMsg message={orgFormErrorMsg.contactPerson} />
     </FormInput>
-    <FormInput label="Contact Number" required id="contactNumber" onChange={handleFormInput}>
+    <FormInput label="Contact Number" required id="contactNumber" onChange={handleOrgFormInput}>
       <ErrorMsg message={orgFormErrorMsg.contactNumber} />
     </FormInput>
-    <FormInput label="Organization Email" required id="email" onChange={handleFormInput}>
+    <FormInput label="Organization Email" required id="email" onChange={handleOrgFormInput}>
       <ErrorMsg message={orgFormErrorMsg.email} />
     </FormInput>
-    <FormInput label="Office Address" required id="address" onChange={handleFormInput}>
+    <FormInput label="Office Address" required id="address" onChange={handleOrgFormInput}>
       <ErrorMsg message={orgFormErrorMsg.address} />
     </FormInput>
   </StyledDiv>
