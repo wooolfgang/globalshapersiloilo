@@ -1,8 +1,9 @@
-import { action, observable } from 'mobx';
+import { action, observable, runInAction } from 'mobx';
 
 class ViewStore {
   @observable isLoading = false;
   @observable userDropdownViewed = false;
+  @observable orgActiveStepIndex = 0;
 
   constructor(store) {
     this.store = store;

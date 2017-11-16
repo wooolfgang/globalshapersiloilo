@@ -1,4 +1,5 @@
-import { observable, action, runInAction } from 'mobx';
+import { observable, action, runInAction, computed } from 'mobx';
+import Joi from 'joi';
 import Api from '../../models/Api';
 
 class ProjectStore {
@@ -9,9 +10,16 @@ class ProjectStore {
 
   constructor(store, client) {
     this.store = store;
-    this.client = client;
     this.api = new Api('api/projects', client);
     this.setIsLoading = store.viewStore.setIsLoading;
+  }
+
+  @action.bound async createProject(project) {
+    try {
+      this.api.create(project);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   @action.bound async fetchProjects() {
