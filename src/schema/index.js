@@ -15,6 +15,7 @@ export const UserSchema = {
 };
 
 export const OrganizationSchema = {
+  _id: Joi.any(),
   name: Joi.string().required(),
   description: Joi.string().required(),
   website: Joi.string().optional(),
@@ -25,13 +26,17 @@ export const OrganizationSchema = {
 };
 
 export const ProjectSchema = {
+  _id: Joi.any(),
   name: Joi.string().required(),
   projectChallenge: Joi.string().required(),
   volunteerReason: Joi.string().required(),
   taskDescription: Joi.string().required(),
   volunteersNeeded: Joi.number().required(),
   volunteerHoursNeeded: Joi.number().required(),
-  timespan: Joi.object(),
+  timespanFrom: Joi.any(),
+  timespanUntil: Joi.any(),
+  volunteers: Joi.array(),
+  imgUrl: Joi.string(),
 };
 
 export const ProjectSchemaFirst = {
@@ -44,5 +49,6 @@ export const ProjectSchemaSecond = {
   taskDescription: ProjectSchema.taskDescription,
   volunteersNeeded: ProjectSchema.volunteersNeeded,
   volunteerHoursNeeded: ProjectSchema.volunteerHoursNeeded,
-  timespan: ProjectSchema.timespan,
+  timespanFrom: ProjectSchema.timespanFrom,
+  timespanUntil: ProjectSchema.timespanUntil,
 };

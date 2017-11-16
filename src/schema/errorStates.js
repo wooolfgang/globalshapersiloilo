@@ -19,3 +19,17 @@ export const orgFormErrorState = {
   email: '',
   address: '',
 };
+
+export const projectFormFirstErrorState = {
+  name: '',
+  projectChallenge: '',
+  volunteerReason: '',
+};
+
+export const projectFormSecondErrorState = {
+  taskDescription: '',
+  volunteersNeeded: '',
+  volunteerHoursNeeded: '',
+  timespanFrom: '',
+  timespanUntil: '',
+};

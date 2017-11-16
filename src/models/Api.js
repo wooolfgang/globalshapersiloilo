@@ -16,6 +16,10 @@ class Api {
   async fetchAll() {
     return this.app.service(this.apiPath).find();
   }
+
+  async create(input) {
+    return this.app.service(this.apiPath).create(input);
+  }
 }
 
 export default Api;
