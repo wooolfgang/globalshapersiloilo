@@ -18,19 +18,15 @@ function project(db) {
 
     const projectSchema = {
       include: {
-        service: 'api/users',
-        nameAs: 'contactPerson',
-        parentField: 'contactPersonId',
+        service: 'api/organizations',
+        nameAs: 'organization',
+        parentField: 'organizationId',
         childField: '_id',
-        query: {
-          $select: ['username', 'fullName'],
-        },
       },
     };
 
     const authorization = [
       auth.hooks.authenticate('jwt'),
-      restrictToOwner({ userIdField: '_id', ownerField: 'contactPersonId' }),
     ];
 
     app.service('api/projects').hooks({
