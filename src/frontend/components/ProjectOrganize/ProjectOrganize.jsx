@@ -7,6 +7,7 @@ import Step from '../Stepper/Step';
 import FirstStep from './Steps/FirstStep';
 import SecondStep from './Steps/SecondStep';
 import ThirdStep from './Steps/ThirdStep';
+import SuccessModal from './SuccessModal';
 
 const StyledDiv = styled.div`
   min-height: 875px;
@@ -53,6 +54,7 @@ const ProjectOrganize = ({ store: { userStore, viewStore, formsStore } }) => {
           <Step> <ThirdStep /> </Step>
         </Stepper>
       </StepperContainer>
+      <SuccessModal />
     </StyledDiv>
   );
 };
