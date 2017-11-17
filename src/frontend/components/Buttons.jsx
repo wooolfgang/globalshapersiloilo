@@ -91,6 +91,7 @@ const Social = styled.a`
 
 const StyledSubmit = styled.button`
   border: none;
+  border-radius: 0px;
   color: white;
   height: 40px;
   width: 200px;

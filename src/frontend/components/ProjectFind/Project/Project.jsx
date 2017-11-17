@@ -33,6 +33,7 @@ const VolunteerButton = styled.button`
   transition: all 0.3s;
   display: block;
   margin: auto;
+  border-radius: 0px;
   box-shadow: 3px 3px ${props => props.theme.tertiary};
   background: ${props => props.theme.secondary};
   font-family: ${props => props.theme.fontThree};

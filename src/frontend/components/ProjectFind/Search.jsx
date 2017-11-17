@@ -36,6 +36,7 @@ const SearchButton = styled.input`
   font-size: 16px;
   outline: none;
   transition: all 0.3s;
+  border-radius: 0px;
   font-family: ${props => props.theme.fontOne};
   background: ${props => props.theme.buttonPrimary};
   box-shadow: ${props => props.theme.cardOne};
