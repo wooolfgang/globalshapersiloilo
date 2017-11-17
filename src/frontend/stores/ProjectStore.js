@@ -16,7 +16,7 @@ class ProjectStore {
 
   @action.bound async createProject(project) {
     try {
-      this.api.create(project);
+      return this.api.create(project);
     } catch (e) {
       console.log(e);
     }

@@ -9,7 +9,7 @@ class OrganizationStore {
 
   @action.bound async createOrganization(input) {
     try {
-      await this.api.create(input);
+      return await this.api.create(input);
     } catch (e) {
       console.log(e);
     }

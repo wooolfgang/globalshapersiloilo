@@ -75,8 +75,20 @@ class FormStore {
     } else if (this.store.viewStore.orgActiveStepIndex === 2) {
       this.formValidate(this.projectFormInputsSecond, schema.ProjectSchemaSecond, 'projectFormInputsSecondHasError', 'projectFormInputsSecondErrorMsg');
       if (!this.projectFormInputsSecondHasError) {
-        const organization = await this.store.organizationStore.createOrganization(this.orgFormInputs);
-        await this.store.projectStore.createProject({ organizationId: organization._id, ...this.projectFormInputsFirst, ...this.projectFormInputsSecond });
+        try {
+          const organization = await this.store.organizationStore.createOrganization(this.orgFormInputs);
+          await this.store.userStore.authenticate();
+          await this.store.projectStore.createProject({
+            ownerId: this.store.userStore.currentUser._id,
+            organizationId: organization._id,
+            volunteers: [],
+            ...this.projectFormInputsFirst,
+            ...this.projectFormInputsSecond,
+          });
+          this.store.viewStore.toggleOrgFormSuccessModal();
+        } catch (e) {
+          console.log(e);
+        }
       }
     }
   }
