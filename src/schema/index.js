@@ -27,6 +27,7 @@ export const OrganizationSchema = {
 
 export const ProjectSchema = {
   _id: Joi.any(),
+  ownerId: Joi.any(),
   name: Joi.string().required(),
   projectChallenge: Joi.string().required(),
   volunteerReason: Joi.string().required(),

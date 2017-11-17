@@ -2,6 +2,7 @@ import feathersMongo from 'feathers-mongodb';
 import { populate } from 'feathers-hooks-common';
 import auth from 'feathers-authentication';
 import restrictToOwner from '../../hooks/restictToOwner';
+import transformToObjectId from '../../hooks/transformToObjectId';
 
 function project(db) {
   return async function execute() {
@@ -33,7 +34,7 @@ function project(db) {
       before: {
         find: [],
         get: [],
-        create: [],
+        create: [transformToObjectId({ propertyFields: ['organizationId'] })],
         update: [...authorization],
         patch: [...authorization],
         remove: [...authorization],

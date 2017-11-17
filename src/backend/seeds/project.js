@@ -26,6 +26,7 @@ const seed = async () => {
       volunteerHoursNeeded: 50,
       volunteers: [],
       imgUrl: 'https://images.unsplash.com/photo-1491944799262-a5be522e2300?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=200&fit=crop&s=aa6f6263486da4b88f3cd177b1438f35',
+      ownerId: ObjectId('429BDC3BAFF43767141EF562'),
     },
     {
       organizationId: ObjectId('7C01FA057E20618AE4B71579'),
@@ -37,6 +38,7 @@ const seed = async () => {
       volunteerHoursNeeded: 50,
       volunteers: [],
       imgUrl: 'https://images.unsplash.com/photo-1453687341900-a59ae1416bf7?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=200&fit=crop&s=6c5fba93be53f6c037ab4c6789a50756',
+      ownerId: ObjectId('D2133E4769E046781F282A09'),
     },
   ];
 
