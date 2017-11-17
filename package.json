@@ -16,7 +16,7 @@
     "start": "node dist/backend/index.js"
   },
   "engines": {
-    "node": "8.0.0"
+    "node": "9.2.0"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
