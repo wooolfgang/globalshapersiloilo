@@ -1,17 +1,20 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link, Redirect } from 'react-router-dom';
+import { instanceOf } from 'prop-types';
 import styled from 'styled-components';
 import { Google, Facebook, Submit } from '../Buttons';
 import SigninInput from './SigninInput';
 import ErrorMsg from '../Form/ErrorMsg';
 import Container from './Container';
+import UserStore from '../../stores/UserStore';
+import FormsStore from '../../stores/FormsStore';
 
 const StyledLink = styled(Link) `
   color: ${props => props.theme.secondary}
 `;
 
-const SignupComponent = ({ formsStore, userStore }) => (
+const SigninComponent = ({ formsStore, userStore }) => (
   <div>
     {
       !userStore.authenticated ?
@@ -47,4 +50,10 @@ const SignupComponent = ({ formsStore, userStore }) => (
   </div>
 );
 
-export default inject('formsStore', 'userStore')(observer(SignupComponent));
+SigninComponent.propTypes = {
+  formsStore: instanceOf(FormsStore).isRequired,
+  userStore: instanceOf(UserStore).isRequired,
+};
+
+
+export default inject('formsStore', 'userStore')(observer(SigninComponent));

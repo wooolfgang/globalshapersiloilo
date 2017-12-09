@@ -16,7 +16,7 @@ import ViewStore from '../stores/ViewStore';
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: auto 100px 1fr 125px;
+  grid-template-rows: auto 100px 1fr auto;
   grid-template-areas: 
   "progress"
   "header"

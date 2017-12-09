@@ -12,7 +12,7 @@ const Grid = styled.div`
 
 const StyledDiv = styled.div`
   display: flex;
-  height: 100%;
+  height: 125px;
   align-items: center;
   justify-content: space-around;
   align-items: center;

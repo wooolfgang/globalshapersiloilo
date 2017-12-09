@@ -15,7 +15,10 @@ const StyledDiv = styled.div`
   justify-content: space-around;
   z-index: 100;
   box-shadow: ${props => props.theme.cardOne};
-  ${props => props.signup && `background: ${props.theme.secondary};`};
+  ${props => props.signup && `background: #667db6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   `};
 
   ${media.tablet`
     justify-content: space-around;
