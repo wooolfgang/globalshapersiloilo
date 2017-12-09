@@ -4,7 +4,7 @@ import HeroContainer from './HeroContainer';
 import Content from './Content';
 import FindProjects from './FindProjects';
 
-const LandingPage = ({ store: { userStore } }) => {
+const LandingPage = ({ userStore }) => {
   if (userStore.isAuthenticating) {
     return null;
   }
@@ -18,4 +18,4 @@ const LandingPage = ({ store: { userStore } }) => {
   );
 };
 
-export default inject('store')(observer(LandingPage));
+export default inject('userStore')(observer(LandingPage));

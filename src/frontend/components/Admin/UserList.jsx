@@ -6,7 +6,7 @@ const Container = styled.div`
   margin-left: 11vw;
   width: 100vw;
   overflow-y: scroll;
-`
+`;
 
 const Table = styled.table`
   border-collapse: collapse;
@@ -18,9 +18,9 @@ const Table = styled.table`
 const TableDiv = styled.td`
   text-align: left;
   padding: 2%;
-`
+`;
 
-const UserList = ({ store: { userStore } }) => (
+const UserList = ({ userStore }) => (
   <Container>
     <Table>
       <tr>
@@ -33,7 +33,7 @@ const UserList = ({ store: { userStore } }) => (
         <TableDiv>Affiliation</TableDiv>
       </tr>
       {
-        userStore.users.map((user) => <tr>
+        userStore.users.map(user => (<tr>
           <TableDiv>{user.username}</TableDiv>
           <TableDiv>{user.phoneNumber}</TableDiv>
           <TableDiv>{user.email}</TableDiv>
@@ -41,11 +41,11 @@ const UserList = ({ store: { userStore } }) => (
           <TableDiv>{user.birthDay}</TableDiv>
           <TableDiv>{user.occupation}</TableDiv>
           <TableDiv>{user.affiliation}</TableDiv>
-        </tr>)
+        </tr>))
       }
     </Table>
   </Container>
 
-)
+);
 
-export default inject('store')(observer(UserList));
+export default inject('userStore')(observer(UserList));

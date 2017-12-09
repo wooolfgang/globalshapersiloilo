@@ -5,12 +5,12 @@ import NoResults from './NoResults';
 
 class ProjectsContainer extends React.Component {
   async componentDidMount() {
-    const { store: { projectStore } } = this.props;
+    const { projectStore } = this.props;
     await projectStore.fetchProjects();
   }
 
   render() {
-    const { store: { projectStore } } = this.props;
+    const { projectStore } = this.props;
     let projects = projectStore.projects;
 
     if (projectStore.hasSearched) {
@@ -32,4 +32,4 @@ class ProjectsContainer extends React.Component {
   }
 }
 
-export default inject('store')(observer(ProjectsContainer));
+export default inject('projectStore')(observer(ProjectsContainer));

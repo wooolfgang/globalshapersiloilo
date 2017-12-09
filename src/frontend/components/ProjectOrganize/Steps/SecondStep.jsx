@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
   margin-top: 10px;
 `;
 
-const SecondStep = ({ store: { formsStore: { projectFormInputsFirstErrorMsg, handleProjectFormFirstInput } } }) => (
+const SecondStep = ({ formsStore: { projectFormInputsFirstErrorMsg, handleProjectFormFirstInput } }) => (
   <StyledDiv>
     <FormHeader> What is the name of the Project / Initiative where you need volunteers in? </FormHeader>
     <FormInput label="Your answer" required id="name" onChange={handleProjectFormFirstInput}>
@@ -31,5 +31,5 @@ const SecondStep = ({ store: { formsStore: { projectFormInputsFirstErrorMsg, han
   </StyledDiv>
 );
 
-export default inject('store')(observer(SecondStep));
+export default inject('formsStore')(observer(SecondStep));
 

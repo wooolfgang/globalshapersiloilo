@@ -29,7 +29,7 @@ const StepperContainer = styled.div`
   width: 540px;
 `;
 
-const ProjectOrganize = ({ store: { userStore, viewStore, formsStore } }) => {
+const ProjectOrganize = ({ userStore, viewStore, formsStore }) => {
   const { orgActiveStepIndex } = viewStore;
   const { orgFormHandleNextStep, orgFormHandlePrevStep } = formsStore;
 
@@ -59,4 +59,4 @@ const ProjectOrganize = ({ store: { userStore, viewStore, formsStore } }) => {
   );
 };
 
-export default inject('store')(observer(ProjectOrganize));
+export default inject('userStore', 'viewStore', 'formsStore')(observer(ProjectOrganize));

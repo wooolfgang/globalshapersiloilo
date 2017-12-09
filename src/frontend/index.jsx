@@ -16,7 +16,7 @@ const store = new RootStore(client);
 globalStyle();
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider {...store}>
     <ThemeProvider theme={styles}>
       <Router>
         <App />

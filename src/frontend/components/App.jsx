@@ -24,12 +24,12 @@ const Section = styled.div`
 
 class App extends React.Component {
   componentDidMount() {
-    const { store: { userStore } } = this.props;
+    const { userStore } = this.props;
     userStore.authenticate();
   }
 
   render() {
-    const { store: { viewStore } } = this.props;
+    const { viewStore } = this.props;
     return (
       <Router>
         <StyledDiv>
@@ -50,4 +50,4 @@ class App extends React.Component {
   }
 }
 
-export default inject('store')(observer(App));
+export default inject('viewStore', 'userStore')(observer(App));

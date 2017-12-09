@@ -61,7 +61,7 @@ const SigninLink = styled(Link) `
   }
 `;
 
-const Nav = ({ store: { userStore } }) => (
+const Nav = ({ userStore }) => (
   <StyledNav>
     <StyledLink to="/find">
       <Header> Volunteer </Header>
@@ -87,4 +87,4 @@ const Nav = ({ store: { userStore } }) => (
   </StyledNav>
 );
 
-export default inject('store')(observer(Nav));
+export default inject('userStore')(observer(Nav));

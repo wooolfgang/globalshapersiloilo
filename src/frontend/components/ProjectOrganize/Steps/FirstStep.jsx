@@ -13,7 +13,7 @@ const StyledDiv = styled.div`
   margin-top: 10px;
 `;
 
-const FirstStep = ({ store: { formsStore: { orgFormErrorMsg, handleOrgFormInput } } }) => (
+const FirstStep = ({ formsStore: { orgFormErrorMsg, handleOrgFormInput } }) => (
   <StyledDiv>
     <FormInput label="Name of Organization" required id="name" onChange={handleOrgFormInput}>
       <ErrorMsg message={orgFormErrorMsg.name} />
@@ -39,5 +39,5 @@ const FirstStep = ({ store: { formsStore: { orgFormErrorMsg, handleOrgFormInput 
   </StyledDiv>
 );
 
-export default inject('store')(observer(FirstStep));
+export default inject('formsStore')(observer(FirstStep));
 

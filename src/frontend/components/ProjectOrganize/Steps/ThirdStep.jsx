@@ -24,7 +24,7 @@ const Flex = styled.div`
   }
 `;
 
-const ThirdStep = ({ store: { formsStore: { handleProjectFormSecondInput, projectFormInputsSecondErrorMsg } } }) => (
+const ThirdStep = ({ formsStore: { handleProjectFormSecondInput, projectFormInputsSecondErrorMsg } }) => (
   <StyledDiv>
     <FormHeader info="Eg. Volunteer for Relief Operations -- to distribute relief goods in evacuation centers; Eg.2: Social Media Volunteer -- to manage the social media postings in the organization's page."> Task Name and Description </FormHeader>
     <FormInput label="Your answer" id="taskDescription" required onChange={handleProjectFormSecondInput} >
@@ -48,5 +48,5 @@ const ThirdStep = ({ store: { formsStore: { handleProjectFormSecondInput, projec
   </StyledDiv>
 );
 
-export default inject('store')(observer(ThirdStep));
+export default inject('formsStore')(observer(ThirdStep));
 

@@ -20,11 +20,11 @@ const StyledDiv = styled.div`
   }
 `;
 
-const NoResults = ({ store: { projectStore } }) => (
+const NoResults = ({ projectStore }) => (
   <StyledDiv>
     <h1> No results found </h1>
     <p onClick={projectStore.resetSearchFields}> View all projects </p>
   </StyledDiv>
 );
 
-export default inject('store')(NoResults);
+export default inject('projectStore')(NoResults);

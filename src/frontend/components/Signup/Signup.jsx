@@ -7,7 +7,7 @@ import Container from './Container';
 import Error from '../Form/ErrorMsg';
 import { Google, Facebook, Submit } from '../Buttons';
 
-const SignupComponent = ({ store: { userStore, formsStore } }) => (
+const SignupComponent = ({ userStore, formsStore }) => (
   <div>
     {
       !userStore.authenticated ?
@@ -71,4 +71,4 @@ const SignupComponent = ({ store: { userStore, formsStore } }) => (
   </div>
 );
 
-export default inject('store')(observer(SignupComponent));
+export default inject('userStore', 'formsStore')(observer(SignupComponent));
