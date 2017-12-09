@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { string, shape } from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import HamburgerIcon from './HamburgerIcon';
 import media from '../../assets/theme/media';
@@ -31,5 +32,11 @@ const Header = ({ location }) => (
     <HamburgerIcon />
   </StyledDiv >
 );
+
+Header.propTypes = {
+  location: shape({
+    pathname: string.isRequired,
+  }).isRequired,
+};
 
 export default withRouter(Header);

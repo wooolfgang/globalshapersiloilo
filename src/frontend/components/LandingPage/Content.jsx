@@ -2,24 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import Divider from './Divider';
 
-const StyledDiv = styled.div`
-  background-color: white;
-`;
-
-const SectionContainer = styled.div` 
+const SectionContainer = styled.div`
+  background: white; 
   display: grid;
   text-align: center;
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 1200px) {
     grid-template-areas: "why how who";
     grid-auto-columns: 1fr;
     padding: 50px;
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1199px) {
     grid-template-areas: "why" "how" "who";
     grid-auto-columns: 1fr;
-    padding: 50px 0;
+    padding: 0px 0px;
   }
 
   #why {
@@ -36,9 +33,9 @@ const SectionContainer = styled.div`
 `;
 
 const Container = styled.div`
-  background: #F8F8F8;
-  padding: 30px 0;  
-  box-shadow: ${props => props.theme.cardTwo};
+  background: #FAFAFA;
+  padding: 30px 20px;  
+  box-shadow: ${props => props.theme.cardThree};
 
   h2 {
     margin: 0px;  
@@ -50,42 +47,36 @@ const Container = styled.div`
   }
 
   p {
-    margin: 0px;
     line-height: 1.75;
+    word-spacing: 0.3px;
+    margin: 0px;
     padding: 20px;
   }
 
-  @media screen and (min-width: 700px) {
-    margin: 0 20px;    
-  }
+  @media screen and (min-width: 1200px) {
+    margin: 0 20px;
+    padding: 30px 10px;
+  };
 `;
 
 const Content = () => (
-  <StyledDiv>
-    <SectionContainer>
-      <div id="why">
-        <Container>
-          <h2> Why </h2>
-          <Divider />
-          <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." </p>
-        </Container>
-      </div>
-      <div id="how">
-        <Container>
-          <h2> How </h2>
-          <Divider />
-          <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." </p>
-        </Container>
-      </div>
-      <div id="who">
-        <Container>
-          <h2> Who </h2>
-          <Divider />
-          <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." </p>
-        </Container>
-      </div>
-    </SectionContainer>
-  </StyledDiv>
+  <SectionContainer>
+    <Container id="why">
+      <h2> Why </h2>
+      <Divider />
+      <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." </p>
+    </Container>
+    <Container id="how">
+      <h2> How </h2>
+      <Divider />
+      <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." </p>
+    </Container>
+    <Container id="who">
+      <h2> Who </h2>
+      <Divider />
+      <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." </p>
+    </Container>
+  </SectionContainer>
 );
 
 export default Content;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { instanceOf } from 'prop-types';
 import { ProgressBar } from 'reprogressbars';
 import { observer, inject } from 'mobx-react';
 import { HashRouter as Router, Route } from 'react-router-dom';
@@ -11,10 +12,11 @@ import Signup from './Signup/Signup';
 import ProjectFind from './ProjectFind/ProjectFind';
 import ProjectOrganize from './ProjectOrganize/ProjectOrganize';
 import Admin from './Admin/Admin';
+import ViewStore from '../stores/ViewStore';
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 100px 1fr 150px;
+  grid-template-rows: 100px 1fr 125px;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: 
   "header header header"
@@ -27,6 +29,10 @@ const Section = styled.div`
 `;
 
 class App extends React.Component {
+  static propTypes = {
+    viewStore: instanceOf(ViewStore).isRequired,
+  };
+
   componentDidMount() {
     const { userStore } = this.props;
     userStore.authenticate();
