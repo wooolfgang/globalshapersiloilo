@@ -12,14 +12,18 @@ import ProjectFind from './ProjectFind/ProjectFind';
 import ProjectOrganize from './ProjectOrganize/ProjectOrganize';
 import Admin from './Admin/Admin';
 
-const StyledDiv = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+const Grid = styled.div`
+  display: grid;
+  grid-template-rows: 100px 1fr 150px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+  "header header header"
+  "section section section"
+  "footer footer footer"    
 `;
 
 const Section = styled.div`
-  flex: 1;
+  grid-area: section;
 `;
 
 class App extends React.Component {
@@ -32,7 +36,7 @@ class App extends React.Component {
     const { viewStore } = this.props;
     return (
       <Router>
-        <StyledDiv>
+        <Grid>
           <ProgressBar isLoading={viewStore.isLoading} color={'#07d'} height="1.5px" />
           <Header />
           <Section>
@@ -44,7 +48,7 @@ class App extends React.Component {
             <Route path="/admin" component={Admin} />
           </Section>
           <Footer />
-        </StyledDiv>
+        </Grid>
       </Router>
     );
   }

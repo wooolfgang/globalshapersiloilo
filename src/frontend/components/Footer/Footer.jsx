@@ -5,9 +5,13 @@ import media from '../../assets/theme/media';
 import Nav from './Nav';
 import Social from './Social';
 
+const Grid = styled.div`
+  grid-area: footer;
+`;
+
 const StyledDiv = styled.div`
-  height: 150px;
   display: flex;
+  height: 100%;
   align-items: center;
   justify-content: space-around;
   align-items: center;
@@ -42,7 +46,7 @@ const Container = styled.div`
 `;
 
 const Footer = ({ location }) => (
-  <div>
+  <Grid>
     {
       location.pathname !== '/signup' &&
       <StyledDiv>
@@ -54,7 +58,7 @@ const Footer = ({ location }) => (
         <Social />
       </StyledDiv>
     }
-  </div>
+  </Grid>
 );
 
 export default withRouter(Footer);
