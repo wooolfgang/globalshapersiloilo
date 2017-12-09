@@ -1,6 +1,6 @@
 import React from 'react';
-import { inject } from 'mobx-react';
 import styled from 'styled-components';
+import { node, bool, string, func } from 'prop-types';
 
 const StyledDiv = styled.div`
   position: relative; 
@@ -116,5 +116,25 @@ const Input = ({ children, label, type, id, required, inputWidth, barWidth, onCh
     {children}
   </StyledDiv >
 );
+
+Input.propTypes = {
+  children: node,
+  label: string.isRequired,
+  type: string,
+  id: string,
+  required: bool,
+  inputWidth: string,
+  barWidth: string,
+  onChange: func.isRequired,
+};
+
+Input.defaultProps = {
+  children: null,
+  type: 'text',
+  id: '',
+  required: false,
+  inputWidth: '100px',
+  barWidth: '100px',
+};
 
 export default Input;

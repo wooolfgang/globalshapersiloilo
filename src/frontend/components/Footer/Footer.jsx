@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { shape, string } from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import media from '../../assets/theme/media';
 import Nav from './Nav';
@@ -60,5 +61,11 @@ const Footer = ({ location }) => (
     }
   </Grid>
 );
+
+Footer.propTypes = {
+  location: shape({
+    pathname: string.isRequired,
+  }).isRequired,
+};
 
 export default withRouter(Footer);

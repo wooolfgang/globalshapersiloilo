@@ -46,7 +46,7 @@ const StyledLink = styled(Link) `
 
 const HeroContainer = () => (
   <StyledDiv>
-    <h1> {console.log(heroImg)} Find a cause that's <strong><u>worth</u></strong> joining for.</h1>
+    <h1> Find a cause that's <strong><u>worth</u></strong> joining for.</h1>
     <StyledLink to="/signup">Volunteer Now </StyledLink>
   </StyledDiv>
 );
