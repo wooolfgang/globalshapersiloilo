@@ -38,7 +38,7 @@ const Button = styled.button`
   }
 `;
 
-const User = ({ store: { viewStore, userStore } }) => (
+const User = ({ viewStore, userStore }) => (
   <StyledDiv>
     <Username onClick={viewStore.toggleDropdownView}> {userStore.currentUser.fullName} </Username>
     {
@@ -54,4 +54,4 @@ const User = ({ store: { viewStore, userStore } }) => (
   </StyledDiv >
 );
 
-export default inject('store')(observer(User));
+export default inject('viewStore', 'userStore')(observer(User));

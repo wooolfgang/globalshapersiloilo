@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { instanceOf } from 'prop-types';
 import { ProgressBar } from 'reprogressbars';
 import { observer, inject } from 'mobx-react';
 import { HashRouter as Router, Route } from 'react-router-dom';
@@ -11,28 +12,37 @@ import Signup from './Signup/Signup';
 import ProjectFind from './ProjectFind/ProjectFind';
 import ProjectOrganize from './ProjectOrganize/ProjectOrganize';
 import Admin from './Admin/Admin';
+import ViewStore from '../stores/ViewStore';
 
-const StyledDiv = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+const Grid = styled.div`
+  display: grid;
+  grid-template-rows: 100px 1fr 125px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+  "header header header"
+  "section section section"
+  "footer footer footer"    
 `;
 
 const Section = styled.div`
-  flex: 1;
+  grid-area: section;
 `;
 
 class App extends React.Component {
+  static propTypes = {
+    viewStore: instanceOf(ViewStore).isRequired,
+  };
+
   componentDidMount() {
-    const { store: { userStore } } = this.props;
+    const { userStore } = this.props;
     userStore.authenticate();
   }
 
   render() {
-    const { store: { viewStore } } = this.props;
+    const { viewStore } = this.props;
     return (
       <Router>
-        <StyledDiv>
+        <Grid>
           <ProgressBar isLoading={viewStore.isLoading} color={'#07d'} height="1.5px" />
           <Header />
           <Section>
@@ -44,10 +54,10 @@ class App extends React.Component {
             <Route path="/admin" component={Admin} />
           </Section>
           <Footer />
-        </StyledDiv>
+        </Grid>
       </Router>
     );
   }
 }
 
-export default inject('store')(observer(App));
+export default inject('viewStore', 'userStore')(observer(App));

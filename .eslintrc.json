@@ -1,6 +1,18 @@
 {
     "extends": "airbnb",
+    "rules": {
+        "no-underscore-dangle": [
+            "error",
+            {
+                "allow": [
+                    "_id"
+                ]
+            }
+        ]
+    },
     "env": {
+        "browser": true,
+        "node": true,
         "jest": true
     }
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Secondary } from '../Buttons';
 import GoogleMap from './GoogleMap';
-import media from '../../assets/theme/media';
 
 const StyledDiv = styled.div`
   height: 475px;
@@ -10,9 +9,10 @@ const StyledDiv = styled.div`
   display: flex;
   background: ${props => props.theme.tertiary};
 
-  ${media.tablet`
-    height: 850px;
-  `}
+  @media screen and (max-width: 630px) {
+    padding: 5px 0px;
+    height: auto;
+  };
 `;
 
 const SectionContainer = styled.div`  
@@ -21,11 +21,20 @@ const SectionContainer = styled.div`
   display: flex;
   margin: auto;
   flex-wrap: wrap;
+ 
+  @media screen and (max-width: 750px) {
+    width: 96%;
+  };
+
+  @media screen and (max-width: 630px) {
+    height: 100%;
+  }
 `;
 
 const ProjectSearch = styled.div`
   flex: 1;
   min-width: 300px;
+  min-height: 300px;
   background: #FAFAFA;
   display: flex;
 `;
@@ -33,6 +42,7 @@ const ProjectSearch = styled.div`
 const LocalListings = styled.div`
   flex: 1;
   min-width: 300px;
+  min-height: 300px;
   overflow: hidden;
 `;
 
@@ -57,17 +67,6 @@ const Container = styled.div`
   }
 `;
 
-const markers = [{
-  lat: 10.720321,
-  lng: 122.562019,
-}, {
-  lat: 10.7186,
-  lng: 122.5477,
-}, {
-  lat: 10.7603,
-  lng: 122.5260,
-}];
-
 const SubContainer = () => (
   <StyledDiv>
     <SectionContainer>
@@ -79,7 +78,17 @@ const SubContainer = () => (
         </Container>
       </ProjectSearch>
       <LocalListings>
-        <GoogleMap markers={markers} />
+        <GoogleMap markers={[{
+          lat: 10.720321,
+          lng: 122.562019,
+        }, {
+          lat: 10.7186,
+          lng: 122.5477,
+        }, {
+          lat: 10.7603,
+          lng: 122.5260,
+        }]}
+        />
       </LocalListings>
     </SectionContainer>
   </StyledDiv>

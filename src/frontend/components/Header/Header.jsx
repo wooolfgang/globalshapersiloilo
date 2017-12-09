@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { string, shape } from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import HamburgerIcon from './HamburgerIcon';
 import media from '../../assets/theme/media';
 import Logo from './Logo';
 import Nav from './Nav';
 
-const StyledDiv = styled.div`
-  width: 100vw;
-  height: 100px;;
+const StyledDiv = styled.div` 
+  grid-area: header;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -31,5 +32,11 @@ const Header = ({ location }) => (
     <HamburgerIcon />
   </StyledDiv >
 );
+
+Header.propTypes = {
+  location: shape({
+    pathname: string.isRequired,
+  }).isRequired,
+};
 
 export default withRouter(Header);

@@ -20,7 +20,7 @@ const CloseButton = styled.button`
   width: 30%;
 `;
 
-const SucccessModal = ({ store: { viewStore } }) => (
+const SucccessModal = ({ viewStore }) => (
   <Modal showed={viewStore.orgFormSuccessModalViewed}>
     <Flex>
       <P> Thank you for submitting! </P>
@@ -29,4 +29,4 @@ const SucccessModal = ({ store: { viewStore } }) => (
   </Modal>
 );
 
-export default inject('store')(observer(SucccessModal));
+export default inject('viewStore')(observer(SucccessModal));

@@ -48,19 +48,19 @@ const SearchButton = styled.input`
 
 class Search extends React.Component {
   componentWillUnmount() {
-    const { store: { projectStore } } = this.props;
+    const { projectStore } = this.props;
     projectStore.resetSearchFields();
   }
 
   handleOnEnter = (e) => {
-    const { store: { projectStore } } = this.props;
+    const { projectStore } = this.props;
     if (e.key === 'Enter') {
       projectStore.search();
     }
   }
 
   render() {
-    const { store: { projectStore } } = this.props;
+    const { projectStore } = this.props;
     return (
       <StyledDiv>
         <SearchInput
@@ -79,4 +79,4 @@ class Search extends React.Component {
   }
 }
 
-export default inject('store')(observer(Search));
+export default inject('projectStore')(observer(Search));

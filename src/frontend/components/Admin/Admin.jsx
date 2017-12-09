@@ -15,12 +15,12 @@ const Container = styled.div`
 
 class Admin extends React.Component {
   async componentDidMount() {
-    const { store: { userStore } } = this.props;
+    const { userStore } = this.props;
     await userStore.fetchUsers();
   }
 
   render() {
-    const { store: { userStore } } = this.props;
+    const { userStore } = this.props;
     if (userStore.currentUser && userStore.currentUser.role === 'admin') {
       return (
         <Container>
@@ -35,5 +35,5 @@ class Admin extends React.Component {
   }
 }
 
-export default inject('store')(observer(Admin));
+export default inject('userStore')(observer(Admin));
 

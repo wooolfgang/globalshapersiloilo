@@ -11,7 +11,7 @@ const StyledLink = styled(Link) `
   color: ${props => props.theme.secondary}
 `;
 
-const SignupComponent = ({ store: { formsStore, userStore } }) => (
+const SignupComponent = ({ formsStore, userStore }) => (
   <div>
     {
       !userStore.authenticated ?
@@ -47,4 +47,4 @@ const SignupComponent = ({ store: { formsStore, userStore } }) => (
   </div>
 );
 
-export default inject('store')(observer(SignupComponent));
+export default inject('formsStore', 'userStore')(observer(SignupComponent));

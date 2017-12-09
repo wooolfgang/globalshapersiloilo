@@ -38,7 +38,7 @@ const Header = styled.div`
   }
 `;
 
-const ProjectFind = ({ store: { projectStore } }) => (
+const ProjectFind = ({ projectStore }) => (
   <StyledDiv>
     <Container>
       <h3> Find projects and make an impact </h3>
@@ -51,4 +51,4 @@ const ProjectFind = ({ store: { projectStore } }) => (
   </StyledDiv>
 );
 
-export default inject('store')(observer(ProjectFind));
+export default inject('projectStore')(observer(ProjectFind));
