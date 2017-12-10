@@ -3,10 +3,10 @@ import styled from 'styled-components';
 const Container = styled.div`
   width: 100%;
   display: grid;
-  background: #667db6;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+  background: #3a7bd5;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3a6073, #3a7bd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   @media screen and (min-width: 700px) {
     height: 80vh;
     grid-template-areas: "heading . form-container";
