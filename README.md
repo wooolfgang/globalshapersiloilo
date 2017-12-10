@@ -1,6 +1,6 @@
 # Global Shapers Iloilo
 
-A platform where the youth's leaders and initiators are able to collaborate and drive action and change in their respective communities.
+A platform where community leaders and initiators are able to collaborate and drive action for the improvement of the community.
 
 https://shapeiloilo.herokuapp.com
 
