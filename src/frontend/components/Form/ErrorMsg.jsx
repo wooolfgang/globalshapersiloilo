@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { string } from 'prop-types';
 import { observer } from 'mobx-react';
 
 const StyledP = styled.p`
@@ -20,5 +21,13 @@ const ErrorMsg = ({ message }) => (
     }
   </div>
 );
+
+ErrorMsg.propTypes = {
+  message: string,
+};
+
+ErrorMsg.defaultProps = {
+  message: '',
+};
 
 export default observer(ErrorMsg);

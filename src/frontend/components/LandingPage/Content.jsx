@@ -35,7 +35,7 @@ const SectionContainer = styled.div`
 const Container = styled.div`
   background: #FAFAFA;
   padding: 30px 20px;  
-  box-shadow: ${props => props.theme.cardThree};
+  box-shadow: ${props => props.theme.cardTwo};
 
   h2 {
     margin: 0px;  

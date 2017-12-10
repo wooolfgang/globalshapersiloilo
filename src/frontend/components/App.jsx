@@ -13,24 +13,30 @@ import ProjectFind from './ProjectFind/ProjectFind';
 import ProjectOrganize from './ProjectOrganize/ProjectOrganize';
 import Admin from './Admin/Admin';
 import ViewStore from '../stores/ViewStore';
+import UserStore from '../stores/UserStore';
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 100px 1fr auto;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto 100px 1fr auto;
   grid-template-areas: 
-  "header header header"
-  "section section section"
-  "footer footer footer"    
+  "progress"
+  "header"
+  "section"
+  "footer"    
 `;
 
 const Section = styled.div`
   grid-area: section;
 `;
 
+const ProgressBarContainer = styled.div`
+  grid-area: progress;
+`;
+
 class App extends React.Component {
   static propTypes = {
     viewStore: instanceOf(ViewStore).isRequired,
+    userStore: instanceOf(UserStore).isRequired,
   };
 
   componentDidMount() {
@@ -43,7 +49,9 @@ class App extends React.Component {
     return (
       <Router>
         <Grid>
-          <ProgressBar isLoading={viewStore.isLoading} color={'#07d'} height="1.5px" />
+          <ProgressBarContainer>
+            <ProgressBar isLoading={viewStore.isLoading} color={'#07d'} height="1.5px" />
+          </ProgressBarContainer>
           <Header />
           <Section>
             <Route exact path="/" component={LandingPage} />

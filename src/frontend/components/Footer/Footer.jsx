@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { shape, string } from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import media from '../../assets/theme/media';
 import Nav from './Nav';
@@ -15,7 +16,7 @@ const StyledDiv = styled.div`
   align-items: center;
   justify-content: space-around;
   align-items: center;
-  background: ${props => props.theme.footer};
+  border-top: 1px solid rgba(0,0,0,.05)!important;
 
   ${media.tablet`
     flex-direction: column;
@@ -60,5 +61,11 @@ const Footer = ({ location }) => (
     }
   </Grid>
 );
+
+Footer.propTypes = {
+  location: shape({
+    pathname: string.isRequired,
+  }).isRequired,
+};
 
 export default withRouter(Footer);
