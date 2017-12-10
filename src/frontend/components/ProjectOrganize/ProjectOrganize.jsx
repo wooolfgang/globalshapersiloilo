@@ -12,7 +12,6 @@ import SuccessModal from './SuccessModal';
 const StyledDiv = styled.div`
   min-height: 875px;
   position: relative;
-  background: ${props => props.theme.grayOne};
 `;
 
 const Div = styled.div`

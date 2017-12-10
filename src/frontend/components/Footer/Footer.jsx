@@ -16,7 +16,8 @@ const StyledDiv = styled.div`
   align-items: center;
   justify-content: space-around;
   align-items: center;
-  background: ${props => props.theme.footer};
+  /* background: ${props => props.theme.footer}; */
+  border-top: 1px solid rgba(0,0,0,.05)!important;
 
   ${media.tablet`
     flex-direction: column;
