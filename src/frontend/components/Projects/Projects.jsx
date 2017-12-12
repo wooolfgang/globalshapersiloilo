@@ -1,13 +1,14 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
+import { instanceOf } from 'prop-types';
 import styled from 'styled-components';
 import ProjectsContainer from './ProjectsContainer';
 import Search from './Search';
+import ProjectStore from '../../stores/ProjectStore';
 
 const StyledDiv = styled.div`
   height: 700px;
   min-height: calc(100vh - 250px);
-  /* background: ${props => props.theme.grayOne}; */
 `;
 
 const Container = styled.div`
@@ -38,7 +39,7 @@ const Header = styled.div`
   }
 `;
 
-const ProjectFind = ({ projectStore }) => (
+const Projects = ({ projectStore }) => (
   <StyledDiv>
     <Container>
       <h3> Find projects and make an impact </h3>
@@ -51,4 +52,8 @@ const ProjectFind = ({ projectStore }) => (
   </StyledDiv>
 );
 
-export default inject('projectStore')(observer(ProjectFind));
+Projects.propTypes = {
+  projectStore: instanceOf(ProjectStore).isRequired,
+};
+
+export default inject('projectStore')(observer(Projects));

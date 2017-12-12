@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { string } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { limitWordCount } from '../../../../utils';
 
@@ -31,6 +32,16 @@ const ProposalContainer = styled.div`
 `;
 
 class Preview extends React.Component {
+  static propTypes = {
+    taskDescription: string.isRequired,
+    imgUrl: string.isRequired,
+  };
+
+  static defaultProps = {
+    taskDescription: '',
+    imgUrl: '',
+  };
+
   state = { isHovered: false };
 
   onMouseLeave = () => {

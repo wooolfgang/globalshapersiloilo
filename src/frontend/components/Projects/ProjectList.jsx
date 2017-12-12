@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'mobx-react';
 import styled from 'styled-components';
 import Project from './Project/Project';
 
@@ -11,7 +12,7 @@ const StyledDiv = styled.div`
   justify-content: space-around;
 `;
 
-const Projects = ({ projects }) => {
+const ProjectList = ({ projects }) => {
   const showedProjects = projects.slice(0, 3);
   return (
     <StyledDiv>
@@ -22,4 +23,12 @@ const Projects = ({ projects }) => {
   );
 };
 
-export default Projects;
+ProjectList.propTypes = {
+  projects: PropTypes.observableArray,
+};
+
+ProjectList.defaultProps = {
+  projects: [],
+};
+
+export default ProjectList;

@@ -9,7 +9,7 @@ import Footer from './Footer/Footer';
 import LandingPage from './LandingPage/LandingPage';
 import Signin from './Signin/Signin';
 import Signup from './Signup/Signup';
-import ProjectFind from './ProjectFind/ProjectFind';
+import Projects from './Projects/Projects';
 import ProjectOrganize from './ProjectOrganize/ProjectOrganize';
 import Admin from './Admin/Admin';
 import ViewStore from '../stores/ViewStore';
@@ -57,7 +57,7 @@ class App extends React.Component {
             <Route exact path="/" component={LandingPage} />
             <Route path="/signin" component={Signin} />
             <Route path="/signup" component={Signup} />
-            <Route path="/find" component={ProjectFind} />
+            <Route path="/projects" component={Projects} />
             <Route path="/organize" component={ProjectOrganize} />
             <Route path="/admin" component={Admin} />
           </Section>

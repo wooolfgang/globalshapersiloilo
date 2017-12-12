@@ -1,7 +1,10 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
+import { instanceOf } from 'prop-types';
 import styled from 'styled-components';
 import Dropdown from '../Dropdown';
+import UserStore from '../../stores/UserStore';
+import ViewStore from '../../stores/ViewStore';
 
 const StyledDiv = styled.div`
   margin: auto;
@@ -53,5 +56,10 @@ const User = ({ viewStore, userStore }) => (
     }
   </StyledDiv >
 );
+
+User.propTypes = {
+  viewStore: instanceOf(ViewStore).isRequired,
+  userStore: instanceOf(UserStore).isRequired,
+};
 
 export default inject('viewStore', 'userStore')(observer(User));

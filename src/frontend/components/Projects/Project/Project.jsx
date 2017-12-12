@@ -1,4 +1,5 @@
 import React from 'react';
+import { shape, string, func } from 'prop-types';
 import styled from 'styled-components';
 import Preview from './Preview';
 
@@ -57,5 +58,18 @@ const Project = ({ project }) => (
     <VolunteerButton> Volunteer </VolunteerButton>
   </StyledDiv >
 );
+
+Project.propTypes = {
+  project: shape({
+    imgUrl: string.isRequired,
+    name: string.isRequired,
+    organizationName: string,
+    organization: shape({
+      contactPerson: string,
+      phoneNumber: string,
+    }).isRequired,
+    getRemainingSlots: func.isRequired,
+  }).isRequired,
+};
 
 export default Project;

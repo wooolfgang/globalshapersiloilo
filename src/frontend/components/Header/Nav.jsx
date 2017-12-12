@@ -1,9 +1,11 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
+import { instanceOf } from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import media from '../../assets/theme/media';
 import User from './User';
+import UserStore from '../../stores/UserStore';
 
 const StyledNav = styled.ul`
   list-style-type: none;
@@ -63,7 +65,7 @@ const SigninLink = styled(Link) `
 
 const Nav = ({ userStore }) => (
   <StyledNav>
-    <StyledLink to="/find">
+    <StyledLink to="/projects">
       <Header> Volunteer </Header>
       <Tagline> Find a Cause </Tagline>
     </StyledLink>
@@ -86,5 +88,9 @@ const Nav = ({ userStore }) => (
     </LeftContainer>
   </StyledNav>
 );
+
+Nav.propTypes = {
+  userStore: instanceOf(UserStore).isRequired,
+};
 
 export default inject('userStore')(observer(Nav));

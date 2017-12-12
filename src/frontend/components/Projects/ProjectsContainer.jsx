@@ -1,9 +1,15 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import Projects from './Projects';
+import { instanceOf } from 'prop-types';
+import ProjectList from './ProjectList';
 import NoResults from './NoResults';
+import ProjectStore from '../../stores/ProjectStore';
 
 class ProjectsContainer extends React.Component {
+  static propTypes = {
+    projectStore: instanceOf(ProjectStore).isRequired,
+  }
+
   async componentDidMount() {
     const { projectStore } = this.props;
     await projectStore.fetchProjects();
@@ -25,7 +31,7 @@ class ProjectsContainer extends React.Component {
       <div>
         {
           !projectStore.isLoading &&
-          <Projects projects={projects} />
+          <ProjectList projects={projects} />
         }
       </div>
     );

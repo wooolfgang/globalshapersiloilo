@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { observable, action } from 'mobx';
+import { instanceOf } from 'prop-types';
 import { observer, inject } from 'mobx-react';
+import ProjectStore from '../../stores/ProjectStore';
 
 const StyledDiv = styled.div`
   height: 60px;
@@ -47,6 +48,10 @@ const SearchButton = styled.input`
 `;
 
 class Search extends React.Component {
+  static propTypes = {
+    projectStore: instanceOf(ProjectStore).isRequired,
+  }
+
   componentWillUnmount() {
     const { projectStore } = this.props;
     projectStore.resetSearchFields();
