@@ -1,4 +1,4 @@
-import { action, observable, runInAction } from 'mobx';
+import { action } from 'mobx';
 import Api from '../../models/Api';
 
 class OrganizationStore {
@@ -13,6 +13,7 @@ class OrganizationStore {
     } catch (e) {
       console.log(e);
     }
+    return undefined;
   }
 }
 

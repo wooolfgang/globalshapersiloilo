@@ -1,4 +1,4 @@
-import { action, observable, runInAction } from 'mobx';
+import { action, observable } from 'mobx';
 
 class ViewStore {
   @observable isLoading = false;

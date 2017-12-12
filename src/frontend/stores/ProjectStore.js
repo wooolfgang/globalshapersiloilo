@@ -1,5 +1,4 @@
 import { observable, action, runInAction, computed } from 'mobx';
-import Joi from 'joi';
 import Api from '../../models/Api';
 
 class ProjectStore {
@@ -35,11 +34,11 @@ class ProjectStore {
 
   @action.bound async search() {
     try {
-      runInAction(() => { this.setIsLoading(true); this.hasSearched = true });
+      runInAction(() => { this.setIsLoading(true); this.hasSearched = true; });
       const projects = await this.api.search(this.searchInput);
       runInAction(() => { this.setIsLoading(false); this.searchResults = projects; });
     } catch (e) {
-      this.setIsLoading(false)
+      this.setIsLoading(false);
       console.log(e);
     }
   }
@@ -48,7 +47,7 @@ class ProjectStore {
     runInAction(() => {
       this.hasSearched = false;
       this.searchInput = '';
-      this.searchResults = []
+      this.searchResults = [];
     });
   }
 
