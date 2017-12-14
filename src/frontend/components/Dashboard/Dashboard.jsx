@@ -7,7 +7,7 @@ const Container = styled.div`
   align-items: center;
   color: white;
   padding: 0px 20px;
-  background: ${props => props.theme.tertiary};
+  background:vvcc ${props => props.theme.tertiary};
 `;
 
 const Dashboard = () => (

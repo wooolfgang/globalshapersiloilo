@@ -14,11 +14,12 @@ import ProjectOrganize from './ProjectOrganize/ProjectOrganize';
 import Admin from './Admin/Admin';
 import ViewStore from '../stores/ViewStore';
 import UserStore from '../stores/UserStore';
+import Dashboard from './Dashboard/Dashboard';
 
 const Grid = styled.div`
   height: 100vh;
   display: grid;
-  grid-template-rows: auto 100px 1fr 125px;
+  grid-template-rows: auto 100px 1fr auto;
   grid-template-areas: 
   "progress"
   "header"
@@ -46,7 +47,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { viewStore } = this.props;
+    const { viewStore, userStore } = this.props;
     return (
       <Router>
         <Grid>
@@ -55,14 +56,14 @@ class App extends React.Component {
           </ProgressBarContainer>
           <Header />
           <Section>
-            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/" component={userStore.authenticated ? Dashboard : LandingPage} />
             <Route path="/signin" component={Signin} />
             <Route path="/signup" component={Signup} />
             <Route path="/projects" component={ProjectsPage} />
             <Route path="/organize" component={ProjectOrganize} />
             <Route path="/admin" component={Admin} />
           </Section>
-          <Footer />
+          <Footer authenticated={userStore.authenticated} isAuthenticating={userStore.isAuthenticating} />
         </Grid>
       </Router>
     );
