@@ -33,9 +33,8 @@ const SectionContainer = styled.div`
 `;
 
 const Container = styled.div`
-  background: #FAFAFA;
-  padding: 30px 20px;  
-  box-shadow: ${props => props.theme.cardTwo};
+  background: white;
+  padding: 20px 20px;  
 
   h2 {
     margin: 0px;  
@@ -47,15 +46,15 @@ const Container = styled.div`
   }
 
   p {
-    line-height: 1.75;
-    word-spacing: 0.3px;
+    line-height: 2;
+    word-spacing: 0.4px;
     margin: 0px;
     padding: 20px;
   }
 
   @media screen and (min-width: 1200px) {
     margin: 0 20px;
-    padding: 30px 10px;
+    padding: 10px 10px;
   };
 `;
 
