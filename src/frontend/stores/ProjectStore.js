@@ -19,13 +19,14 @@ class ProjectStore {
     } catch (e) {
       console.log(e);
     }
+    return null;
   }
 
   @action.bound async fetchProjects() {
     try {
       this.setIsLoading(true);
-      const projects = await this.api.fetchAll();
-      runInAction(() => { this.setIsLoading(false); this.projects = projects; });
+      const { data } = await this.api.fetchAll();
+      runInAction(() => { this.setIsLoading(false); this.projects = data; });
     } catch (e) {
       this.setIsLoading(false);
       console.log(e);
@@ -35,8 +36,8 @@ class ProjectStore {
   @action.bound async search() {
     try {
       runInAction(() => { this.setIsLoading(true); this.hasSearched = true; });
-      const projects = await this.api.search(this.searchInput);
-      runInAction(() => { this.setIsLoading(false); this.searchResults = projects; });
+      const { data } = await this.api.search(this.searchInput);
+      runInAction(() => { this.setIsLoading(false); this.searchResults = data; });
     } catch (e) {
       this.setIsLoading(false);
       console.log(e);
