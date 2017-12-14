@@ -5,7 +5,7 @@ import { logo, invertedLogo } from '../../assets/theme/images';
 
 const StyledLogo = styled.a`
   img {
-    width: 100px;
+    width: 85px;
     height: auto;
   }
 `;

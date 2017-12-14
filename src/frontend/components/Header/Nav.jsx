@@ -32,14 +32,14 @@ const StyledLink = styled(Link) `
 `;
 
 const Header = styled.span`
-  font-size: 16.5px;
+  font-size: .90em;
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 0.5px;
   font-family: ${props => props.theme.fontThree};
 `;
 
 const Tagline = styled.span`
-  font-size: 14px;
+  font-size: .82em;
   font-family: ${props => props.theme.fontTwo};
 `;
 
@@ -53,7 +53,7 @@ const SigninLink = styled(Link) `
   display: inline-block !important;
   width: 135px;
   margin-top: 15px;
-  font-size: 16px;
+  font-size: .90em;
   text-decoration: none;
   font-family: ${props => props.theme.fontTwo};
   color: ${props => props.theme.secondary};
