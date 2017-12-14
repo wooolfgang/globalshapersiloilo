@@ -31,7 +31,7 @@ class ProjectsContainer extends React.Component {
       <div>
         {
           !projectStore.isLoading &&
-          <ProjectList projects={projects} />
+            <ProjectList projects={projects} />
         }
       </div>
     );

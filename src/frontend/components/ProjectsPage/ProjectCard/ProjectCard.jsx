@@ -2,6 +2,7 @@ import React from 'react';
 import { shape, string, func } from 'prop-types';
 import styled from 'styled-components';
 import Preview from './Preview';
+import BookmarkIcon from '../../BookmarkIcon';
 
 const StyledDiv = styled.div`
   min-width: 400px;
@@ -53,6 +54,13 @@ const VolunteerButton = styled.button`
   }
 `;
 
+const BookmarkIconContainer = styled.div`
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  cursor: pointer;
+`;
+
 const ProjectCard = ({ project }) => (
   <StyledDiv>
     <Preview imgUrl={project.imgUrl} taskDescription={project.taskDescription} />
@@ -64,6 +72,9 @@ const ProjectCard = ({ project }) => (
       <span>Slots left: {project.getRemainingSlots()} </span>
     </ProjectDetails>
     <VolunteerButton> Volunteer </VolunteerButton>
+    <BookmarkIconContainer>
+      <BookmarkIcon />
+    </BookmarkIconContainer>
   </StyledDiv >
 );
 

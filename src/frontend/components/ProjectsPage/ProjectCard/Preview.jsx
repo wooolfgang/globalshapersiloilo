@@ -25,6 +25,7 @@ const ProjectImg = styled.img`
 const ProposalContainer = styled.div`
   z-index: 999; 
   position: absolute;
+  width: inherit;
   background: rgba(0,0,0,0.7);
   padding: 20px;
   height: 160px;
