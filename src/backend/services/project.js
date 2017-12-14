@@ -1,15 +1,21 @@
 import feathersMongo from 'feathers-mongodb';
 import { populate } from 'feathers-hooks-common';
 import auth from 'feathers-authentication';
-import restrictToOwner from '../../hooks/restictToOwner';
 import transformToObjectId from '../../hooks/transformToObjectId';
 
 function project(db) {
   return async function execute() {
     const app = this;
 
-    app.use('api/projects', feathersMongo({ Model: db.collection('projects') }));
+    app.use('api/projects', feathersMongo({
+      Model: db.collection('projects'),
+      paginate: {
+        default: 6,
+        max: 10,
+      },
+    }));
 
+    // initialize collection index for text queries
     await db.collection('projects').createIndex({
       organizationName: 'text',
       projectName: 'text',
