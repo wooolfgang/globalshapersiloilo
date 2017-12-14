@@ -6,16 +6,22 @@ import ProjectStore from '../../stores/ProjectStore';
 
 const StyledDiv = styled.div`
   height: 60px;
-  padding: 0px 20px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  width: 50%;
+
+  @media screen and (max-width: 1012px) {
+    width: 100%;
+    justify-content: center;
+  };
 `;
 
 const SearchInput = styled.input`
   background: white;
   height: 80%;
+  width: 70%;
   border: none;
-  width: 450px;
   font-size: 18px;
   padding: 0px 20px;
   transition: all 0.1s cubic-bezier(.25,.8,.25,1);

@@ -5,23 +5,25 @@ import { Link } from 'react-router-dom';
 import { limitWordCount } from '../../../../utils';
 
 const StyledDiv = styled.div`
-  position: relative;
-  width: 400px;
-  height: 200px;
+  height: 50%;
   color: gray;
   cursor: pointer;   
   overflow: hidden;
+  width: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
 `;
 
 const ProjectImg = styled.img`
   transition: 0.3s;
-  max-width: 400px;
-  max-height: 200px;
   transform: ${props => props.hovered && 'scale(1.2)'};
+  background-img: url(${props => props.src && props.src});
+  background-position: 50% 50% !important;
 `;
 
 const ProposalContainer = styled.div`
-  z-index: 999;
+  z-index: 999; 
   position: absolute;
   background: rgba(0,0,0,0.7);
   padding: 20px;

@@ -9,15 +9,16 @@ import Footer from './Footer/Footer';
 import LandingPage from './LandingPage/LandingPage';
 import Signin from './Signin/Signin';
 import Signup from './Signup/Signup';
-import Projects from './Projects/Projects';
+import ProjectsPage from './ProjectsPage/ProjectsPage';
 import ProjectOrganize from './ProjectOrganize/ProjectOrganize';
 import Admin from './Admin/Admin';
 import ViewStore from '../stores/ViewStore';
 import UserStore from '../stores/UserStore';
 
 const Grid = styled.div`
+  height: 100vh;
   display: grid;
-  grid-template-rows: auto 100px 1fr auto;
+  grid-template-rows: auto 100px 1fr 125px;
   grid-template-areas: 
   "progress"
   "header"
@@ -57,7 +58,7 @@ class App extends React.Component {
             <Route exact path="/" component={LandingPage} />
             <Route path="/signin" component={Signin} />
             <Route path="/signup" component={Signup} />
-            <Route path="/projects" component={Projects} />
+            <Route path="/projects" component={ProjectsPage} />
             <Route path="/organize" component={ProjectOrganize} />
             <Route path="/admin" component={Admin} />
           </Section>

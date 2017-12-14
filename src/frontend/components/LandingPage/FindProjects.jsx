@@ -76,7 +76,7 @@ const SubContainer = () => (
         <Container>
           <h2> What's your passion? </h2>
           <h3> We'll find the right projects for you. </h3>
-          <Secondary href="/#/find"> Find Projects</Secondary>
+          <Secondary href="/#/projects"> Find Projects</Secondary>
         </Container>
       </ProjectSearch>
       <LocalListings>

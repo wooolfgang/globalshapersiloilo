@@ -7,8 +7,8 @@ import Search from './Search';
 import ProjectStore from '../../stores/ProjectStore';
 
 const StyledDiv = styled.div`
-  height: 700px;
-  min-height: calc(100vh - 250px);
+  height: 100%;
+  padding-bottom: 20px;
 `;
 
 const Container = styled.div`
@@ -24,13 +24,22 @@ const Container = styled.div`
     margin: 0px;
     color: #333;
     padding-bottom: 8px;
-    width: 430px;
+  }
+
+  @media screen and (max-width: 1012px) {
+    h3 {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 6px;
+      font-size: 1.5em;
+    }
   }
 `;
 
 const Header = styled.div`
   width: 85%;
   margin: auto;
+  margin-top: 10px;
 
   h4 {
     margin: 0px;
@@ -39,7 +48,7 @@ const Header = styled.div`
   }
 `;
 
-const Projects = ({ projectStore }) => (
+const ProjectsPage = ({ projectStore }) => (
   <StyledDiv>
     <Container>
       <h3> Find projects and make an impact </h3>
@@ -52,8 +61,8 @@ const Projects = ({ projectStore }) => (
   </StyledDiv>
 );
 
-Projects.propTypes = {
+ProjectsPage.propTypes = {
   projectStore: instanceOf(ProjectStore).isRequired,
 };
 
-export default inject('projectStore')(observer(Projects));
+export default inject('projectStore')(observer(ProjectsPage));
