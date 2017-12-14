@@ -19,7 +19,7 @@ import Dashboard from './Dashboard/Dashboard';
 const Grid = styled.div`
   height: 100vh;
   display: grid;
-  grid-template-rows: auto 100px 1fr auto;
+  grid-template-rows: auto 90px 1fr auto;
   grid-template-areas: 
   "progress"
   "header"

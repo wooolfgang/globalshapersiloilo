@@ -1,19 +1,55 @@
 import React from 'react';
 import styled from 'styled-components';
+import CreatePost from './CreatePost';
+import UserProfile from './UserProfile';
+import EventList from './EventList';
+import Feed from './Feed';
 
-const Container = styled.div`
+const StyledDiv = styled.div`
+  height: 100%;
+  width: 100%;
+  /* background: #FAFAFA; */
+  overflow: auto; 
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 1fr;
+  grid-template-area: "."
+  "left-section main-section right-section";
+`;
+
+const MainSection = styled.div`
+  grid-area: "main-section"
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  color: white;
-  padding: 0px 20px;
-  background:vvcc ${props => props.theme.tertiary};
+`;
+
+const LeftSection = styled.div`
+  grid-area: "left-section";
+  display: flex;
+  justify-content: flex-end;  
+`;
+
+const RightSection = styled.div`
+  grid-area: "right-section";
+  display: flex;
+  justify-content: flex-start;
 `;
 
 const Dashboard = () => (
-  <Container>
-    <h1> Hi there! Development is still ongoing on this website. </h1>
-  </Container>
+  <StyledDiv >
+    <LeftSection>
+      <UserProfile />
+    </LeftSection>
+    <MainSection>
+      <CreatePost />
+      <Feed />
+    </MainSection>
+    <RightSection>
+      <EventList />
+    </RightSection>
+  </StyledDiv>
 );
 
 export default Dashboard;

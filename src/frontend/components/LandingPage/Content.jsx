@@ -40,7 +40,7 @@ const Container = styled.div`
     margin: 0px;  
     margin-top: -10px;
     font-weight: bold;
-    font-size: 32px;
+    font-size: 1.8em;
     color: ${props => props.theme.secondary};
     font-family: ${props => props.theme.fontThree};
   }
@@ -50,6 +50,7 @@ const Container = styled.div`
     word-spacing: 0.4px;
     margin: 0px;
     padding: 20px;
+    font-size: 1em;
   }
 
   @media screen and (min-width: 1200px) {
