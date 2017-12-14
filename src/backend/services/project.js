@@ -17,10 +17,10 @@ function project(db) {
 
     // initialize collection index for text queries
     await db.collection('projects').createIndex({
-      organizationName: 'text',
-      projectName: 'text',
-      sector: 'text',
-      proposal: 'text',
+      name: 'text',
+      projectChallenge: 'text',
+      volunteerReason: 'text',
+      taskDescription: 'text',
     });
 
     const projectSchema = {
