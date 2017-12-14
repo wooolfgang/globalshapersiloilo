@@ -17,7 +17,8 @@ const StyledLink = styled(Link) `
   display: block;
   margin-bottom: 5px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: .8em;
+  font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;
   color: #333;

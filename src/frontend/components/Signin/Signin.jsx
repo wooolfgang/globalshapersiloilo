@@ -15,7 +15,7 @@ const Container = styled.div`
   background: linear-gradient(to right, #3a6073, #3a7bd5);
 
   @media screen and (min-width: 769px) {
-    height: 80vh;
+    height: 85vh;
     grid-template-areas: "slogan . form-container";
     grid-auto-columns: auto 1fr auto;
   }

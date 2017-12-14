@@ -12,10 +12,9 @@ const Grid = styled.div`
 
 const StyledDiv = styled.div`
   display: flex;
-  height: 125px;  
+  height: 115px;  
   align-items: center;
   justify-content: space-around;
-  align-items: center;
   border-top: 1px solid rgba(0,0,0,.05)!important;
 
   ${media.tablet`
@@ -30,7 +29,7 @@ const StyledDiv = styled.div`
 
 const Container = styled.div`
   width: 370px;
-  font-size: 15px;
+  font-size: .8em;
 
   h3 {
     margin: 0px;
