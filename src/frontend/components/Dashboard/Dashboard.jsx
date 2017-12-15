@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CreatePost from './CreatePost';
+import CreatePost from './CreatePost/CreatePost';
 import UserProfile from './UserProfile';
 import EventList from './EventList';
 import Feed from './Feed';
@@ -12,9 +12,9 @@ const StyledDiv = styled.div`
   overflow: auto; 
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: .85fr 1fr .85fr;
   grid-template-rows: 200px 1fr;
-  grid-template-area: "."
+  grid-template-area: ". . ."
   "left-section main-section right-section";
 `;
 

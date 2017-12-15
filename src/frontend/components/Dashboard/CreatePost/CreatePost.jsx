@@ -1,16 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
+import TextArea from './TextArea';
+import SubmitBar from './SubmitBar';
 
 const StyledDiv = styled.div`
   width: 100%;
   height: 100px;
   margin: 20px 0px; 
-  border: 1px solid rgba(0,0,0,.05);
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: ${props => props.theme.cardOne};
 `;
 
 const CreatePost = () => (
-  <StyledDiv />
+  <StyledDiv>
+    <TextArea />
+    <SubmitBar />
+  </StyledDiv>
 );
 
 export default CreatePost;
