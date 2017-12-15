@@ -8,7 +8,7 @@ import Feed from './Feed';
 const StyledDiv = styled.div`
   height: 100%;
   width: 100%;
-  /* background: #FAFAFA; */
+  background: #FAFAFA;
   overflow: auto; 
   margin: auto;
   display: grid;

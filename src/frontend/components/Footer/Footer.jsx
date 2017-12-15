@@ -49,7 +49,7 @@ const Footer = ({ location, authenticated, isAuthenticating }) => {
   if (isAuthenticating) {
     return null;
   }
-  if (location.pathname === '/' && authenticated) {
+  if (authenticated) {
     return null;
   }
 

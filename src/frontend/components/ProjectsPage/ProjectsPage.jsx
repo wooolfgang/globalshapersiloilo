@@ -9,6 +9,7 @@ import ProjectStore from '../../stores/ProjectStore';
 const StyledDiv = styled.div`
   height: 100%;
   padding-bottom: 20px;
+  background: #FAFAFA;
 `;
 
 const Container = styled.div`
