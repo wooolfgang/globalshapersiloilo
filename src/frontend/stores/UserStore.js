@@ -18,7 +18,7 @@ class UserStore {
 
   @action.bound async authenticate() {
     try {
-      runInAction(() => { this.isAuthenticating = true; this.setIsLoading(true) });
+      runInAction(() => { this.isAuthenticating = true; this.setIsLoading(true); });
       const token = await this.client.authenticate();
       const payload = await this.client.passport.verifyJWT(token.accessToken);
       const user = await this.client.service('api/users').get(payload.userId);
@@ -34,7 +34,7 @@ class UserStore {
 
   @action.bound async login() {
     try {
-      this.setIsLoading(true)
+      this.setIsLoading(true);
       const token = await this.client.authenticate({
         username: this.store.formsStore.signinInput.username,
         password: this.store.formsStore.signinInput.password,
@@ -84,6 +84,7 @@ class UserStore {
       await this.client.logout();
       this.setCurrentUser(undefined);
       this.setIsLoading(false);
+      this.store.formsStore.signinInput = {};
     } catch (e) {
       this.setIsLoading(false);
       console.log(e);
