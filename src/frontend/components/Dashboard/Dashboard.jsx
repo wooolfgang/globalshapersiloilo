@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import CreatePost from './CreatePost/CreatePost';
 import UserProfile from './UserProfile';
 import EventList from './EventList';
-import Feed from './Feed';
+import Feed from './Feed/Feed';
 
 const StyledDiv = styled.div`
   height: 100%;

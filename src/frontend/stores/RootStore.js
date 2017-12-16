@@ -3,6 +3,7 @@ import ViewStore from './ViewStore';
 import ProjectStore from './ProjectStore';
 import OrganizationStore from './OrganizationStore';
 import FormsStore from './FormsStore';
+import PostsStore from './PostsStore';
 
 class RootStore {
   constructor(client) {
@@ -11,6 +12,7 @@ class RootStore {
     this.userStore = new UserStore(this, client);
     this.projectStore = new ProjectStore(this, client);
     this.organizationStore = new OrganizationStore(this, client);
+    this.postsStore = new PostsStore(this, client);
   }
 }
 

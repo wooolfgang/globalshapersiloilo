@@ -13,10 +13,9 @@ const Button = styled.button`
   border-radius: 2px;
   outline: none;
   margin: 2px;
-  justify-self: flex-end; 
-  align-self: center;
   position: absolute;
   right: 10px;
+  bottom: 10px;
   background: ${props => props.theme.buttonPrimary};
 
   :hover {

@@ -7,9 +7,8 @@ const StyledDiv = styled.div`
   height: 50px;
   width: 100%;
   margin: 0;
-  background: ${props => props.theme.grayOne};
-  display: flex;  
   position: relative;
+  background: ${props => props.theme.grayOne};
 `;
 
 const SubmitBar = () => (

@@ -40,7 +40,7 @@ class TextArea extends React.Component {
 
     return (
       <TextContainer
-        placeholder={`What's on your mind, ${currentUser.fullName}?`}
+        placeholder={`Share your thoughts, ${currentUser.fullName}!`}
         onChange={this.handleChange}
         value={this.state.text}
       />
