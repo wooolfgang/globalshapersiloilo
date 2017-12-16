@@ -9,15 +9,26 @@ function postService(db) {
     app.use('api/posts', feathersMongo({ Model: db.collection('posts') }));
 
     const postSchema = {
-      include: {
-        service: 'api/userfollowers',
-        nameAs: 'followers',
-        parentField: 'ownerId',
-        childField: 'ownerId',
-        query: {
-          $select: ['followerIds'],
+      include: [
+        {
+          service: 'api/userfollowers',
+          nameAs: 'followers',
+          parentField: 'ownerId',
+          childField: 'ownerId',
+          query: {
+            $select: ['followerIds'],
+          },
         },
-      },
+        {
+          service: 'api/users',
+          nameAs: 'owner',
+          parentField: 'ownerId',
+          childField: '_id',
+          query: {
+            $select: ['fullName', 'imgUrl'],
+          },
+        },
+      ],
     };
 
     app.service('api/posts').hooks({
