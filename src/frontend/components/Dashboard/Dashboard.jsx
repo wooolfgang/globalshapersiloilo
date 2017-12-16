@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import CreatePost from './CreatePost/CreatePost';
-import UserProfile from './UserProfile';
+import AccountProfile from './AccountProfile/AccountProfile';
 import EventList from './EventList';
 import Feed from './Feed/Feed';
 
@@ -40,7 +40,7 @@ const RightSection = styled.div`
 const Dashboard = () => (
   <StyledDiv >
     <LeftSection>
-      <UserProfile />
+      <AccountProfile />
     </LeftSection>
     <MainSection>
       <CreatePost />
