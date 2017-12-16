@@ -16,6 +16,7 @@ const seed = async () => {
       phoneNumber: '3510267',
       occupation: 'N/A',
       affiliation: 'N/A',
+      imgUrl: 'http://res.cloudinary.com/depjh17m6/image/upload/v1513424033/profile_img_x0qa8u.png',
     },
     {
       _id: ObjectId('D2133E4769E046781F282A09'),
@@ -28,6 +29,7 @@ const seed = async () => {
       phoneNumber: '3510267',
       occupation: 'N/A',
       affiliation: 'N/A',
+      imgUrl: 'http://res.cloudinary.com/depjh17m6/image/upload/v1513431017/Screen-Shot-2014-12-02-at-11.14.42_z5dtfi.png',
     },
     {
       _id: ObjectId('B25752FC70EDC7EE6D81FF0F'),
@@ -40,6 +42,7 @@ const seed = async () => {
       phoneNumber: '3510267',
       occupation: 'N/A',
       affiliation: 'N/A',
+      imgUrl: 'http://res.cloudinary.com/depjh17m6/image/upload/v1513431014/20150406145944-dos-donts-taking-perfect-linkedin-profile-picture-selfie-mobile-camera-2_ffhjni.jpg',
     },
   ];
 
