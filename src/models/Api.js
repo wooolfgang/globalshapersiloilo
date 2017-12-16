@@ -13,6 +13,10 @@ class Api {
     return this.app.service(this.apiPath).find(query);
   }
 
+  async find(query) {
+    return this.app.service(this.apiPath).find({ query });
+  }
+
   async fetchAll() {
     return this.app.service(this.apiPath).find();
   }

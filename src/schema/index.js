@@ -12,6 +12,7 @@ export const UserSchema = {
   occupation: Joi.string(),
   affiliation: Joi.string(),
   provider: Joi.string(),
+  imgUrl: Joi.string(),
 };
 
 export const OrganizationSchema = {
