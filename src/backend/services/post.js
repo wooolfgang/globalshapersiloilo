@@ -1,6 +1,8 @@
 import feathersMongo from 'feathers-mongodb';
+import hook from 'feathers-authentication-hooks';
 import { populate } from 'feathers-hooks-common';
 import auth from 'feathers-authentication';
+import restrictUser from '../../hooks/restrictUser';
 
 function postService(db) {
   return function execute() {
@@ -31,15 +33,24 @@ function postService(db) {
       ],
     };
 
+    const security = [
+      hook.restrictToAuthenticated(),
+      restrictUser(),
+    ];
+
+    const authorization = [
+      auth.hooks.authenticate('jwt'),
+    ];
+
     app.service('api/posts').hooks({
       before: {
         find: [],
         get: [],
         create: [],
-        update: [],
-        patch: [],
-        remove: [],
-        all: [auth.hooks.authenticate('jwt')],
+        update: [...security],
+        patch: [...security],
+        remove: [...security],
+        all: [...authorization],
       },
       after: {
         find: [populate({ schema: postSchema })],
