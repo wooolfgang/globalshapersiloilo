@@ -2,6 +2,7 @@ import feathersMongo from 'feathers-mongodb';
 import { hooks } from 'feathers-authentication-local';
 import auth from 'feathers-authentication';
 import hook from 'feathers-authentication-hooks';
+import { populate } from 'feathers-hooks-common';
 import transform from '../../hooks/transform';
 import validate from '../../hooks/validate';
 import customizeProviderData from '../../hooks/customizeProviderData';
@@ -14,6 +15,18 @@ function userService(db) {
 
     app.use('api/users', feathersMongo({ Model: db.collection('users') }));
 
+    const userSchema = {
+      include: {
+        service: 'api/projects',
+        nameAs: 'projects',
+        parentField: 'projectIds',
+        childField: '_id',
+        query: {
+          $select: ['name'],
+        },
+      },
+    };
+
     const security = [
       auth.hooks.authenticate('jwt'),
       hook.restrictToAuthenticated(),
@@ -25,21 +38,16 @@ function userService(db) {
       validate(),
     ];
 
+
     app.service('api/users').hooks({
       before: {
         find: [],
         get: [],
         create: [
-          customizeProviderData(),
-          ...validation,
-          hooks.hashPassword({ passwordField: 'password' }),
+          customizeProviderData(), ...validation, hooks.hashPassword({ passwordField: 'password' }),
         ],
         update: [
-          customizeProviderData(),
-          transform(User),
-          validate(),
-          ...validation,
-          ...security,
+          customizeProviderData(), transform(User), validate(), ...validation, ...security,
         ],
         patch: [
           ...security,
@@ -55,7 +63,7 @@ function userService(db) {
         update: [],
         patch: [],
         remove: [],
-        all: [],
+        all: [populate({ schema: userSchema })],
       },
     });
   };

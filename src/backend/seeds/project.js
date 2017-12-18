@@ -6,6 +6,7 @@ const seed = async () => {
 
   const projects = [
     {
+      _id: ObjectId('54D28449847D3079184E3454'),
       organizationId: ObjectId('54D28449847D3079184E3455'),
       name: 'Love Life Project',
       projectChallenge: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
@@ -13,7 +14,7 @@ const seed = async () => {
       taskDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       volunteersNeeded: 20,
       volunteerHoursNeeded: 50,
-      volunteers: [],
+      volunteers: [ObjectId('429BDC3BAFF43767141EF562')],
       imgUrl: 'https://images.unsplash.com/photo-1512300336117-ff710065ae51?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=ce966b76fb7d94345dc6d27d8839881e',
     },
     {

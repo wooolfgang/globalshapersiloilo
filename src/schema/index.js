@@ -13,6 +13,7 @@ export const UserSchema = {
   affiliation: Joi.string(),
   provider: Joi.string(),
   imgUrl: Joi.string(),
+  projectIds: Joi.array(),
 };
 
 export const OrganizationSchema = {
