@@ -22,7 +22,11 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Authors
 
-* **Li Arolf Rey** - *Initial work* - [wooolfgang](https://github.com/wooolfgang)
+* **Li Arolf Rey** - *Fullstack* - [wooolfgang](https://github.com/wooolfgang)
+* **Clyne Paulo Fuentes** - *Backend* - [clippefuentes](https://gitlab.com/clippefuentes)
+* **Godfrey Zubiaga** - *Frontend* - [starksten4](https://gitlab.com/starksten4)
+* **John Dominic Lagarde** - *Backend* - [beemo453](https://gitlab.com/beemo453)
+
 
 See also the list of [contributors](https://github.com/wooolfgang/globalshapersiloilo) who participated in this project.
 
