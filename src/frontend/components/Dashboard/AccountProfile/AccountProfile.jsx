@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { instanceOf } from 'prop-types';
 import { inject } from 'mobx-react';
-import AwardIcon from './AwardIcon';
+import HeartIcon from './HeartIcon';
 import UserStore from '../../../stores/UserStore';
 import AccountImage from './AccountImage';
 import EditProfileButton from './EditProfileButton';
@@ -40,7 +40,12 @@ const Bottom = styled.div`
   justify-content: center;
 
   p {
-    margin: 2px;
+    margin: 3px;
+  }
+
+  svg {
+    height: 18px;
+    width: 18px;
   }
 `;
 
@@ -55,7 +60,7 @@ const AccountProfile = ({ userStore: { currentUser } }) => (
     </Middle>
     <Bottom >
       <p> Join a project! </p>
-      <AwardIcon />
+      <HeartIcon />
     </Bottom>
   </StyledDiv>
 );

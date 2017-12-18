@@ -9,12 +9,11 @@ const StyledDiv = styled.button`
   position: absolute;
   top: 5px;
   right: 5px;
+  padding: 4px;
+  border-radius: 3px;
+  border: 1px solid ${props => props.theme.tertiary};
   color: ${props => props.theme.tertiary};
   font: ${props => props.theme.fontOne};
-
-  :hover {
-    text-decoration: underline;
-  }
 `;
 
 const EditProfileButton = () => (

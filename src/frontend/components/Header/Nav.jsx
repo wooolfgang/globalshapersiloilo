@@ -1,11 +1,12 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { instanceOf } from 'prop-types';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import media from '../../assets/theme/media';
 import User from './User';
 import UserStore from '../../stores/UserStore';
+import SigninLink from '../Link';
 
 const StyledNav = styled.ul`
   list-style-type: none;
@@ -16,19 +17,6 @@ const StyledNav = styled.ul`
   ${media.tablet`
     display: none;
   `}
-`;
-
-const StyledLink = styled(Link) `
-  cursor: pointer;
-  padding: 8px;
-  text-decoration: none !important;
-  color: #333;
-  font-family: ${props => props.theme.fontOne};
-  ${props => props.login && 'font-size: 16px;'};
-
-  :hover {
-    color: ${props => props.theme.secondary};
-  }
 `;
 
 const Header = styled.span`
@@ -49,17 +37,16 @@ const LeftContainer = styled.div`
   min-width: 120px;
 `;
 
-const SigninLink = styled(Link) `
-  display: inline-block !important;
-  width: 135px;
-  margin-top: 15px;
-  font-size: .90em;
-  text-decoration: none;
-  font-family: ${props => props.theme.fontTwo};
-  color: ${props => props.theme.secondary};
+const StyledLink = styled(Link) `
+  cursor: pointer;
+  padding: 8px;
+  text-decoration: none !important;
+  color: #333;
+  font-family: ${props => props.theme.fontOne};
+  ${props => props.login && 'font-size: 16px;'};
 
   :hover {
-    text-decoration: underline
+    color: ${props => props.theme.secondary};
   }
 `;
 

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import CreatePost from './CreatePost/CreatePost';
 import AccountProfile from './AccountProfile/AccountProfile';
-import EventList from './EventList';
+import AssociationList from './AssociationList/AssociationList';
 import Feed from './Feed/Feed';
 
 const StyledDiv = styled.div`
@@ -13,8 +13,7 @@ const StyledDiv = styled.div`
   margin: auto;
   display: grid;
   grid-template-columns: .85fr 1fr .85fr;
-  grid-template-rows: 200px 1fr;
-  grid-template-area: ". . ."
+  grid-template-area: 
   "left-section main-section right-section";
 `;
 
@@ -47,7 +46,7 @@ const Dashboard = () => (
       <Feed />
     </MainSection>
     <RightSection>
-      <EventList />
+      <AssociationList />
     </RightSection>
   </StyledDiv>
 );
