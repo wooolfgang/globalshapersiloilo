@@ -2,6 +2,7 @@ import feathersMongo from 'feathers-mongodb';
 import { populate } from 'feathers-hooks-common';
 import auth from 'feathers-authentication';
 import transformToObjectId from '../../hooks/transformToObjectId';
+import restrictUser from '../../hooks/restrictUser';
 
 function project(db) {
   return async function execute() {
@@ -36,14 +37,18 @@ function project(db) {
       auth.hooks.authenticate('jwt'),
     ];
 
+    const security = [
+      restrictUser(),
+    ];
+
     app.service('api/projects').hooks({
       before: {
         find: [],
         get: [],
         create: [transformToObjectId({ propertyFields: ['organizationId'] })],
-        update: [...authorization],
-        patch: [...authorization],
-        remove: [...authorization],
+        update: [...authorization, ...security],
+        patch: [...authorization, ...security],
+        remove: [...authorization, ...security],
       },
       after: {
         find: [populate({ schema: projectSchema })],
