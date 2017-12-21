@@ -1,5 +1,6 @@
 import { observable, action, runInAction, computed } from 'mobx';
 import * as errorState from '../../schema/errorStates';
+import Api from '../../models/Api';
 
 class UserStore {
   @observable currentUser;
@@ -10,6 +11,7 @@ class UserStore {
     this.store = store;
     this.client = client;
     this.setIsLoading = store.viewStore.setIsLoading;
+    this.api = new Api('api/users', client);
   }
 
   @action.bound setCurrentUser(user) {
@@ -60,7 +62,7 @@ class UserStore {
         this.store.formsStore.signupErrorMsg = errorState.userFormErrorState;
         this.setIsLoading(true);
       });
-      const user = await this.client.service('api/users').create(this.store.formsStore.signupInput);
+      const user = await this.api.create(this.store.formsStore.signupInput);
       runInAction(() => {
         this.store.formsStore.signupSuccess = true;
         this.store.formsStore.signupInput = undefined;
@@ -93,11 +95,20 @@ class UserStore {
 
   @action.bound async fetchUsers() {
     try {
-      const users = await this.client.service('api/users').find();
+      const users = await this.api.find();
       runInAction(() => { this.users = users; });
     } catch (e) {
       console.log(e);
     }
+  }
+
+  @action.bound async fetchUser(userId) {
+    try {
+      return this.api.get(userId);
+    } catch (e) {
+      console.log(e);
+    }
+    return null;
   }
 
   @computed get authenticated() {

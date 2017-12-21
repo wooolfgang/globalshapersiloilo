@@ -25,7 +25,7 @@ class ProjectStore {
   @action.bound async fetchProjects() {
     try {
       this.setIsLoading(true);
-      const { data } = await this.api.fetchAll();
+      const { data } = await this.api.find();
       runInAction(() => { this.setIsLoading(false); this.projects = data; });
     } catch (e) {
       this.setIsLoading(false);
