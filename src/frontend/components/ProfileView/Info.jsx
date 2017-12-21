@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { shape, string } from 'prop-types';
 
 const StyledDiv = styled.div`
   grid-area: details;
@@ -14,7 +15,7 @@ const Name = styled.p`
   font-family: ${props => props.theme.fontTwo};  
 `;
 
-const Occupation = styled.p`
+const Username = styled.p`
   font-size: 1em;
   margin: 5px;
   font-family: ${props => props.theme.fontTwo}; 
@@ -27,12 +28,20 @@ const Motto = styled.p`
   font-family: ${props => props.theme.fontTwo};    
 `;
 
-const Info = () => (
+const Info = ({ user }) => (
   <StyledDiv>
-    <Name>Shiba Inu</Name>
-    <Occupation>Like A Boss @ My Owners House (duh!)</Occupation>
-    <Motto>"The Walking Doge."</Motto>
+    <Name>{user.fullName}</Name>
+    <Username>{user.username}</Username>
+    <Motto>{user.motto ? user.motto : '"I forgot to enter my motto"'}</Motto>
   </StyledDiv>
 );
+
+Info.propTypes = {
+  user: shape({
+    fullName: string,
+    username: string,
+    motto: string,
+  }).isRequired,
+};
 
 export default Info;

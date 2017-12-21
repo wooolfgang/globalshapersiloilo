@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { string } from 'prop-types';
 
 const StyledDiv = styled.div`
   background: lightgray;
@@ -10,12 +11,16 @@ const StyledDiv = styled.div`
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: url('https://i.pinimg.com/736x/d9/56/88/d9568870abe1741fad8998060b5df0c4--square-faces-squares.jpg');
+  background: url(${props => props.imgUrl && props.imgUrl});
   background-size: cover;
 `;
 
-const ProfileImage = () => (
-  <StyledDiv />
+const ProfileImage = ({ imgUrl }) => (
+  <StyledDiv imgUrl={imgUrl} />
 );
+
+ProfileImage.propTypes = {
+  imgUrl: string.isRequired,
+};
 
 export default ProfileImage;

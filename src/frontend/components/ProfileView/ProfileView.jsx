@@ -22,27 +22,34 @@ const Cover = styled.div`
 `;
 
 const SecondaryContainer = styled.div`
-  width: 40%;
-  min-width: 400px;
+  max-width: 520px;
+  min-width: 320px;
   margin: auto;
 `;
 
 class ProfileView extends React.Component {
-  async componentDidMount() {
+  state = {
+    user: undefined,
+  };
 
+  async componentDidMount() {
+    const { userStore, match } = this.props;
+    const user = await userStore.fetchUser(match.params.id);
+    (() => this.setState({ user }))();
   }
 
   render() {
-    const { match } = this.props;
+    if (!this.state.user) return null;
+    const { user } = this.state;
     return (
       <div>
         <MainContainer>
           <Cover />
-          <ProfileImage />
-          <Info />
+          <ProfileImage imgUrl={user.imgUrl} />
+          <Info user={user} />
         </MainContainer>
         <SecondaryContainer>
-          <Projects />
+          <Projects projects={(user.projects instanceof Array) ? user.projects : [user.projects]} />
         </SecondaryContainer>
       </div>
     );
