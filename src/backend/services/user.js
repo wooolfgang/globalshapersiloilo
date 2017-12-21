@@ -22,7 +22,7 @@ function userService(db) {
         parentField: 'projectIds',
         childField: '_id',
         query: {
-          $select: ['name'],
+          $select: ['name', 'projectChallenge'],
         },
       },
     };
