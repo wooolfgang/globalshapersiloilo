@@ -15,6 +15,7 @@ import Admin from './Admin/Admin';
 import ViewStore from '../stores/ViewStore';
 import UserStore from '../stores/UserStore';
 import Dashboard from './Dashboard/Dashboard';
+import ProfileView from './ProfileView/ProfileView';
 
 const Grid = styled.div`
   height: 100vh;
@@ -62,6 +63,7 @@ class App extends React.Component {
             <Route path="/projects" component={ProjectsPage} />
             <Route path="/organize" component={ProjectOrganize} />
             <Route path="/admin" component={Admin} />
+            <Route path="/profile/:id?" component={ProfileView} />
           </Section>
           <Footer authenticated={userStore.authenticated} isAuthenticating={userStore.isAuthenticating} />
         </Grid>
