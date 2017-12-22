@@ -46,17 +46,12 @@ const Container = styled.div`
 `;
 
 const Footer = ({ location, authenticated, isAuthenticating }) => {
-  if (isAuthenticating) {
-    return null;
-  }
-  if (authenticated) {
-    return null;
-  }
-
+  if (isAuthenticating) return null;
+  if (authenticated) return null;
   return (
     <Grid>
       {
-        location.pathname !== '/signup' &&
+        (location.pathname === '/' || location.pathname === '/signin') &&
         <StyledDiv>
           <Nav />
           <Container>
