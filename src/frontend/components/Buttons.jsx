@@ -89,6 +89,14 @@ const Social = styled.a`
   }
 `;
 
+const StyledGoogle = styled(Social) `
+  background-color: #DB3236;
+`;
+
+const StyledFacebook = styled(Social) `
+  background-color: #3B579D;
+`;
+
 const StyledSubmit = styled.button`
   border: none;
   border-radius: 0px;
@@ -107,12 +115,23 @@ const StyledSubmit = styled.button`
   }
 `;
 
-const StyledGoogle = styled(Social) `
-  background-color: #DB3236;
-`;
+const StyledVolunteer = styled.button`
+  width: 130px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 22px;
+  font-size: 18.5px;
+  color: white;
+  transition: all 200ms;
+  border-radius: 0px;
+  box-shadow: 3px 3px ${props => props.theme.tertiary};
+  background: ${props => props.theme.secondary};
+  font-family: ${props => props.theme.fontThree};
 
-const StyledFacebook = styled(Social) `
-  background-color: #3B579D;
+  :hover {
+    background: ${props => props.theme.secondaryLighter}; 
+  }
 `;
 
 export const Primary = ({ children, onClick }) => (
@@ -138,4 +157,9 @@ export const Facebook = ({ children, href, onPath }) => (
 export const Submit = ({ children, onClick, width }) => (
   <StyledSubmit onClick={onClick} width={width}> {children} </StyledSubmit>
 );
+
+export const VolunteerButton = ({ children }) => (
+  <StyledVolunteer> {children} </StyledVolunteer>
+);
+
 
