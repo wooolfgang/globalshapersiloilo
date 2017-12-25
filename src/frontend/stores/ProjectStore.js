@@ -33,6 +33,15 @@ class ProjectStore {
     }
   }
 
+  @action.bound async fetchProject(projectId) {
+    try {
+      return this.api.get(projectId);
+    } catch (e) {
+      console.log(e);
+    }
+    return null;
+  }
+
   @action.bound async search() {
     try {
       runInAction(() => { this.setIsLoading(true); this.hasSearched = true; });

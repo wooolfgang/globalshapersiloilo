@@ -1,3 +1,4 @@
+import { computed } from 'mobx';
 import { ProjectSchema } from '../schema/';
 import Model from './Model';
 
@@ -6,7 +7,7 @@ class Project extends Model {
     return ProjectSchema;
   }
 
-  getRemainingSlots() {
+  @computed get getRemainingSlots() {
     return this.volunteersNeeded - this.volunteers.length;
   }
 }

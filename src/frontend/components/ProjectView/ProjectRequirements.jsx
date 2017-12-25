@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { number } from 'prop-types';
 import GoogleMap from '../LandingPage/GoogleMap';
 
 const RequirementBox = styled.div`
@@ -39,11 +40,11 @@ const MapContainer = styled.div`
   }
 `;
 
-const ProjectRequirements = () => (
+const ProjectRequirements = ({ volunteersNeeded, remainingSlots }) => (
   <RequirementBox>
     <Container>
-      <StyledH3>Volunteers Needed: </StyledH3>
-      <StyledH3>Slots left: </StyledH3>
+      <StyledH3>Volunteers Needed: {volunteersNeeded}</StyledH3>
+      <StyledH3>Slots left: {remainingSlots} </StyledH3>
     </Container>
     <MapContainer>
       <GoogleMap markers={[{
@@ -54,5 +55,10 @@ const ProjectRequirements = () => (
     </MapContainer>
   </RequirementBox>
 );
+
+ProjectRequirements.propTypes = {
+  volunteersNeeded: number.isRequired,
+  remainingSlots: number.isRequired,
+};
 
 export default ProjectRequirements;

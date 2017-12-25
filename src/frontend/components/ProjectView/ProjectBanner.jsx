@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { string } from 'prop-types';
 import Link from '../Link';
 import { VolunteerButton } from '../Buttons';
 
@@ -76,28 +77,25 @@ const OrgHeader = styled.div`
   }
 `;
 
-const OrgImage = styled.div`
-  width: 42px;
-  height: 42px;
-  background: gray;
-  border-radius: 50%;
-  margin-right: 7px;
-`;
-
-const ProjectBanner = () => (
+const ProjectBanner = ({ organizationName, projectName, createdAt }) => (
   <StyledDiv>
     <TitleContainer>
-      <StyledH1>Project Title Here</StyledH1>
+      <StyledH1>{projectName}</StyledH1>
     </TitleContainer>
     <OrganizerContainer>
       <OrgHeader>
-        <OrgImage />
-        <Link to="/organization"> Organization Name </Link>
+        <Link to="/organization"> {organizationName} </Link>
       </OrgHeader>
-      <span>Posted 11/02/2017</span>
+      <span>Posted {createdAt}</span>
       <VolunteerButton>Volunteer</VolunteerButton>
     </OrganizerContainer>
   </StyledDiv>
 );
+
+ProjectBanner.propTypes = {
+  organizationName: string.isRequired,
+  projectName: string.isRequired,
+  createdAt: string.isRequired,
+};
 
 export default ProjectBanner;
