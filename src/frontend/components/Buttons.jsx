@@ -126,11 +126,11 @@ const StyledVolunteer = styled.button`
   transition: all 200ms;
   border-radius: 0px;
   box-shadow: 3px 3px ${props => props.theme.tertiary};
-  background: ${props => props.theme.secondary};
+  background: ${props => props.theme.secondaryLighter}; 
   font-family: ${props => props.theme.fontThree};
-
+  
   :hover {
-    background: ${props => props.theme.secondaryLighter}; 
+    background: ${props => props.theme.secondary};
   }
 `;
 
@@ -161,5 +161,4 @@ export const Submit = ({ children, onClick, width }) => (
 export const VolunteerButton = ({ children }) => (
   <StyledVolunteer> {children} </StyledVolunteer>
 );
-
 
