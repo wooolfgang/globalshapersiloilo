@@ -13,7 +13,7 @@ const StyledDiv = styled.div`
 
   @media screen and (min-width: 700px) {
     grid-template-areas: 'titleContainer organizerContainer';
-    grid-auto-columns: 3fr 2fr;
+    grid-auto-columns: 2fr 2fr;
     height: 250px;
   }
 
