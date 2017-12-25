@@ -32,6 +32,11 @@ const StyledH3 = styled.h3`
 const MapContainer = styled.div`
   overflow: hidden;
   height: 330px;
+
+  @media screen and (max-width: 420px) {
+    background: blue;
+    width: 100vw;
+  }
 `;
 
 const ProjectRequirements = () => (

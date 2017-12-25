@@ -6,6 +6,7 @@ const DetailsContainer = styled.div`
   border-radius: 10px;
   overflow: auto;
   border-left: 2px solid ${props => props.theme.secondary};
+  box-sizing: border-box;
 
   @media screen and (max-width: 700px) {
     margin-top: 30px;
