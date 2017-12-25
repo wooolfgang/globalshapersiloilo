@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { string } from 'prop-types';
 
 const DetailsContainer = styled.div`
-  padding: 30px;
+  padding: 25px;
   border-radius: 10px;
   overflow: auto;
   border-left: 2px solid ${props => props.theme.secondary};
+  box-sizing: border-box;
 
   @media screen and (max-width: 700px) {
     margin-top: 30px;
@@ -27,7 +29,7 @@ const StyledH1 = styled.h1`
 `;
 
 const Description = styled.p`
-  margin-top: 30px;
+  margin-top: 25px;
   margin-left: 15px;
   font-size: .95em;
   line-height: 1.5;
@@ -39,5 +41,10 @@ const ProjectDetail = ({ header, content }) => (
     <Description> {content} </Description>
   </DetailsContainer>
 );
+
+ProjectDetail.propTypes = {
+  header: string.isRequired,
+  content: string.isRequired,
+};
 
 export default ProjectDetail;

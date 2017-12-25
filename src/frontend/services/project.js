@@ -16,7 +16,7 @@ function projectService() {
       },
       after: {
         find: [transform(Project)],
-        get: [],
+        get: [transform(Project)],
         create: [],
         patch: [],
         remove: [],
