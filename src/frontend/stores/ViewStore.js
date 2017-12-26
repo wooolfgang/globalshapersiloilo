@@ -5,6 +5,7 @@ class ViewStore {
   @observable userDropdownViewed = false;
   @observable orgActiveStepIndex = 0;
   @observable orgFormSuccessModalViewed = false;
+  @observable volunteerModalViewed = false;
 
   constructor(store) {
     this.store = store;
@@ -28,6 +29,14 @@ class ViewStore {
 
   @action.bound closeOrgFormSuccessModal() {
     this.orgFormSuccessModalViewed = false;
+  }
+
+  @action.bound toggleVolunteerModal() {
+    this.volunteerModalViewed = !this.volunteerModalViewed;
+  }
+
+  @action.bound closeVolunteerModal() {
+    this.volunteerModalViewed = false;
   }
 }
 

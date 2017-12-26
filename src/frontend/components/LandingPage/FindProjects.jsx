@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Secondary } from '../Buttons';
+import Secondary from '../Buttons/Secondary';
 import GoogleMap from './GoogleMap';
 
 const StyledDiv = styled.div`

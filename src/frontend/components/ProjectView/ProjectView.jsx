@@ -21,6 +21,7 @@ class ProjectView extends React.Component {
       <div>
         <ProjectBanner
           organizationName={project.organization.name}
+          projectId={project._id}
           projectName={project.name}
           createdAt={project.createdAt}
         />

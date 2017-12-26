@@ -60,7 +60,7 @@ class Preview extends React.Component {
     return (
       <StyledDiv onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
         <ProposalContainer show={this.state.isHovered}>
-          <span> {limitWordCount(20, taskDescription)}... <Link to="">See more</Link></span>
+          <span> {limitWordCount(20, taskDescription)}... </span>
         </ProposalContainer>
         <ProjectImg src={imgUrl} alt="project" hovered={this.state.isHovered} />
       </StyledDiv>

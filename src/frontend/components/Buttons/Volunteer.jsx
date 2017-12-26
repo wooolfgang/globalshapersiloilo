@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const StyledVolunteer = styled.button`
+const StyledVolunteer = styled(Link) `
   width: 130px;
   border: none;
   outline: none;
@@ -11,6 +12,7 @@ const StyledVolunteer = styled.button`
   color: white;
   transition: all 200ms;
   border-radius: 0px;
+  text-decoration: none;
   box-shadow: 3px 3px ${props => props.theme.tertiary};
   background: ${props => props.theme.secondaryLighter}; 
   font-family: ${props => props.theme.fontThree};
@@ -20,8 +22,8 @@ const StyledVolunteer = styled.button`
   }
 `;
 
-const VolunteerButton = ({ children, onClick }) => (
-  <StyledVolunteer onClick={onClick}> {children} </StyledVolunteer>
+const VolunteerButton = ({ children, onClick, to }) => (
+  <StyledVolunteer onClick={onClick} to={to}> {children} </StyledVolunteer>
 );
 
 export default VolunteerButton;

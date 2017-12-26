@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { string } from 'prop-types';
+import { inject, observer } from 'mobx-react';
+import { string, instanceOf } from 'prop-types';
 import Link from '../Link';
-import { VolunteerButton } from '../Buttons';
+import VolunteerButton from '../Buttons/Volunteer';
+import ConfirmationModal from './ConfirmationModal';
+import ViewStore from '../../stores/ViewStore';
 
 const StyledDiv = styled.div`
   grid-area: project;
@@ -77,25 +80,32 @@ const OrgHeader = styled.div`
   }
 `;
 
-const ProjectBanner = ({ organizationName, projectName, createdAt }) => (
-  <StyledDiv>
-    <TitleContainer>
-      <StyledH1>{projectName}</StyledH1>
-    </TitleContainer>
-    <OrganizerContainer>
-      <OrgHeader>
-        <Link to="/organization"> {organizationName} </Link>
-      </OrgHeader>
-      <span>Posted {createdAt}</span>
-      <VolunteerButton>Volunteer</VolunteerButton>
-    </OrganizerContainer>
-  </StyledDiv>
-);
+const ProjectBanner = (props) => {
+  const { organizationName, projectName, createdAt, projectId } = props;
+  const { toggleVolunteerModal } = props.viewStore;
+  return (
+    <StyledDiv>
+      <TitleContainer>
+        <StyledH1>{projectName}</StyledH1>
+      </TitleContainer>
+      <OrganizerContainer>
+        <OrgHeader>
+          <Link to="/organization"> {organizationName} </Link>
+        </OrgHeader>
+        <span>Posted {createdAt}</span>
+        <VolunteerButton onClick={toggleVolunteerModal} to={`/project/${projectId}`}>Volunteer</VolunteerButton>
+      </OrganizerContainer>
+      <ConfirmationModal />
+    </StyledDiv>
+  );
+};
 
 ProjectBanner.propTypes = {
   organizationName: string.isRequired,
   projectName: string.isRequired,
   createdAt: string.isRequired,
+  projectId: string.isRequired,
+  viewStore: instanceOf(ViewStore).isRequired,
 };
 
-export default ProjectBanner;
+export default inject('viewStore')(observer(ProjectBanner));

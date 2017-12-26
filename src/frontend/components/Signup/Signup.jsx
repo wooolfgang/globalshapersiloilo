@@ -5,7 +5,8 @@ import SignupInput from './SignupInput';
 import Success from './Success';
 import Container from './Container';
 import Error from '../Form/ErrorMsg';
-import { Google, Facebook, Submit } from '../Buttons';
+import { Google, Facebook } from '../Buttons/Social';
+import Submit from '../Buttons/Submit';
 
 const SignupComponent = ({ userStore, formsStore }) => (
   <div>
