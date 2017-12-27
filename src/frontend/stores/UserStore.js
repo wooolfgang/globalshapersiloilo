@@ -1,6 +1,7 @@
 import { observable, action, runInAction, computed } from 'mobx';
 import * as errorState from '../../schema/errorStates';
 import Api from '../../models/Api';
+import User from '../../models/User';
 
 class UserStore {
   @observable currentUser;
@@ -12,6 +13,9 @@ class UserStore {
     this.client = client;
     this.setIsLoading = store.viewStore.setIsLoading;
     this.api = new Api('api/users', client);
+    this.client.service('api/users').on('updated', (res) => {
+      runInAction(() => { this.currentUser = new User(res); });
+    });
   }
 
   @action.bound setCurrentUser(user) {

@@ -93,9 +93,11 @@ const ProjectBanner = (props) => {
           <Link to="/organization"> {organizationName} </Link>
         </OrgHeader>
         <span>Posted {createdAt}</span>
-        <VolunteerButton onClick={toggleVolunteerModal} to={`/project/${projectId}`}>Volunteer</VolunteerButton>
+        <VolunteerButton onClick={toggleVolunteerModal} to={`/project/${projectId}`}>
+          Volunteer
+        </VolunteerButton>
       </OrganizerContainer>
-      <ConfirmationModal />
+      <ConfirmationModal projectId={projectId} />
     </StyledDiv>
   );
 };

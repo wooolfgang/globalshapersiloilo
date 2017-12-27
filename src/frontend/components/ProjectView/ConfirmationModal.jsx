@@ -30,12 +30,17 @@ const Button = styled.button`
   border: 1px solid ${props => props.theme.accent};
 `;
 
-const ConfirmationModal = ({ viewStore: { volunteerModalViewed, closeVolunteerModal } }) => (
-  <Modal showed={volunteerModalViewed} closeModal={closeVolunteerModal} >
+const ConfirmationModal = ({ viewStore, projectStore, projectId, userStore }) => (
+  <Modal showed={viewStore.volunteerModalViewed} closeModal={viewStore.closeVolunteerModal} >
     <Header> Are you sure to volunteer? </Header>
     <Container>
-      <Button primary> Yes </Button>
-      <Button> No </Button>
+      <Button
+        onClick={() => projectStore.addVolunteer(projectId, userStore.currentUser._id)}
+        primary
+      >
+        Yes
+      </Button>
+      <Button onClick={viewStore.closeVolunteerModal}> No </Button>
     </Container>
   </Modal>
 );
@@ -44,4 +49,4 @@ ConfirmationModal.propTypes = {
   viewStore: instanceOf(ViewStore).isRequired,
 };
 
-export default inject('viewStore')(observer(ConfirmationModal));
+export default inject('viewStore', 'projectStore', 'userStore')(observer(ConfirmationModal));

@@ -14,11 +14,14 @@ const StyledDiv = styled.div`
   overflow: auto;
 `;
 
-const AssociationList = ({ userStore: { currentUser } }) => (
-  <StyledDiv>
-    <ProjectList projects={(currentUser.projects instanceof Array) ? currentUser.projects : [currentUser.projects]} />
-  </StyledDiv>
-);
+const AssociationList = ({ userStore: { currentUser } }) => {
+  const projects = currentUser.projects ? currentUser.projects : [];
+  return (
+    <StyledDiv>
+      <ProjectList projects={(projects instanceof Array) ? projects : [currentUser.projects]} />
+    </StyledDiv>
+  );
+};
 
 AssociationList.propTypes = {
   userStore: instanceOf(UserStore).isRequired,

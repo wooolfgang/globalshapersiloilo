@@ -9,13 +9,14 @@ class ProjectStore {
 
   constructor(store, client) {
     this.store = store;
-    this.api = new Api('api/projects', client);
+    this.projectApi = new Api('api/projects', client);
+    this.volunteersApi = new Api('api/projectvolunteers', client);
     this.setIsLoading = store.viewStore.setIsLoading;
   }
 
   @action.bound async createProject(project) {
     try {
-      return this.api.create(project);
+      return this.projectApi.create(project);
     } catch (e) {
       console.log(e);
     }
@@ -25,7 +26,7 @@ class ProjectStore {
   @action.bound async fetchProjects() {
     try {
       this.setIsLoading(true);
-      const { data } = await this.api.find();
+      const { data } = await this.projectApi.find();
       runInAction(() => { this.setIsLoading(false); this.projects = data; });
     } catch (e) {
       this.setIsLoading(false);
@@ -35,17 +36,26 @@ class ProjectStore {
 
   @action.bound async fetchProject(projectId) {
     try {
-      return this.api.get(projectId);
+      return this.projectApi.get(projectId);
     } catch (e) {
       console.log(e);
     }
     return null;
   }
 
+  @action.bound async addVolunteer(projectId, volunteerId) {
+    try {
+      await this.volunteersApi.create({ projectId, userId: volunteerId });
+      this.store.viewStore.closeVolunteerModal();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   @action.bound async search() {
     try {
       runInAction(() => { this.setIsLoading(true); this.hasSearched = true; });
-      const { data } = await this.api.search(this.searchInput);
+      const { data } = await this.projectApi.search(this.searchInput);
       runInAction(() => { this.setIsLoading(false); this.searchResults = data; });
     } catch (e) {
       this.setIsLoading(false);
