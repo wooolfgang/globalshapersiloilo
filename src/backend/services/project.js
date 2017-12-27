@@ -2,7 +2,7 @@ import feathersMongo from 'feathers-mongodb';
 import { populate } from 'feathers-hooks-common';
 import auth from 'feathers-authentication';
 import transformToObjectId from '../../hooks/transformToObjectId';
-import restrictUser from '../../hooks/restrictUser';
+import restrictToOwner from '../../hooks/restrictToOwner';
 
 function project(db) {
   return async function execute() {
@@ -25,30 +25,38 @@ function project(db) {
     });
 
     const projectSchema = {
-      include: {
-        service: 'api/organizations',
-        nameAs: 'organization',
-        parentField: 'organizationId',
-        childField: '_id',
-      },
+      include: [
+        {
+          service: 'api/organizations',
+          nameAs: 'organization',
+          parentField: 'organizationId',
+          childField: '_id',
+        },
+        {
+          service: 'api/projectvolunteers',
+          nameAs: 'volunteers',
+          parentField: '_id',
+          childField: 'projectId',
+          query: {
+            $select: ['userId'],
+          },
+        },
+      ],
     };
 
-    const authorization = [
-      auth.hooks.authenticate('jwt'),
-    ];
-
-    const security = [
-      restrictUser(),
-    ];
+    const hooks = {
+      authentication: [auth.hooks.authenticate('jwt')],
+      authorization: [restrictToOwner({ userIdField: '_id', ownerField: 'ownerId' })],
+    };
 
     app.service('api/projects').hooks({
       before: {
         find: [],
         get: [],
-        create: [transformToObjectId({ propertyFields: ['organizationId'] })],
-        update: [...authorization, ...security],
-        patch: [...authorization, ...security],
-        remove: [...authorization, ...security],
+        create: [transformToObjectId({ propertyFields: ['organizationId'] }), ...hooks.authentication],
+        update: [...hooks.authentication, ...hooks.authorization],
+        patch: [...hooks.authentication, ...hooks.authorization],
+        remove: [...hooks.authentication, ...hooks.authorization],
       },
       after: {
         find: [populate({ schema: projectSchema })],
