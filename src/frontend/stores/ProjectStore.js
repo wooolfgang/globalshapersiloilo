@@ -25,12 +25,21 @@ class ProjectStore {
   @action.bound async fetchProjects() {
     try {
       this.setIsLoading(true);
-      const { data } = await this.api.fetchAll();
+      const { data } = await this.api.find();
       runInAction(() => { this.setIsLoading(false); this.projects = data; });
     } catch (e) {
       this.setIsLoading(false);
       console.log(e);
     }
+  }
+
+  @action.bound async fetchProject(projectId) {
+    try {
+      return this.api.get(projectId);
+    } catch (e) {
+      console.log(e);
+    }
+    return null;
   }
 
   @action.bound async search() {

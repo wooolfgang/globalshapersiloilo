@@ -1,4 +1,4 @@
-import restrictToOwner from '../../src/hooks/restictToOwner';
+import restrictToOwner from '../../src/hooks/restrictToOwner';
 
 describe('restrictToOwner', () => {
   it('Throws an error if not used as a before hook', () => {

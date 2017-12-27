@@ -1,8 +1,9 @@
 import React from 'react';
-import { shape, string, func } from 'prop-types';
+import { shape, string, number } from 'prop-types';
 import styled from 'styled-components';
 import Preview from './Preview';
 import BookmarkIcon from '../../BookmarkIcon';
+import VolunteerButton from '../../Buttons/Volunteer';
 
 const StyledDiv = styled.div`
   min-width: 400px;
@@ -31,27 +32,11 @@ const ProjectDetails = styled.div`
   }
 `;
 
-const VolunteerButton = styled.button`
+const VolunteerContainer = styled.div`
   position: absolute;
-  bottom: 10px;
+  bottom: 16px;
   left: 50%;
   transform: translate(-50%, 0);
-  width: 130px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 5px 22px;
-  font-size: 18.5px;
-  color: white;
-  transition: all 200ms;
-  border-radius: 0px;
-  box-shadow: 3px 3px ${props => props.theme.tertiary};
-  background: ${props => props.theme.secondary};
-  font-family: ${props => props.theme.fontThree};
-
-  :hover {
-    background: ${props => props.theme.secondaryLighter}; 
-  }
 `;
 
 const BookmarkIconContainer = styled.div`
@@ -69,9 +54,11 @@ const ProjectCard = ({ project }) => (
       <span>By: {project.organizationName} </span>
       <span>Contact Person: {project.organization.contactPerson} </span>
       <span>Contact #: {project.organization.phoneNumber} </span>
-      <span>Slots left: {project.getRemainingSlots()} </span>
+      <span>Slots left: {project.getRemainingSlots} </span>
     </ProjectDetails>
-    <VolunteerButton> Volunteer </VolunteerButton>
+    <VolunteerContainer>
+      <VolunteerButton to={`/project/${project._id}`}> Volunteer </VolunteerButton>
+    </VolunteerContainer>
     <BookmarkIconContainer>
       <BookmarkIcon />
     </BookmarkIconContainer>
@@ -87,7 +74,7 @@ ProjectCard.propTypes = {
       contactPerson: string,
       phoneNumber: string,
     }).isRequired,
-    getRemainingSlots: func.isRequired,
+    getRemainingSlots: number.isRequired,
   }).isRequired,
 };
 

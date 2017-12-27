@@ -17,7 +17,7 @@ const seed = async () => {
       occupation: 'N/A',
       affiliation: 'N/A',
       imgUrl: 'http://res.cloudinary.com/depjh17m6/image/upload/v1513424033/profile_img_x0qa8u.png',
-      projectIds: [ObjectId('54D28449847D3079184E3454')],
+      projectIds: [],
     },
     {
       _id: ObjectId('D2133E4769E046781F282A09'),

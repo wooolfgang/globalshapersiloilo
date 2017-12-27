@@ -17,12 +17,16 @@ class Api {
     return this.app.service(this.apiPath).find({ query });
   }
 
-  async fetchAll() {
-    return this.app.service(this.apiPath).find();
-  }
-
   async create(input) {
     return this.app.service(this.apiPath).create(input);
+  }
+
+  async get(query) {
+    return this.app.service(this.apiPath).get(query);
+  }
+
+  async update(id, query) {
+    return this.app.service(this.apiPath).update(id, query);
   }
 }
 

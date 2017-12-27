@@ -3,7 +3,7 @@ const validateHook = () => (hook) => {
     throw new Error('Validate hook should be used as a before hook');
   }
 
-  if (hook.params.oauth) {
+  if (!hook.params.provider) {
     return hook;
   }
 

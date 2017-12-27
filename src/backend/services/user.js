@@ -22,7 +22,7 @@ function userService(db) {
         parentField: 'projectIds',
         childField: '_id',
         query: {
-          $select: ['name'],
+          $select: ['name', 'projectChallenge'],
         },
       },
     };
@@ -47,7 +47,7 @@ function userService(db) {
           customizeProviderData(), ...validation, hooks.hashPassword({ passwordField: 'password' }),
         ],
         update: [
-          customizeProviderData(), transform(User), validate(), ...validation, ...security,
+          customizeProviderData(), ...validation, ...security,
         ],
         patch: [
           ...security,

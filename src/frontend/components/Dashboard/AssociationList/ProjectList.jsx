@@ -45,7 +45,7 @@ const ProjectList = ({ projects }) => (
     </Heading>
     <Projects>
       {
-        projects.map(project => <Link key={project._id} to="/project"> {project.name} </Link>)
+        projects.map(project => <Link key={project._id} to={`/project/${project._id}`}> {project.name} </Link>)
       }
     </Projects>
   </StyledDiv>
