@@ -7,12 +7,15 @@ const StyledVolunteer = styled(Link) `
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 5px 22px;
+  padding: 5px 0px;
   font-size: 18.5px;
   color: white;
   transition: all 200ms;
   border-radius: 0px;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 3px 3px ${props => props.theme.tertiary};
   background: ${props => props.theme.secondaryLighter}; 
   font-family: ${props => props.theme.fontThree};
