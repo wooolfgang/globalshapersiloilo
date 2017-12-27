@@ -8,7 +8,16 @@ class Project extends Model {
   }
 
   @computed get getRemainingSlots() {
-    return this.volunteersNeeded - this.volunteers.length;
+    let volunteerSize;
+    
+    if (this.volunteers instanceof Array) {
+      volunteerSize = this.volunteers.length;
+    } else if (this.volunteers) {
+      volunteerSize = 1;
+    } else {
+      volunteerSize = 0;
+    }
+    return this.volunteersNeeded - volunteerSize;
   }
 }
 

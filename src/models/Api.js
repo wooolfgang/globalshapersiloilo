@@ -24,6 +24,10 @@ class Api {
   async get(query) {
     return this.app.service(this.apiPath).get(query);
   }
+
+  async update(id, query) {
+    return this.app.service(this.apiPath).update(id, query);
+  }
 }
 
 export default Api;
