@@ -18,7 +18,7 @@ const AssociationList = ({ userStore: { currentUser } }) => {
   const projects = currentUser.projects ? currentUser.projects : [];
   return (
     <StyledDiv>
-      <ProjectList projects={(projects instanceof Array) ? projects : [currentUser.projects]} />
+      <ProjectList projects={projects} />
     </StyledDiv>
   );
 };

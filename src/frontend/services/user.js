@@ -17,7 +17,7 @@ function userService() {
       },
       after: {
         find: [],
-        get: [],
+        get: [transform(User)],
         create: [],
         patch: [],
         remove: [],

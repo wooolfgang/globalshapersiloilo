@@ -6,9 +6,8 @@ class Api {
 
   async search(input) {
     if (!input) {
-      return this.fetchAll();
+      return this.find({});
     }
-
     const query = { query: { $text: { $search: input } } };
     return this.app.service(this.apiPath).find(query);
   }

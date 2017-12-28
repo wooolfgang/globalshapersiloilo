@@ -1,7 +1,6 @@
 import { observable, action, runInAction, computed } from 'mobx';
 import * as errorState from '../../schema/errorStates';
 import Api from '../../models/Api';
-import User from '../../models/User';
 
 class UserStore {
   @observable currentUser;
@@ -13,8 +12,8 @@ class UserStore {
     this.client = client;
     this.setIsLoading = store.viewStore.setIsLoading;
     this.api = new Api('api/users', client);
-    this.client.service('api/users').on('updated', (res) => {
-      runInAction(() => { this.currentUser = new User(res); });
+    this.client.service('api/projectvolunteers').on('created', (res) => {
+      this.currentUser.addProjectId(res.projectId);
     });
   }
 
@@ -66,7 +65,7 @@ class UserStore {
         this.store.formsStore.signupErrorMsg = errorState.userFormErrorState;
         this.setIsLoading(true);
       });
-      const user = await this.api.create(this.store.formsStore.signupInput);
+      await this.api.create(this.store.formsStore.signupInput);
       runInAction(() => {
         this.store.formsStore.signupSuccess = true;
         this.store.formsStore.signupInput = undefined;

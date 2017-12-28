@@ -1,4 +1,4 @@
-import { observable, action, runInAction, computed } from 'mobx';
+import { observable, action, runInAction } from 'mobx';
 import Api from '../../models/Api';
 
 class ProjectStore {
