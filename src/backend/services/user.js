@@ -1,8 +1,8 @@
 import feathersMongo from 'feathers-mongodb';
-import { hooks } from 'feathers-authentication-local';
-import auth from 'feathers-authentication';
+import { hooks } from '@feathersjs/authentication-local';
+import auth from '@feathersjs/authentication';
 import hook from 'feathers-authentication-hooks';
-import { populate } from 'feathers-hooks-common';
+import { fastJoin } from 'feathers-hooks-common';
 import transform from '../../hooks/transform';
 import validate from '../../hooks/validate';
 import customizeProviderData from '../../hooks/customizeProviderData';
@@ -15,14 +15,13 @@ function userService(db) {
 
     app.use('api/users', feathersMongo({ Model: db.collection('users') }));
 
-    const userSchema = {
-      include: {
-        service: 'api/projects',
-        nameAs: 'projects',
-        parentField: 'projectIds',
-        childField: '_id',
-        query: {
-          $select: ['name', 'projectChallenge'],
+    const userResolvers = {
+      joins: {
+        projectIds: () => async (user) => {
+          user.projectIds = (await app.service('api/projectvolunteers').find({ query: { userId: user._id } })).map(data => data.projectId);
+        },
+        projects: $select => async (user) => {
+          user.projects = (await app.service('api/projects').find({ query: { _id: { $in: user.projectIds }, $select }, paginate: false }));
         },
       },
     };
@@ -38,16 +37,19 @@ function userService(db) {
       validate(),
     ];
 
-
     app.service('api/users').hooks({
       before: {
-        find: [],
-        get: [],
+        find: [auth.hooks.authenticate('jwt')],
+        get: [auth.hooks.authenticate('jwt')],
         create: [
-          customizeProviderData(), ...validation, hooks.hashPassword({ passwordField: 'password' }),
+          customizeProviderData(),
+          ...validation,
+          hooks.hashPassword({ passwordField: 'password' }),
         ],
         update: [
-          customizeProviderData(), ...validation, ...security,
+          customizeProviderData(),
+          ...validation,
+          ...security,
         ],
         patch: [
           ...security,
@@ -63,7 +65,11 @@ function userService(db) {
         update: [],
         patch: [],
         remove: [],
-        all: [populate({ schema: userSchema })],
+        all: [
+          fastJoin(userResolvers, { projectIds: true }),
+          fastJoin(userResolvers, { projects: [['name', 'projectChallenge']] }),
+          hooks.protect('password'),
+        ],
       },
     });
   };
