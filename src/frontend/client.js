@@ -1,15 +1,13 @@
-import feathers from 'feathers';
-import socketio from 'feathers-socketio';
+import feathers from '@feathersjs/feathers';
+import socketio from '@feathersjs/socketio-client';
 import io from 'socket.io-client';
-import hooks from 'feathers-hooks';
-import auth from 'feathers-authentication-client';
+import auth from '@feathersjs/authentication-client';
 import services from './services';
 
 const socket = io(location.origin);
 
 const client = feathers();
 
-client.configure(hooks());
 client.configure(socketio(socket));
 client.configure(auth({ storage: window.localStorage }));
 client.configure(services());

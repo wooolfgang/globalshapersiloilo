@@ -1,18 +1,18 @@
-import feathers from 'feathers';
+import feathers from '@feathersjs/feathers';
+import express from '@feathersjs/express';
 import path from 'path';
-import bodyParser from 'body-parser';
-import rest from 'feathers-rest';
-import hooks from 'feathers-hooks';
+import rest from '@feathersjs/express/rest';
+import socketio from '@feathersjs/socketio';
+import config from '@feathersjs/configuration';
 import { MongoClient } from 'mongodb';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import services from './services';
-import socketio from 'feathers-socketio';
-import config from 'feathers-configuration';
 import webpackConfig from '../../webpack.config';
+import channels from './channel';
+import services from './services';
 
-const app = feathers();
+const app = express(feathers());
 
 if (!process.env.NODE_ENV) {
   const compiler = webpack(webpackConfig);
@@ -28,12 +28,11 @@ if (process.env.NODE_ENV) {
   });
 }
 
-app.use(feathers.static(path.join(process.cwd(), 'public')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(process.cwd(), 'public')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.configure(rest());
-app.configure(hooks());
 app.configure(socketio({ wsEngine: 'uws' }));
 app.configure(config(path.join(process.cwd())));
 
@@ -41,6 +40,7 @@ const setupApp = async () => {
   const db = await MongoClient.connect(app.get('mongoURI'));
   console.log('Connected to db');
   app.configure(services(db));
+  app.configure(channels);
 
   return app;
 };

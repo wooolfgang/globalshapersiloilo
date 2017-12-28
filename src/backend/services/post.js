@@ -1,6 +1,6 @@
 import feathersMongo from 'feathers-mongodb';
 import { populate } from 'feathers-hooks-common';
-import auth from 'feathers-authentication';
+import auth from '@feathersjs/authentication';
 import restrictToOwner from '../../hooks/restrictToOwner';
 
 function postService(db) {

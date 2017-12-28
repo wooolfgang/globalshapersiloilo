@@ -1,6 +1,5 @@
 import feathersMongo from 'feathers-mongodb';
-import auth from 'feathers-authentication';
-import onVolunteer from '../../hooks/onVolunteer';
+import auth from '@feathersjs/authentication';
 import restrictToOwner from '../../hooks/restrictToOwner';
 import transformToObjectId from '../../hooks/transformToObjectId';
 
@@ -27,10 +26,10 @@ function projectVolunteer(db) {
       after: {
         find: [],
         get: [],
-        create: [onVolunteer()],
+        create: [],
         update: [],
         patch: [],
-        remove: [onVolunteer()],
+        remove: [],
         all: [],
       },
     });

@@ -1,5 +1,5 @@
 import feathersMongo from 'feathers-mongodb';
-import auth from 'feathers-authentication';
+import auth from '@feathersjs/authentication';
 import transform from '../../hooks/transform';
 import validate from '../../hooks/validate';
 import Organization from '../../models/Organization';
