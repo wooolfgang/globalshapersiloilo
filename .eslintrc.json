@@ -8,6 +8,12 @@
                     "_id"
                 ]
             }
+        ],
+        "no-param-reassign": [
+            "error",
+            {
+                "props": false
+            }
         ]
     },
     "env": {
