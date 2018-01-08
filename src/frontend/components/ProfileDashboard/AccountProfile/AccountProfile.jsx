@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { instanceOf } from 'prop-types';
 import { inject } from 'mobx-react';
-import HeartIcon from './HeartIcon';
+import HeartIcon from '../../Icons/HeartIcon';
 import UserStore from '../../../stores/UserStore';
-import AccountImage from './AccountImage';
+import ProfileImage from '../../ProfileImage';
 import EditProfileButton from './EditProfileButton';
 import AccountInfo from './AccountInfo';
 
@@ -49,9 +49,22 @@ const Bottom = styled.div`
   }
 `;
 
+const ImageContainer = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -110%);
+`;
+
 const AccountProfile = ({ userStore: { currentUser } }) => (
   <StyledDiv>
-    <AccountImage imgUrl={currentUser.imgUrl} />
+    <ImageContainer>
+      <ProfileImage
+        imgUrl={!currentUser.provider && currentUser.imgUrl}
+        width="125px"
+        height="125px"
+      />
+    </ImageContainer>
     <Upper >
       <EditProfileButton />
     </Upper>

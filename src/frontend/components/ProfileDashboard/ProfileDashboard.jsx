@@ -36,7 +36,7 @@ const RightSection = styled.div`
   justify-content: flex-start;
 `;
 
-const Dashboard = () => (
+const ProfileDashboard = () => (
   <StyledDiv >
     <LeftSection>
       <AccountProfile />
@@ -51,4 +51,4 @@ const Dashboard = () => (
   </StyledDiv>
 );
 
-export default Dashboard;
+export default ProfileDashboard;

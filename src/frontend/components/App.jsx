@@ -14,9 +14,10 @@ import ProjectOrganize from './ProjectOrganize/ProjectOrganize';
 import Admin from './Admin/Admin';
 import ViewStore from '../stores/ViewStore';
 import UserStore from '../stores/UserStore';
-import Dashboard from './Dashboard/Dashboard';
+import ProfileDashboard from './ProfileDashboard/ProfileDashboard';
 import ProfileView from './ProfileView/ProfileView';
 import ProjectView from './ProjectView/ProjectView';
+import ProjectChat from './ProjectChat/ProjectChat';
 
 const Grid = styled.div`
   height: 100vh;
@@ -58,7 +59,7 @@ class App extends React.Component {
           </ProgressBarContainer>
           <Header />
           <Section>
-            <Route exact path="/" component={userStore.authenticated ? Dashboard : LandingPage} />
+            <Route exact path="/" component={userStore.authenticated ? ProfileDashboard : LandingPage} />
             <Route path="/signin" component={Signin} />
             <Route path="/signup" component={Signup} />
             <Route path="/projects" component={ProjectsPage} />
@@ -66,6 +67,7 @@ class App extends React.Component {
             <Route path="/admin" component={Admin} />
             <Route path="/profile/:id?" component={ProfileView} />
             <Route path="/project/:id?" component={ProjectView} />
+            <Route path="/chat/:id?" component={ProjectChat} />
           </Section>
           <Footer authenticated={userStore.authenticated} isAuthenticating={userStore.isAuthenticating} />
         </Grid>
