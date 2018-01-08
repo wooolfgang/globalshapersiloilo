@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { string, shape } from 'prop-types';
 import SeeMoreIcon from './SeeMoreIcon';
+import ProfileImage from '../../ProfileImage';
 
 const StyledDiv = styled.div`
   width: 100%;
@@ -24,15 +25,8 @@ const User = styled.div`
   position: relative;
 `;
 
-const UserImage = styled.div`
-  width: 40px;
-  height: 40px;
-  overflow: hidden;
-  border: 1px solid lightgray;
-  border-radius: 50%;
-  margin-right: 10px;
-  background: url(${props => props.imgUrl && props.imgUrl});
-  background-size: cover;
+const Fullname = styled.span`
+  margin-left: 10px;
 `;
 
 const SeeMoreContainer = styled.div`
@@ -50,8 +44,8 @@ const Text = styled.div`
 const Post = ({ post, user }) => (
   <StyledDiv>
     <User>
-      <UserImage imgUrl={user.imgUrl} />
-      {user.fullName}
+      <ProfileImage imgUrl={user.imgUrl} width="40px" height="40px" />
+      <Fullname> {user.fullName} </Fullname>
       <SeeMoreContainer>  <SeeMoreIcon /> </SeeMoreContainer>
     </User>
     <Text>
