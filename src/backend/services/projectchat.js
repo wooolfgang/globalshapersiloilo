@@ -1,5 +1,5 @@
 import feathersMongo from 'feathers-mongodb';
-import { fastJoin, deleteByDot } from 'feathers-hooks-common';
+import { fastJoin, deleteByDot, setNow } from 'feathers-hooks-common';
 import auth from '@feathersjs/authentication';
 import transformToObjectId from '../../hooks/transformToObjectId';
 import restrictToOwner from '../../hooks/restrictToOwner';
@@ -32,6 +32,7 @@ function projectChatService(db) {
         find: [],
         get: [],
         create: [
+          setNow('createdAt'),
           transformToObjectId({ propertyFields: ['sentById'] }),
           fastJoin(chatResolvers, { sentBy: [['fullName', 'imgUrl']] }),
           deleteExcessProps(),
