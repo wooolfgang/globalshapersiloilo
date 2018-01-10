@@ -41,6 +41,16 @@ function project(db) {
             $select: ['userId'],
           },
         },
+        {
+          service: 'api/users',
+          nameAs: 'organizers',
+          parentField: 'ownerId',
+          childField: '_id',
+          asArray: true,
+          query: {
+            $select: ['fullName'],
+          },
+        },
       ],
     };
 

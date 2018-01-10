@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { inject, observer } from 'mobx-react';
+import { instanceOf } from 'prop-types';
 import SendIcon from '../Icons/SendIcon';
+import ChatStore from '../../stores/ChatStore';
 
 const ChatInputContainer = styled.div`
   grid-area: 'chatInput';
@@ -50,11 +53,20 @@ const SendButton = styled.button`
   }
 `;
 
-const MessageInput = () => (
+const MessageInput = ({ chatStore: { handleMessageInputChange, messageInput, sendMessage } }) => (
   <ChatInputContainer>
-    <ChatInput placeholder="Press &quot;Enter&quot; to send" />
-    <SendButton> Send <SendIcon /> </SendButton>
+    <ChatInput
+      placeholder="Press &quot;Enter&quot; to send"
+      onChange={e => handleMessageInputChange(e.target.value)}
+      onKeyPress={e => e.key === 'Enter' && sendMessage()}
+      value={messageInput}
+    />
+    <SendButton onClick={sendMessage}> Send <SendIcon /> </SendButton>
   </ChatInputContainer>
 );
 
-export default MessageInput;
+MessageInput.propTypes = {
+  chatStore: instanceOf(ChatStore).isRequired,
+};
+
+export default inject('chatStore')(observer(MessageInput));

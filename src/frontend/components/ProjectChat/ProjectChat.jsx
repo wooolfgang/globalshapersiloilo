@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { inject, observer } from 'mobx-react';
+import { instanceOf } from 'prop-types';
 import ChatSidebar from './ChatSidebar';
-import ChatMessages from './ChatMessages';
+import Messages from './Messages';
 import MessageInput from './MessageInput';
+import ChatStore from '../../stores/ChatStore';
 
 const StyledDiv = styled.div`
   display: grid;
@@ -29,14 +32,31 @@ const MainContainer = styled.div`
   background: white;
 `;
 
-const ProjectChat = () => (
-  <StyledDiv>
-    <ChatSidebar />
-    <MainContainer>
-      <ChatMessages />
-      <MessageInput />
-    </MainContainer>
-  </StyledDiv>
-);
+class ProjectChat extends React.Component {
+  static propTypes = {
+    chatStore: instanceOf(ChatStore).isRequired,
+  }
 
-export default ProjectChat;
+  async componentDidMount() {
+    const { match, chatStore } = this.props;
+    const projectId = match.params.id;
+    const messages = await chatStore.fetchMessages(projectId);
+    chatStore.setMessages(messages);
+    chatStore.setCurrentProjectId(match.params.id);
+  }
+
+  render() {
+    const { match } = this.props;
+    return (
+      <StyledDiv>
+        <ChatSidebar projectId={match.params.id} />
+        <MainContainer>
+          <Messages />
+          <MessageInput />
+        </MainContainer>
+      </StyledDiv>
+    );
+  }
+}
+
+export default inject('chatStore')(observer(ProjectChat));

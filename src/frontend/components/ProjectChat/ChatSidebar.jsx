@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { inject, observer } from 'mobx-react';
 import Link from '../Link';
 import OrganizerIcon from '../Icons/OrganizerIcon';
+import ProfileImage from '../ProfileImage';
 
 const Sidebar = styled.div`
   grid-area: sidebar;
@@ -27,18 +29,8 @@ const ProjectDetails = styled.div`
   text-align: center;
 `;
 
-const OrganizerLogo = styled.div`
-  height: 150px;
-  width: 150px;
+const ImageContainer = styled.div`
   margin: 40px 0 10px 0;
-  border-radius: 50%;
-  background: gray;
-  
-  @media screen and (max-width: 700px) {
-    height: 80px;
-    width: 80px;
-    margin: 0 auto;
-  }
 `;
 
 const ProjectHeader = styled.h2`
@@ -72,24 +64,48 @@ const Header = styled.h3`
     }
 `;
 
-const ChatSideBar = () => (
-  <Sidebar>
-    <ProjectDetails>
-      <OrganizerLogo />
-      <ProjectHeader>Project Name </ProjectHeader>
-      <DetailsContainer>
-        <small>
-          A little Details about the project. Lorem ipsum dolor, sit amet
-                consectetur adipisicing elit. Incidunt, sapiente?
-        </small>
-      </DetailsContainer>
-    </ProjectDetails>
-    <OrganizerList>
-      <Header>Organizers <OrganizerIcon /> </Header>
-      <Link to="profile">Juan dela Cruz</Link>
-      <Link to="profile">Pedro Penduko</Link>
-    </OrganizerList>
-  </Sidebar>
-);
+class ChatSideBar extends React.Component {
+  state = {
+    project: undefined,
+  }
 
-export default ChatSideBar;
+  async componentDidMount() {
+    const { projectId, projectStore } = this.props;
+    const project = await projectStore.fetchProject(projectId);
+    (() => this.setState({ project }))();
+  }
+
+  render() {
+    const project = this.state.project;
+    return (
+      <Sidebar>
+        <ProjectDetails>
+          <ImageContainer>
+            <ProfileImage imgUrl={project && project.imgUrl} width="150px" height="150px" />
+          </ImageContainer>
+          <ProjectHeader> {project && project.name} </ProjectHeader>
+          <DetailsContainer>
+            <small>
+              {
+                project && project.projectChallenge
+              }
+            </small>
+          </DetailsContainer>
+        </ProjectDetails>
+        <OrganizerList>
+          <Header>Organizers <OrganizerIcon /> </Header>
+          {
+            project && project.organizers.map(user =>
+              (
+                <Link to={`/profile/${user._id}`}> {user.fullName}
+                </Link>
+              ),
+            )
+          }
+        </OrganizerList>
+      </Sidebar>
+    );
+  }
+}
+
+export default inject('projectStore')(observer(ChatSideBar));

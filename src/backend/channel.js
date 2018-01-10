@@ -12,9 +12,10 @@ export default function (app) {
   app.on('login', (authResult, { connection }) => {
     // connection can be undefined if there is no
     // real-time connection, e.g. when logging in via REST
+
     if (connection) {
       // Obtain the logged in user from the connection
-      // const user = connection.user;
+      const { user } = connection;
 
       // The connection is no longer anonymous, remove it
       app.channel('anonymous').leave(connection);
@@ -29,6 +30,9 @@ export default function (app) {
 
       // If the user has joined e.g. chat rooms
       // if(Array.isArray(user.rooms)) user.rooms.forEach(room => app.channel(`rooms/${room.id}`).join(channel));
+      if (Array.isArray(user.projectIds)) {
+        user.projectIds.forEach(projectId => app.channel(`room/${projectId}`).join(connection));
+      }
 
       // Easily organize users by email and userid for things like messaging
       // app.channel(`emails/${user.email}`).join(channel);
@@ -43,6 +47,8 @@ export default function (app) {
     // e.g. to publish all service events to all authenticated users use
     app.channel('authenticated'),
   );
+
+  app.service('api/projectchat').publish((data, context) => app.channel(`room/${data.projectId}`));
 
   // Here you can also add service specific event publishers
   // e..g the publish the `users` service `created` event to the `admins` channel

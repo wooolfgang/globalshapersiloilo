@@ -9,7 +9,7 @@ const ChatContainer = styled.div`
   background: rgba(255, 255, 255, 0.3);
   border-radius: 10px;
   padding: 5px;
-  margin: 10px auto;
+  margin: 3px auto;
 `;
 
 const SenderDetails = styled.div`
@@ -18,7 +18,7 @@ const SenderDetails = styled.div`
 `;
 
 const Sender = styled.p`
-  font-size: .95em;
+  font-size: .80em;
   margin-left: 8px;
   font-family: ${props => props.theme.fontTwo};
 `;
@@ -26,16 +26,19 @@ const Sender = styled.p`
 const ChatMessage = styled.div`
   margin-left: 10px;
   line-height: 22px;
-  font-size: .90em;
+  font-size: .95em;
   -webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+  background: #fafafa;
+  padding: 3px;
+  border-radius: 5px;
 `;
 
 const Message = ({ message }) => (
   <ChatContainer>
     <SenderDetails>
-      <ProfileImage width="40px" height="40px" imgUrl={message.user.imgUrl} />
-      <Sender>{message.user.fullName}</Sender>
+      <ProfileImage width="30px" height="30px" imgUrl={message.sentBy.imgUrl} />
+      <Sender>{message.sentBy.fullName}</Sender>
     </SenderDetails>
     <ChatMessage>{message.value}</ChatMessage>
   </ChatContainer>
