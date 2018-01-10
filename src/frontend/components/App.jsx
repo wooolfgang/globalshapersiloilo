@@ -4,6 +4,7 @@ import { instanceOf } from 'prop-types';
 import { ProgressBar } from 'reprogressbars';
 import { observer, inject } from 'mobx-react';
 import { HashRouter as Router, Route } from 'react-router-dom';
+import DevTools from 'mobx-react-devtools';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import LandingPage from './LandingPage/LandingPage';
@@ -70,6 +71,7 @@ class App extends React.Component {
             <Route path="/chat/:id?" component={ProjectChat} />
           </Section>
           <Footer authenticated={userStore.authenticated} isAuthenticating={userStore.isAuthenticating} />
+          <DevTools />
         </Grid>
       </Router>
     );
