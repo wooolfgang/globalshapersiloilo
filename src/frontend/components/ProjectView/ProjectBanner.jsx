@@ -6,6 +6,8 @@ import Link from '../Link';
 import VolunteerButton from '../Buttons/Volunteer';
 import ConfirmationModal from './ConfirmationModal';
 import ViewStore from '../../stores/ViewStore';
+import ChatLink from '../ChatLink';
+import UserStore from '../../stores/UserStore';
 
 const StyledDiv = styled.div`
   grid-area: project;
@@ -83,6 +85,7 @@ const OrgHeader = styled.div`
 const ProjectBanner = (props) => {
   const { organizationName, projectName, createdAt, projectId } = props;
   const { toggleVolunteerModal } = props.viewStore;
+  const { currentUser, isAuthenticating } = props.userStore;
   return (
     <StyledDiv>
       <TitleContainer>
@@ -93,9 +96,18 @@ const ProjectBanner = (props) => {
           <Link to="/organization"> {organizationName} </Link>
         </OrgHeader>
         <span>Posted {createdAt}</span>
-        <VolunteerButton onClick={toggleVolunteerModal} to={`/project/${projectId}`}>
-          Volunteer
-        </VolunteerButton>
+        {
+          !isAuthenticating &&
+          <VolunteerButton
+            onClick={toggleVolunteerModal}
+            to={`/project/${projectId}`}
+            volunteered={currentUser && currentUser.projectIds.includes(projectId)}
+          />
+        }
+        {
+          currentUser && currentUser.projectIds.includes(projectId) &&
+          <ChatLink projectId={projectId} margin="8px 0 0 0" />
+        }
       </OrganizerContainer>
       <ConfirmationModal projectId={projectId} />
     </StyledDiv>
@@ -108,6 +120,7 @@ ProjectBanner.propTypes = {
   createdAt: string.isRequired,
   projectId: string.isRequired,
   viewStore: instanceOf(ViewStore).isRequired,
+  userStore: instanceOf(UserStore).isRequired,
 };
 
-export default inject('viewStore')(observer(ProjectBanner));
+export default inject('viewStore', 'userStore')(observer(ProjectBanner));

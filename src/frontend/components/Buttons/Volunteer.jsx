@@ -17,16 +17,24 @@ const StyledVolunteer = styled(Link) `
   align-items: center;
   justify-content: center;
   box-shadow: 3px 3px ${props => props.theme.tertiary};
-  background: ${props => props.theme.secondaryLighter}; 
-  font-family: ${props => props.theme.fontThree};
-  
+  background: ${props => (props.volunteered ? 'none' : props.theme.secondaryLighter)};
+  font-family: ${props => (props.volunteered ? props.theme.fontTwo : props.theme.fontThree)};
+  color: ${props => (props.volunteered ? props.theme.tertiary : 'white')};
+  border: ${props => props.volunteered && `1px solid ${props.theme.tertiary}`};
+    
   :hover {
-    background: ${props => props.theme.secondary};
-  }
+  background: ${props => !props.volunteered && props.theme.secondary};
+}
 `;
 
-const VolunteerButton = ({ children, onClick, to }) => (
-  <StyledVolunteer onClick={onClick} to={to}> {children} </StyledVolunteer>
+const VolunteerButton = ({ children, onClick, to, volunteered }) => (
+  <StyledVolunteer
+    onClick={onClick}
+    to={to}
+    volunteered={volunteered}
+  >
+    {volunteered ? 'Volunteered' : 'Volunteer'}
+  </StyledVolunteer>
 );
 
 export default VolunteerButton;

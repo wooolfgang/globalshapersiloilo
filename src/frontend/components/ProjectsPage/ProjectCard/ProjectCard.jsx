@@ -3,9 +3,9 @@ import { shape, string, number, instanceOf } from 'prop-types';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import Preview from './Preview';
-import BookmarkIcon from '../../Icons/BookmarkIcon';
 import VolunteerButton from '../../Buttons/Volunteer';
 import UserStore from '../../../stores/UserStore';
+import ChatLink from '../../ChatLink';
 
 const StyledDiv = styled.div`
   min-width: 400px;
@@ -33,17 +33,6 @@ const ProjectDetails = styled.div`
     margin-bottom: 10px;
     font-family: ${props => props.theme.fontOne};
   }
-
-  span {
-    font-size: .875em;
-    margin: 1px;
-  }
-
-  #volunteer-span {
-    background: lightgray;
-    width: 100px;
-    color: ${props => props.theme.tertiary};
-  }
 `;
 
 const VolunteerContainer = styled.div`
@@ -53,14 +42,7 @@ const VolunteerContainer = styled.div`
   transform: translate(-50%, 0);
 `;
 
-const BookmarkIconContainer = styled.div`
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  cursor: pointer;
-`;
-
-const ProjectCard = ({ project, userStore: { currentUser } }) => (
+const ProjectCard = ({ project, userStore: { currentUser, isAuthenticating } }) => (
   <StyledDiv>
     <Preview imgUrl={project.imgUrl} taskDescription={project.taskDescription} />
     <ProjectDetails>
@@ -69,18 +51,20 @@ const ProjectCard = ({ project, userStore: { currentUser } }) => (
       <span>Contact Person: {project.organization.contactPerson} </span>
       <span>Contact #: {project.organization.phoneNumber} </span>
       <span>Slots left: {project.getRemainingSlots} </span>
-      {currentUser && currentUser.projectIds.includes(project._id) &&
-        <span id="volunteer-span"> Volunteered &#10003;</span>
+      {
+        (currentUser && currentUser.projectIds.includes(project._id)) &&
+        <ChatLink projectId={project._id} />
       }
     </ProjectDetails>
     <VolunteerContainer>
-      <VolunteerButton to={`/project/${project._id}`}>
-        <span> Volunteer </span>
-      </VolunteerButton>
+      {
+        !isAuthenticating &&
+        <VolunteerButton
+          to={`/project/${project._id}`}
+          volunteered={currentUser && currentUser.projectIds.includes(project._id)}
+        />
+      }
     </VolunteerContainer>
-    <BookmarkIconContainer>
-      <BookmarkIcon />
-    </BookmarkIconContainer>
   </StyledDiv >
 );
 

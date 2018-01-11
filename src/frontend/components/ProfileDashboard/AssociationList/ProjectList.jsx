@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { arrayOf, object } from 'prop-types';
-import Link from '../../Link';
-import ListIcon from './ListIcon';
-
-const StyledDiv = styled.div`
-`;
+import ListIcon from '../../Icons/ListIcon';
+import Project from './UserProject';
 
 const Heading = styled.div`
   width: 50%:
@@ -30,25 +27,20 @@ const Heading = styled.div`
 const Projects = styled.div`
   padding: 8px;
   font-size: .85em;
-
-  a {
-    margin: 3px !important;
-    margin-left: 20px !important;
-  }
 `;
 
 const ProjectList = ({ projects }) => (
-  <StyledDiv >
+  <div >
     <Heading>
       <ListIcon />
       <span> {projects.length > 1 ? 'Projects' : 'Project'} </span>
     </Heading>
     <Projects>
       {
-        projects.map(project => <Link key={project._id} to={`/project/${project._id}`}> {project.name} </Link>)
+        projects.map(project => <Project project={project} key={project._id} />)
       }
     </Projects>
-  </StyledDiv>
+  </div>
 );
 
 ProjectList.propTypes = {
