@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { observer } from 'mobx-react';
+import { string, func } from 'prop-types';
 import Input from './Input';
 import Label from './Label';
 import Header from './Header';
+import ProfileImage from '../../ProfileImage';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -11,16 +14,12 @@ const StyledDiv = styled.div`
   margin-bottom: 30px;
 `;
 
-const PictureContainer = styled.div`
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: gray;
-  background-size: cover;
-  margin: 10px auto;
+const Container = styled.div`
+  margin: auto;
+  margin-bottom: 10px;
 `;
 
-const ChangeProfilePicture = styled.button`
+const Upload = styled.button`
   font-size: 0.9em;
   cursor: pointer;
   display: block;
@@ -28,18 +27,37 @@ const ChangeProfilePicture = styled.button`
   margin: auto;
 `;
 
-const PersonalInfo = () => (
-  <StyledDiv>
-    <Header> Personal </Header>
-    <PictureContainer />
-    <ChangeProfilePicture>Upload</ChangeProfilePicture>
-    <Label>Email</Label>
-    <Input placeholder="juan_dela_cruz@gmail.com" />
-    <Label>
-      Phone Number: <small>(+63)</small>
-    </Label>
-    <Input type="tel" placeholder="9876543210" />
-  </StyledDiv>
-);
+class PersonalInfo extends React.Component {
+  static propTypes = {
+    email: string.isRequired,
+    phoneNumber: string.isRequired,
+    imgUrl: string.isRequired,
+    onChange: func.isRequired,
+  }
 
-export default PersonalInfo;
+  openFileSubmit = () => {
+    this.node.click();
+  }
+
+  render() {
+    const { email, phoneNumber, imgUrl, onChange } = this.props;
+    return (
+      <StyledDiv>
+        <Header> Personal </Header>
+        <Container>
+          <ProfileImage width="140px" height="140px" imgUrl={imgUrl} />
+        </Container>
+        <Upload onClick={this.openFileSubmit}> Upload</Upload>
+        <input type="file" ref={(ref) => { this.node = ref; }} hidden />
+        <Label>Email</Label>
+        <Input placeholder="juan_dela_cruz@gmail.com" value={email} onChange={onChange} id="email" />
+        <Label>
+          Phone Number: <small>(+63)</small>
+        </Label>
+        <Input type="tel" placeholder="9876543210" value={phoneNumber} onChange={onChange} id="phoneNumber" />
+      </StyledDiv>
+    );
+  }
+}
+
+export default observer(PersonalInfo);

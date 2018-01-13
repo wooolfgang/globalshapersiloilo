@@ -4,6 +4,7 @@ import { node } from 'prop-types';
 
 const StyledHeader = styled.h2`
   font-weight: 550;
+  margin: 10px;
   color: ${props => props.theme.secondary};
 `;
 

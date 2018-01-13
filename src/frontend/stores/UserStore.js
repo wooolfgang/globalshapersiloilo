@@ -114,6 +114,15 @@ class UserStore {
     return null;
   }
 
+  @action.bound async patchUserData(newData) {
+    return this.api.patch(this.currentUser._id, newData);
+  }
+
+
+  @action.bound patchCurrentUser(newData) {
+    this.currentUser = Object.assign(this.currentUser, newData);
+  }
+
   @computed get authenticated() {
     return this.currentUser !== undefined && !this.isAuthenticating;
   }

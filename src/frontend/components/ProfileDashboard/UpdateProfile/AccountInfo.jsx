@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { observer } from 'mobx-react';
+import { string, func } from 'prop-types'
 import Input from './Input';
 import Label from './Label';
 import Header from './Header';
@@ -11,14 +13,26 @@ const StyledDiv = styled.div`
   margin-bottom: 20px;
 `;
 
-const AccountInfo = () => (
+const Info = styled.span`
+  font-size: .7em;
+  text-align: center;
+  margin-top: 2px;
+`;
+
+const AccountInfo = ({ username, onChange }) => (
   <StyledDiv>
     <Header> Account </Header>
     <Label>Username</Label>
-    <Input placeholder="juandelacruz" />
+    <Input placeholder="juandelacruz" id="username" value={username} onChange={onChange} />
     <Label>Password</Label>
-    <Input value="password" type="password" />
+    <Input type="password" placeholder="New password" />
+    <Info> Leave this blank if you don't want to change password </Info>
   </StyledDiv>
 );
 
-export default AccountInfo;
+AccountInfo.propTypes = {
+  username: string.isRequired,
+  onChange: func.isRequired,
+};
+
+export default observer(AccountInfo);

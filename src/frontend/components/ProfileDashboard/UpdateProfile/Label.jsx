@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { node } from 'prop-types';
 
 const StyledLabel = styled.p`
-  margin: 12px 0;
+  margin: 10px 0 5px 0;
   font-size: 1em;
   align-self: center;
   width: 315px;

@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { func } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -22,6 +24,11 @@ const Button = styled.button`
 
 const Update = Button.extend`
   background: ${props => props.theme.buttonPrimary};
+  transition: all 200ms;
+
+  :hover {
+    background: ${props => props.theme.buttonPrimaryDarker};
+  }
 `;
 
 const Cancel = Button.extend`
@@ -29,11 +36,15 @@ const Cancel = Button.extend`
   color: ${props => props.theme.buttonPrimary};
 `;
 
-const ButtonsContainer = () => (
+const ButtonsContainer = ({ updateProfile }) => (
   <StyledDiv>
-    <Update>Update</Update>
-    <Cancel>Cancel</Cancel>
+    <Link to="/"><Cancel>Cancel</Cancel></Link>
+    <Update onClick={updateProfile}>Update</Update>
   </StyledDiv>
 );
+
+ButtonsContainer.propTypes = {
+  updateProfile: func.isRequired,
+};
 
 export default ButtonsContainer;
