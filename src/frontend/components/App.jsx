@@ -19,6 +19,7 @@ import ProfileDashboard from './ProfileDashboard/ProfileDashboard';
 import ProfileView from './ProfileView/ProfileView';
 import ProjectView from './ProjectView/ProjectView';
 import ProjectChat from './ProjectChat/ProjectChat';
+import UpdateProfile from './ProfileDashboard/UpdateProfile/UpdateProfile';
 
 const Grid = styled.div`
   height: 100vh;
@@ -61,6 +62,7 @@ class App extends React.Component {
           <Header />
           <Section>
             <Route exact path="/" component={userStore.authenticated ? ProfileDashboard : LandingPage} />
+            {userStore.authenticated && <Route path="/profile/update" component={UpdateProfile} />}
             <Route path="/signin" component={Signin} />
             <Route path="/signup" component={Signup} />
             <Route path="/projects" component={ProjectsPage} />

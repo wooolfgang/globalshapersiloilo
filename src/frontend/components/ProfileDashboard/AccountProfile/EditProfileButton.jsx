@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from '../../Link';
 
-const StyledDiv = styled.button`
+const StyledLink = styled(Link) `
   background: none;
+  width: inherit;
+  font-size: .70em;
+  margin: 0;
   border: none;
   outline: none;
   cursor: pointer;
@@ -14,12 +18,16 @@ const StyledDiv = styled.button`
   border: 1px solid ${props => props.theme.tertiary};
   color: ${props => props.theme.tertiary};
   font: ${props => props.theme.fontOne};
+
+  :hover {
+    text-decoration: none;  
+  }
 `;
 
 const EditProfileButton = () => (
-  <StyledDiv >
+  <StyledLink to="/profile/update">
     Edit Profile
-  </StyledDiv>
+  </StyledLink>
 );
 
 export default EditProfileButton;
