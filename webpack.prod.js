@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
   entry: [
@@ -15,21 +16,10 @@ const config = {
 
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        screw_ie8: true,
-        conditionals: true,
-        unused: true,
-        comparisons: true,
-        sequences: true,
-        dead_code: true,
-        evaluate: true,
-        if_return: true,
-        join_vars: true,
-      },
-      output: {
-        comments: false,
+    new UglifyJSPlugin({
+      sourceMap: true,
+      uglifyOptions: {
+        compress: true,
       },
     }),
     new webpack.DefinePlugin({
@@ -54,7 +44,7 @@ const config = {
         loader: 'babel-loader',
       }],
       exclude:
-      /node_modules/,
+        /node_modules/,
     }, {
       test: /\.(png|jpg|gif|svg)$/,
       use: [

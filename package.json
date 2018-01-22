@@ -10,7 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "pack": "webpack",
-    "build": "NODE_ENV=production webpack -p --config webpack.prod.js",
+    "build": "rm -rf node_modules/webpack/node_modules/uglifyjs-webpack-plugin && NODE_ENV=production webpack -p --config webpack.prod.js",
     "babel": "BABEL_ENV=production babel src -d dist",
     "heroku-postbuild": "npm install --only=dev && npm run babel && npm run build -p",
     "start": "node dist/backend/index.js"
@@ -72,6 +72,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.2.1",
     "react-hot-loader": "^3.0.0-beta.7",
+    "uglifyjs-webpack-plugin": "^1.1.6",
     "webpack": "^3.5.5",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-middleware": "^1.12.0",
