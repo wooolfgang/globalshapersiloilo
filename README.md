@@ -1,10 +1,13 @@
 # Global Shapers Iloilo
 
+## About The Project
 A platform for members to collaborate and join projects that better the community. 
+
+Live Demo: https://shapeiloilo.herokuapp.com
 
 ![Alt Text](https://media.giphy.com/media/xT1Ra1Msf8VgZxbvos/giphy.gif)
 
-https://shapeiloilo.herokuapp.com
+
 
 ## Getting Started
     npm install
