@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { func, number, node, arrayOf, string } from 'prop-types';
 import HeaderContainer from './HeaderContainer';
 import StepButtons from './StepButtons';
 
@@ -9,11 +10,26 @@ const StyledDiv = styled.div`
   padding: 15px;
   overflow: hidden;
   box-shadow: ${props => props.theme.cardTwo};
-  width: ${props => (props.width ? props.width : '500px')};
-  height: ${props => (props.height ? props.height : '500px')};
+  width: ${props => (props.width && props.width)};
+  height: ${props => (props.height && props.height)};
 `;
 
 class Stepper extends React.Component {
+  static propTypes = {
+    handleNextStep: func.isRequired,
+    handlePrevStep: func.isRequired,
+    activeIndex: number.isRequired,
+    children: node.isRequired,
+    headers: arrayOf(string).isRequired,
+    width: string,
+    height: string,
+  }
+
+  static defaultProps = {
+    width: '500px',
+    height: '500px',
+  }
+
   handleNextStep = () => {
     const { handleNextStep } = this.props;
     handleNextStep();

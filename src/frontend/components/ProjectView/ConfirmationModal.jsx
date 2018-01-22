@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
-import { instanceOf } from 'prop-types';
+import { instanceOf, string } from 'prop-types';
 import Modal from '../Modal';
 import ViewStore from '../../stores/ViewStore';
+import ProjectStore from '../../stores/ProjectStore';
+import UserStore from '../../stores/UserStore';
 
 const Header = styled.h3`
   font-weight: normal;
@@ -47,6 +49,9 @@ const ConfirmationModal = ({ viewStore, projectStore, projectId, userStore }) =>
 
 ConfirmationModal.propTypes = {
   viewStore: instanceOf(ViewStore).isRequired,
+  projectStore: instanceOf(ProjectStore).isRequired,
+  userStore: instanceOf(UserStore).isRequired,
+  projectId: string.isRequired,
 };
 
 export default inject('viewStore', 'projectStore', 'userStore')(observer(ConfirmationModal));

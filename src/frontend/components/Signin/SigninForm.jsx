@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
-import { instanceOf } from 'prop-types';
+import { instanceOf, string } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Google, Facebook } from '../Buttons/Social';
 import Submit from '../Buttons/Submit';
@@ -17,13 +17,12 @@ const StyledLink = styled(Link) `
 const StyledDiv = styled.div`
   display: flex;
   text-align: center;
-  background: white;
   background: #FAFAFA;
   grid-area: form-container;
 
   @media screen and (min-width: 769px) {
     height: 400px;
-    margin: 50px;
+    margin: ${props => (props.margin && props.margin)};
     padding: 30px;
   };
 
@@ -60,8 +59,8 @@ const SubmitContainer = styled.div`
   grid-area: btn-container;
 `;
 
-const SigninForm = ({ formsStore, userStore }) => (
-  <StyledDiv>
+const SigninForm = ({ formsStore, userStore, margin }) => (
+  <StyledDiv margin={margin}>
     <form action="POST">
       <SocialLogin>
         <Google onPath="/signin" href="auth/google"> Signin with Google </Google>
@@ -86,6 +85,11 @@ const SigninForm = ({ formsStore, userStore }) => (
 SigninForm.propTypes = {
   formsStore: instanceOf(FormsStore).isRequired,
   userStore: instanceOf(UserStore).isRequired,
+  margin: string,
 };
 
-export default inject('formsStore', 'userStore')(observer(SigninForm));
+SigninForm.defaultProps = {
+  margin: '0 0 0 0',
+};
+
+export default inject('formsStore', 'userStore', 'viewStore')(observer(SigninForm));

@@ -49,7 +49,7 @@ class ProfileView extends React.Component {
           <Info user={user} />
         </MainContainer>
         <SecondaryContainer>
-          <Projects projects={(user.projects instanceof Array) ? user.projects : [user.projects]} />
+          <Projects projects={user.projects} />
         </SecondaryContainer>
       </div>
     );

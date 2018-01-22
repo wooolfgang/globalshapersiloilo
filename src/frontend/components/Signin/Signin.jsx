@@ -9,6 +9,7 @@ import UserStore from '../../stores/UserStore';
 
 const Container = styled.div`
   width: 100%;
+  height: 100%;
   display: grid;
   background: #3a7bd5; 
   background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);
@@ -33,7 +34,7 @@ const SigninComponent = ({ userStore }) => (
       !userStore.authenticated ?
         <Container>
           <Slogan />
-          <SigninForm />
+          <SigninForm margin="50px" />
         </Container> : <Redirect to="/" />
     }
   </div>

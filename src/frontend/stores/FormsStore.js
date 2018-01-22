@@ -29,7 +29,7 @@ class FormStore {
   }
 
   @action.bound handleUserSignupInput(e) {
-    this.signupErrorMsg = ''
+    this.signupErrorMsg = '';
     this.signupInput[e.target.id] = e.target.value;
   }
 
@@ -49,7 +49,7 @@ class FormStore {
   }
 
   @action.bound formValidate(formInputs, schema, hasErrorField, errorMsgField) {
-    this[hasErrorField] = Joi.validate(formInputs, schema).error === null ? false : true;
+    this[hasErrorField] = Joi.validate(formInputs, schema).error !== null;
 
     if (this[hasErrorField]) {
       const e = Joi.validate(formInputs, schema).error;

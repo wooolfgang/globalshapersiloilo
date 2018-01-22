@@ -20,8 +20,8 @@ const ModalInner = styled.div`
   margin: auto;
   background: white;
   border-radius: 3px;
-  padding: 5px;
   transition: all 200ms;
+  padding: 0px;  
   width: ${props => (props.width && props.width)};
   height: ${props => (props.height && props.height)};
   opacity: ${props => (props.showed ? 1 : 0)};
@@ -38,6 +38,7 @@ class Modal extends React.Component {
     closeModal: func,
     width: string,
     height: string,
+    padding: string,
   };
 
   static defaultProps = {
@@ -45,6 +46,7 @@ class Modal extends React.Component {
     children: undefined,
     width: '300px',
     height: '100px',
+    padding: '5px',
   }
 
   componentDidMount() {
@@ -62,7 +64,7 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { children, showed, width, height } = this.props;
+    const { children, showed, width, height, padding } = this.props;
     return (
       <ModalOuter
         showed={showed}
@@ -73,6 +75,7 @@ class Modal extends React.Component {
           innerRef={(modalNode) => { this.innerModal = modalNode; }}
           width={width}
           height={height}
+          padding={padding}
         >
           {children}
         </ModalInner>

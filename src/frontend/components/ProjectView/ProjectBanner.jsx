@@ -8,6 +8,7 @@ import ConfirmationModal from './ConfirmationModal';
 import ViewStore from '../../stores/ViewStore';
 import ChatLink from '../ChatLink';
 import UserStore from '../../stores/UserStore';
+import SigninModal from './SigninModal';
 
 const StyledDiv = styled.div`
   grid-area: project;
@@ -84,7 +85,7 @@ const OrgHeader = styled.div`
 
 const ProjectBanner = (props) => {
   const { organizationName, projectName, createdAt, projectId } = props;
-  const { toggleVolunteerModal } = props.viewStore;
+  const { toggleVolunteerModal, toggleSigninModal } = props.viewStore;
   const { currentUser, isAuthenticating } = props.userStore;
   return (
     <StyledDiv>
@@ -99,7 +100,7 @@ const ProjectBanner = (props) => {
         {
           !isAuthenticating &&
           <VolunteerButton
-            onClick={toggleVolunteerModal}
+            onClick={(currentUser && !currentUser.projectIds.includes(projectId)) ? toggleVolunteerModal : !currentUser && toggleSigninModal}
             to={`/project/${projectId}`}
             volunteered={currentUser && currentUser.projectIds.includes(projectId)}
           />
@@ -110,6 +111,7 @@ const ProjectBanner = (props) => {
         }
       </OrganizerContainer>
       <ConfirmationModal projectId={projectId} />
+      <SigninModal />
     </StyledDiv>
   );
 };

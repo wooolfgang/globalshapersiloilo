@@ -7,3 +7,5 @@ export const twitter = 'https://res.cloudinary.com/depjh17m6/image/upload/v15101
 export const successIcon = 'https://res.cloudinary.com/depjh17m6/image/upload/v1510193455/Shapers%20Iloilo/success_yrkyph.png';
 export const facebookApp = 'https://res.cloudinary.com/depjh17m6/image/upload/v1510193452/Shapers%20Iloilo/facebook-app-logo_kz3uaq.png';
 export const googleApp = 'https://res.cloudinary.com/depjh17m6/image/upload/v1510193452/Shapers%20Iloilo/google-app-logo_ybwjul.png';
+export const crowd = 'http://res.cloudinary.com/depjh17m6/image/upload/v1516618058/Shapers%20Iloilo/23555081_1770557213014651_656912294_o_copy_copy.png';
+

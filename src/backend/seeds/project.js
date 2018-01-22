@@ -15,6 +15,7 @@ const seed = async () => {
       volunteersNeeded: 20,
       volunteerHoursNeeded: 50,
       imgUrl: 'https://images.unsplash.com/photo-1512300336117-ff710065ae51?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=ce966b76fb7d94345dc6d27d8839881e',
+      ownerId: ObjectId('429BDC3BAFF43767141EF562'),
     },
     {
       organizationId: ObjectId('54D28449847D3079184E3455'),
@@ -36,7 +37,7 @@ const seed = async () => {
       volunteersNeeded: 20,
       volunteerHoursNeeded: 50,
       imgUrl: 'https://images.unsplash.com/photo-1512764681944-6d20bb8d197e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=5d94852facd90768b1f214cb48c1c710',
-      ownerId: ObjectId('D2133E4769E046781F282A09'),
+      ownerId: ObjectId('429BDC3BAFF43767141EF562'),
     },
     {
       organizationId: ObjectId('54D28449847D3079184E3455'),
@@ -47,6 +48,7 @@ const seed = async () => {
       volunteersNeeded: 20,
       volunteerHoursNeeded: 50,
       imgUrl: 'https://images.unsplash.com/photo-1513025936308-61df238b83f6?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=845fc99dd7d44068770a7e817fdcfd9f',
+      ownerId: ObjectId('429BDC3BAFF43767141EF562'),
     },
     {
       organizationId: ObjectId('54D28449847D3079184E3455'),

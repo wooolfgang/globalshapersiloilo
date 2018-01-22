@@ -6,6 +6,7 @@ import Preview from './Preview';
 import VolunteerButton from '../../Buttons/Volunteer';
 import UserStore from '../../../stores/UserStore';
 import ChatLink from '../../ChatLink';
+import Link from '../../Link';
 
 const StyledDiv = styled.div`
   min-width: 400px;
@@ -48,7 +49,7 @@ const ProjectCard = ({ project, userStore: { currentUser, isAuthenticating } }) 
     <ProjectDetails>
       <span id="project-title">{project.name} </span>
       <span>By: {project.organizationName} </span>
-      <span>Contact Person: {project.organization.contactPerson} </span>
+      <span>Contact Person: <Link to={`/profile/${project.ownerId}`}>{project.organization.contactPerson} </Link> </span>
       <span>Contact #: {project.organization.phoneNumber} </span>
       <span>Slots left: {project.getRemainingSlots} </span>
       {

@@ -97,7 +97,7 @@ class ChatSideBar extends React.Component {
           {
             project && project.organizers.map(user =>
               (
-                <Link to={`/profile/${user._id}`}> {user.fullName}
+                <Link key={user._id} to={`/profile/${user._id}`}> {user.fullName}
                 </Link>
               ),
             )

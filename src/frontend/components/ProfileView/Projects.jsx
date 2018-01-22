@@ -14,9 +14,9 @@ const Projects = ({ projects }) => (
   <div>
     <HeaderText>Completed Projects</HeaderText>
     {
-      projects.length !== 0 ?
-        projects.map(project => <Project key={project._id} project={project} />)
-        : <Project />
+      (projects && projects.length !== 0) ?
+        projects.map(project => <Project key={project._id} project={project} />) :
+        <Project project={{ name: 'No projects', projectChallenge: "User hasn't joined any projects yet..." }} />
     }
   </div>
 );

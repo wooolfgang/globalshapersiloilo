@@ -50,6 +50,7 @@ class UserStore {
       runInAction(() => {
         this.setCurrentUser(user);
         this.setIsLoading(false);
+        this.store.viewStore.closeSigninModal();
       });
     } catch (e) {
       runInAction(() => {
@@ -65,12 +66,15 @@ class UserStore {
         this.store.formsStore.signupErrorMsg = errorState.userFormErrorState;
         this.setIsLoading(true);
       });
-      await this.api.create(this.store.formsStore.signupInput);
+      const user = await this.api.create(this.store.formsStore.signupInput);
       runInAction(() => {
+        this.store.formsStore.signinInput.username = user.username;
+        this.store.formsStore.signinInput.password = this.store.formsStore.signupInput.password;
         this.store.formsStore.signupSuccess = true;
         this.store.formsStore.signupInput = undefined;
         this.setIsLoading(false);
       });
+      await this.login();
     } catch (e) {
       runInAction(() => {
         console.log(e);
