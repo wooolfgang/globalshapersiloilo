@@ -1,6 +1,8 @@
 # Global Shapers Iloilo
 
-A platform where community leaders and initiators are able to collaborate and drive action for the improvement of the community.
+A platform for members to collaborate and join projects that better the community. 
+
+![Alt Text](https://media.giphy.com/media/xT1Ra1Msf8VgZxbvos/giphy.gif)
 
 https://shapeiloilo.herokuapp.com
 
