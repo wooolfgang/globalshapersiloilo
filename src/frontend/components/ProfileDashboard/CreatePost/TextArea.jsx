@@ -3,6 +3,7 @@ import { instanceOf } from 'prop-types';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import UserStore from '../../../stores/UserStore';
+import PostsStore from '../../../stores/PostsStore';
 
 const TextContainer = styled.textarea`
   width: 100%;
@@ -10,7 +11,7 @@ const TextContainer = styled.textarea`
   border: 1px solid lightgray;
   background: white;
   box-sizing: border-box;
-  color: gray;
+  color: #333;
   padding: 8px;
   overflow: auto;
   font-size: 1em;
@@ -25,27 +26,23 @@ const TextContainer = styled.textarea`
 class TextArea extends React.Component {
   static propTypes = {
     userStore: instanceOf(UserStore).isRequired,
-  }
-
-  state = {
-    text: '',
+    postsStore: instanceOf(PostsStore).isRequired,
   }
 
   handleChange = (e) => {
-    this.setState({ text: e.target.value });
+    this.props.postsStore.handlePostInput(e.target.value);
   }
 
   render() {
-    const { userStore: { currentUser } } = this.props;
-
+    const { userStore: { currentUser }, postsStore: { postInputMessage } } = this.props;
     return (
       <TextContainer
         placeholder={`Share your thoughts, ${currentUser.fullName}!`}
         onChange={this.handleChange}
-        value={this.state.text}
+        value={postInputMessage}
       />
     );
   }
 }
 
-export default inject('userStore')(observer(TextArea));
+export default inject('userStore', 'postsStore')(observer(TextArea));

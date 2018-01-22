@@ -1,6 +1,8 @@
 import React from 'react';
-import { string } from 'prop-types';
+import { instanceOf } from 'prop-types';
+import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
+import PostsStore from '../../../stores/PostsStore';
 
 const Button = styled.button`
   border: none;
@@ -22,14 +24,14 @@ const Button = styled.button`
     background: ${props => props.theme.buttonPrimaryDarker};
   }
 `;
-const PostButton = ({ value }) => (
-  <Button >
-    {value}
+const PostButton = ({ postsStore: { createPost, isPosting } }) => (
+  <Button onClick={createPost} >
+    {isPosting ? 'Posting...' : 'Post'}
   </Button>
 );
 
 PostButton.propTypes = {
-  value: string.isRequired,
+  postsStore: instanceOf(PostsStore).isRequired,
 };
 
-export default PostButton;
+export default inject('postsStore')(observer(PostButton));

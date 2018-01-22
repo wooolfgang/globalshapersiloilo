@@ -1,7 +1,8 @@
 import feathersMongo from 'feathers-mongodb';
-import { populate } from 'feathers-hooks-common';
+import { populate, setNow } from 'feathers-hooks-common';
 import auth from '@feathersjs/authentication';
 import restrictToOwner from '../../hooks/restrictToOwner';
+import transformToObjectId from '../../hooks/transformToObjectId';
 
 function postService(db) {
   return function execute() {
@@ -41,7 +42,7 @@ function postService(db) {
       before: {
         find: [],
         get: [],
-        create: [...hooks.authentication],
+        create: [...hooks.authentication, transformToObjectId({ propertyFields: ['ownerId'] }), setNow('createdAt')],
         update: [...hooks.authentication, ...hooks.authorization],
         patch: [...hooks.authentication, ...hooks.authorization],
         remove: [...hooks.authentication, ...hooks.authorization],
@@ -49,8 +50,8 @@ function postService(db) {
       },
       after: {
         find: [populate({ schema: postSchema })],
-        get: [],
-        create: [],
+        get: [populate({ schema: postSchema })],
+        create: [populate({ schema: postSchema })],
         update: [],
         patch: [],
         remove: [],

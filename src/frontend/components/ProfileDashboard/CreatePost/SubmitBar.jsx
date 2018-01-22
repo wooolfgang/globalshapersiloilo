@@ -13,9 +13,8 @@ const StyledDiv = styled.div`
 
 const SubmitBar = () => (
   <StyledDiv>
-    <PostButton value={'Post'} />
+    <PostButton />
   </StyledDiv >
-
 );
 
 export default SubmitBar;
