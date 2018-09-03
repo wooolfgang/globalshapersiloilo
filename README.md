@@ -5,7 +5,7 @@ A platform for members to collaborate and join projects that better the communit
 
 Live Demo: https://shapeiloilo.herokuapp.com
 
-![Alt Text](https://media.giphy.com/media/xT1Ra1Msf8VgZxbvos/giphy.gif)
+![Alt Text](https://media.giphy.com/media/1wqnbMM8TzuRDXA14T/giphy.gif)
 
 
 
