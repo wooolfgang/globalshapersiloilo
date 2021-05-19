@@ -3,12 +3,6 @@
 ## About The Project
 A platform for members to collaborate and join projects that better the community. 
 
-Live Demo: https://shapeiloilo.herokuapp.com
-
-![Alt Text](https://media.giphy.com/media/1wqnbMM8TzuRDXA14T/giphy.gif)
-
-
-
 ## Getting Started
     npm install
     npm run seed:all
