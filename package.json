@@ -48,7 +48,7 @@
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.2.2",
     "reprogressbars": "^0.2.1",
-    "socket.io-client": "^2.0.3",
+    "socket.io-client": "^2.5.0",
     "styled-components": "^2.1.2",
     "url-loader": "^0.5.9"
   },
